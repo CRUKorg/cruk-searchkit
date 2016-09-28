@@ -1,0 +1,55 @@
+
+.search-loading {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -35px;
+}
+
+.spinner {
+  margin: 22px auto;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  margin: 0 2px;
+  width: 16px;
+  height: 16px;
+  background-color: $brand-primary;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.2s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.2s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  background-color: $brand-secondary;
+}
+
+.spinner .bounce3 {
+  background-color: $brand-tertiary;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

@@ -1,0 +1,39 @@
+
+ul.pager {
+  position: relative;
+
+  li.previous.disabled {
+    display: none;
+  }
+
+  li > a {
+    @include card-boxing;
+
+    &:focus,
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .glyphicon {
+    font-size: 12px;
+  }
+
+  li.current {
+    position: absolute;
+    left: 50%;
+    margin-left: -36px;
+
+    > span {
+      border: 0;
+      background-color: transparent;
+      box-shadow: none;
+      cursor: text;
+      color: $text-color;
+    }
+  }
+
+  li > a {
+    cursor: pointer;
+  }
+}

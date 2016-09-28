@@ -1,0 +1,38 @@
+
+.search-results {
+  @extend .media-list;
+}
+
+.search-result {
+  @extend .media;
+  @include card-boxing;
+
+  margin-top: 15px;
+  padding: 15px;
+
+  .search-result__title {
+    @extend .media-heading;
+    font-size: 19px;
+
+    margin-bottom: 7px;
+  }
+
+  .search-result__meta {
+    @extend .list-inline;
+
+    margin-bottom: 5px;
+  }
+
+  .search-result__url {
+    @extend .text-muted;
+
+    margin-bottom: 5px;
+  }
+
+  .search-result__excerpt {
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

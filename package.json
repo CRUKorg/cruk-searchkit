@@ -11,7 +11,8 @@
     "url": "git+https://github.com/CRUKorg/cruk-searchkit.git"
   },
   "keywords": [
-    "CRUK"
+    "cruk",
+    "cruk-searchkit"
   ],
   "author": "mirko.prpic@cancer.org.uk",
   "license": "ISC",
@@ -20,6 +21,17 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-searchkit#readme",
   "devDependencies": {
-    "searchkit": "^0.10.1"
+    "sanitize-html-react": "^1.13.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "cruk-pattern-library": "0.0.4",
+    "moment": "^2.15.1",
+    "react": "^15.3.2",
+    "react-addons-update": "^15.3.2",
+    "react-google-tag-manager": "^1.1.2",
+    "scroll-to-element": "^2.0.0",
+    "searchkit": "^0.10.1",
+    "truncate": "^2.0.0"
   }
 }
