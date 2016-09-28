@@ -1,0 +1,25 @@
+{
+  "name": "cruk-searchkit",
+  "version": "1.0.0",
+  "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRUKorg/cruk-searchkit.git"
+  },
+  "keywords": [
+    "CRUK"
+  ],
+  "author": "mirko.prpic@cancer.org.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CRUKorg/cruk-searchkit/issues"
+  },
+  "homepage": "https://github.com/CRUKorg/cruk-searchkit#readme",
+  "devDependencies": {
+    "searchkit": "^0.10.1"
+  }
+}
