@@ -8,10 +8,13 @@ ul.pager {
 
   li > a {
     @include card-boxing;
+    background-color: $brand-primary;
+    color: white;
 
     &:focus,
     &:hover {
       background-color: white;
+      color: $text-color;
     }
   }
 
