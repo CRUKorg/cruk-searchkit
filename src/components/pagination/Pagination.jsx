@@ -13,7 +13,8 @@ import {
 } from 'lodash';
 import sanitizeHtml from 'sanitize-html-react';
 
-const bemPager = bem('cr-search-pager');
+// Specify the main BEM class that will be used over this component.
+const bemPager = bem('cr-search-pager')
 
 /**
  * This file is a mess of extending all sorts, makes me sad inside! This is
