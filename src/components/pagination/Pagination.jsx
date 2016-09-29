@@ -13,6 +13,8 @@ import {
 } from 'lodash';
 import sanitizeHtml from 'sanitize-html-react';
 
+const bemPager = bem('cr-search-pager');
+
 /**
  * This file is a mess of extending all sorts, makes me sad inside! This is
  * because we've got a specific way we want the pagination to look.
@@ -24,11 +26,11 @@ import sanitizeHtml from 'sanitize-html-react';
 class CRUKItemComponent extends ItemComponent {
   render() {
     const {onClick, disabled, itemKey, label, className} = this.props
-
+    
     let safeLabel = {__html: label};
     let content = typeof itemKey === 'string' ?
-      <a data-qa="label" dangerouslySetInnerHTML={safeLabel}></a> :
-      <span data-qa="label" href={'#' + itemKey} dangerouslySetInnerHTML={safeLabel}></span>;
+      <a data-qa="label" dangerouslySetInnerHTML={safeLabel} className={bemPager('link')}></a> :
+      <span data-qa="label" className={bemPager('indicator')} href={'#' + itemKey} dangerouslySetInnerHTML={safeLabel}></span>;
 
     return (
       <FastClick handler={onClick}>
@@ -74,12 +76,12 @@ class CRUKPagination extends Pagination {
         key: option.key,
         itemKey: option.key,
         disabled: option.disabled,
-        className: option.className
+        className: bemPager(option.className)
       })
     })
 
     return <nav aria-label="Select a different page">
-      <ul className="pager">
+      <ul className={bemPager}>
         {view}
       </ul>
     </nav>

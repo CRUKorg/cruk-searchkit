@@ -1,19 +1,38 @@
 
-ul.pager {
+.cr-search-pager {
+  @include clearfix()
   position: relative;
+  padding-left: 0px;
+  text-align: center;
+  margin: 20px 0px;
+  list-style: none;
 
-  li.previous.disabled {
+  &__previous {
+    float: left;
+  }
+
+  &__next {
+    float: right;
+  }
+
+  &__previous.disabled {
     display: none;
   }
 
-  li > a {
+  &__link {
     @include card-boxing;
     background-color: $brand-primary;
     color: white;
+    cursor: pointer;
+    display: inline-block;
+    padding: 9px 14px;
+    height: 40px;
     
     &:focus,
     &:hover {
-      background-color: lighten( $brand-primary, 30% );
+      background-color: #6C5C99;
+      color: white;
+      text-decoration: none;
     }
   }
 
@@ -21,25 +40,23 @@ ul.pager {
     font-size: 12px;
   }
 
-  li.current {
+  &__current {
     @extend .text-center;
 
     position: absolute;
     left: 50%;
     width: 130px;
     margin-left: -65px;
-
-    > span {
-      padding: 7px 0;
-      border: 0;
-      background-color: transparent;
-      box-shadow: none;
-      cursor: text;
-      color: $text-color;
-    }
   }
 
-  li > a {
-    cursor: pointer;
+  &__indicator {
+    padding: 9px 14px;
+    height: 40px;
+    border: 0;
+    display: inline-block;
+    background-color: transparent;
+    box-shadow: none;
+    cursor: text;
+    color: $text-color;
   }
 }

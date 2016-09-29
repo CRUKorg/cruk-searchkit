@@ -46,13 +46,13 @@ export default class CRUKSearchSummary extends HitsStats {
    */
   defineBEMBlocks() {
     return {
-      container: (this.props.mod || 'search-summary')
+      container: (this.props.mod || 'cr-search-summary')
     }
   }
 
   render() {
     const timeTaken = this.searchkit.getTime()
-    const hitsCount = this.searchkit.getHitsCount()
+    const hitsCount = new Intl.NumberFormat("en").format(this.searchkit.getHitsCount())
 
     if (hitsCount < 1) {
       return null;
