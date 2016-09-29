@@ -52,16 +52,18 @@ class CRUKPagination extends Pagination {
      * Inject the page number item into the middle of the array.
      */
     let items = this.getPages();
-    let currentPage = {
+    let currentPage = this.getCurrentPage();
+    let totalPages = this.getTotalPages();
+    let currentPageItem = {
       disabled: true,
-      key: this.getCurrentPage(),
-      label: 'Page ' + this.getCurrentPage(),
-      page: this.getCurrentPage(),
+      key: currentPage,
+      label: totalPages > 1 ? 'Page ' + currentPage + ' of ' + totalPages : 'Page 1',
+      page: currentPage,
       className: 'current'
     }
     items[0].className = 'previous';
     items[1].className = 'next';
-    items.splice(1, 0, currentPage);
+    items.splice(1, 0, currentPageItem);
 
     const view = map(items, (option) => {
       const label = option.title || option.label || option.key

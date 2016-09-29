@@ -10,11 +10,10 @@ ul.pager {
     @include card-boxing;
     background-color: $brand-primary;
     color: white;
-
+    
     &:focus,
     &:hover {
-      background-color: white;
-      color: $text-color;
+      background-color: lighten( $brand-primary, 30% );
     }
   }
 
@@ -23,11 +22,15 @@ ul.pager {
   }
 
   li.current {
+    @extend .text-center;
+
     position: absolute;
     left: 50%;
-    margin-left: -36px;
+    width: 130px;
+    margin-left: -65px;
 
     > span {
+      padding: 7px 0;
       border: 0;
       background-color: transparent;
       box-shadow: none;
