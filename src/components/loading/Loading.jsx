@@ -5,7 +5,7 @@ import {
 } from "searchkit";
 
 // Specify the main BEM class that will be used over this component.
-const bemLoader = bem('cr-search-loading')
+const bemLoader = bem('cr-loader')
 
 /**
  * And the component.
