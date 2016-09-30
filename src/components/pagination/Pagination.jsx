@@ -14,7 +14,7 @@ import {
 import sanitizeHtml from 'sanitize-html-react';
 
 // Specify the main BEM class that will be used over this component.
-const bemPager = bem('cr-search-pager')
+const bemPager = bem('cr-simple-pager')
 
 /**
  * This file is a mess of extending all sorts, makes me sad inside! This is
