@@ -1,7 +1,11 @@
 import React from 'react';
+import bem from 'bem-cn';
 import {
   SearchkitComponent
 } from "searchkit";
+
+// Specify the main BEM class that will be used over this component.
+const bemLoader = bem('cr-simple-loader')
 
 /**
  * And the component.
@@ -12,11 +16,11 @@ export default class CRUKLoading extends SearchkitComponent {
       return <div/>
     }
 
-    return (<div className="search-loading">
-    <div className="spinner">
-      <div className="bounce1"></div>
-      <div className="bounce2"></div>
-      <div className="bounce3"></div>
+    return (<div className={bemLoader}>
+    <div className={bemLoader("spinner")}>
+      <div className={bemLoader("spinner-item ") + bemLoader("spinner-item--bounce1")}></div>
+      <div className={bemLoader("spinner-item ") + bemLoader("spinner-item--bounce2")}></div>
+      <div className={bemLoader("spinner-item ") + bemLoader("spinner-item--bounce3")}></div>
     </div>
   </div>)
   }

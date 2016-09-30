@@ -2,11 +2,16 @@ import React from 'react';
 import sanitizeHtml from 'sanitize-html-react';
 import truncate from 'truncate';
 import moment from 'moment';
+import bem from 'bem-cn';
+
+// Specify the main BEM class that will be used over this component.
+const bemSearchResult = bem('cr-search-result')
 
 /**
  * Export our result component.
  */
 export default class CRUKSearchResult extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -41,21 +46,15 @@ export default class CRUKSearchResult extends React.Component {
 
   render() {
     return (
-      <li className="search-result">
-        <div className="media-body">
-          <h4 className="search-result__title">
-            <a href={this.state.url}>{this.state.title}</a>
+      <article className={bemSearchResult}>
+        <div className={bemSearchResult("media-body")}>
+          <h4 className={bemSearchResult("title")}>
+            <a className={bemSearchResult("link")} href={this.state.url}>{this.state.title}</a>
           </h4>
-          <p className="search-result__excerpt" dangerouslySetInnerHTML={this.state.description}></p>
+          <p className={bemSearchResult("excerpt")} dangerouslySetInnerHTML={this.state.description}></p>
         </div>
-      </li>
+      </article>
     )
   }
 }
 
-/*
-          <ul className="search-result__meta">
-            <li><strong>{this.state.type}</strong></li>
-            <li><strong>Published:</strong> {this.state.published}</li>
-          </ul>
- */

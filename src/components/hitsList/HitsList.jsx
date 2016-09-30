@@ -17,13 +17,13 @@ export default class CRUKHitsList extends HitsList {
       item: block(`${mod}-hit`)
     }
     return (
-      <ul data-qa="hits" className={bemBlocks.container().mix(className)}>
+      <section data-qa="hits" className={bemBlocks.container().mix(className)}>
         {map(hits, (result, index)=> {
           return renderComponent(itemComponent, {
             key:result._id, result, bemBlocks, index
           })
         })}
-      </ul>
+      </section>
     )
   }
 }

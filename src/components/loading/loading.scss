@@ -1,42 +1,43 @@
 
-.search-loading {
+.cr-simple-loader {
+  @include clearfix();
   position: absolute;
   top: 0;
   left: 50%;
   margin-left: -35px;
-}
 
-.spinner {
-  margin: 22px auto;
-  width: 70px;
-  text-align: center;
-}
+  &__spinner {
+    margin: 22px auto;
+    width: 70px;
+    text-align: center;
+  }
 
-.spinner > div {
-  margin: 0 2px;
-  width: 16px;
-  height: 16px;
-  background-color: $brand-primary;
+  &__spinner-item {
+    display: inline-block;
+    margin: 0 2px;
+    width: 16px;
+    height: 16px;
+    background-color: $brand-primary;
 
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.2s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.2s infinite ease-in-out both;
-}
+    border-radius: 100%;
+    -webkit-animation: sk-bouncedelay 1.2s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.2s infinite ease-in-out both;
 
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
+    &--bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
 
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-  background-color: $brand-secondary;
-}
+    &--bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+      background-color: $brand-secondary;
+    }
 
-.spinner .bounce3 {
-  background-color: $brand-tertiary;
+    &--bounce3 {
+      background-color: $brand-tertiary;
+    }
+  }
 }
 
 @-webkit-keyframes sk-bouncedelay {
