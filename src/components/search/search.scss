@@ -5,7 +5,7 @@
   &.search-interface--loading {
     .search-summary,
     .search-results,
-    ul.pager {
+    .cr-simple-pager__link {
       opacity: 0.4;
     }
   }
