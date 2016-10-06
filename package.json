@@ -26,9 +26,13 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "cruk-pattern-library": "0.0.4",
+    "lodash": "^4.16.3",
     "moment": "^2.15.1",
     "react": "^15.3.2",
+    "react-addons-shallow-compare": "^15.3.2",
     "react-addons-update": "^15.3.2",
+    "react-dates": "^3.1.1",
+    "react-dom": "^15.3.2",
     "react-google-tag-manager": "^1.1.2",
     "scroll-to-element": "^2.0.0",
     "searchkit": "^0.10.1",
