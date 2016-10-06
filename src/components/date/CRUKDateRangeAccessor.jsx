@@ -53,15 +53,17 @@ export class CRUKDateRangeAccessor extends FilterBasedAccessor {
   }
 
   buildOwnQuery(query) {
-
-    const min = (isUndefined(this.options.startDate)) ? this.state.min : this.options.startDate;
-    const max = (isUndefined(this.options.endDate)) ? this.state.max : this.options.endDate;
+    const val = this.state.getValue()
+    const min = val.min
+    const max = val.max
 
     let otherFilters = query.getFiltersWithoutKeys(this.key)
     let filters = BoolMust([
       otherFilters,
       RangeQuery(this.options.field,{
-        gte:min, lte:max
+        gte:min,
+        lte:max,
+        format: "yyyy-MM-dd"
       })
     ])
 

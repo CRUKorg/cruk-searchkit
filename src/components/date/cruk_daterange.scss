@@ -1,0 +1,32 @@
+
+.CalendarMonth {
+
+  &__day--selected-span {
+    color: #565a5c;
+    border: 1px double #e4e7e7;
+  }
+
+  &__day--hovered {
+    color: #ffffff;
+  }
+}
+
+.DayPicker--horizontal {
+  border: 2px solid #c8c9c7;
+  border-radius: 4px;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.DateRangePickerInput {
+  border: 2px solid #c8c9c7;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.DateInput {
+  
+  &__display-text--focused {
+    color: #484848;
+  } 
+}
