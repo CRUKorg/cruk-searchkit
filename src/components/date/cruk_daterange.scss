@@ -1,8 +1,12 @@
 
 .CalendarMonth {
 
-  &__day--selected-span {
-    color: #565a5c;
+  &__day--selected-span  {
+    color: #333;
+    border: 1px double #e4e7e7;
+  }
+
+  &__day--selected-start, &__day--selected-end {
     border: 1px double #e4e7e7;
   }
 
@@ -11,11 +15,25 @@
   }
 }
 
-.DayPicker--horizontal {
-  border: 2px solid #c8c9c7;
-  border-radius: 4px;
-  box-shadow: none;
-  overflow: hidden;
+.DateRangePicker__picker--valid-date-hovered .CalendarMonth__day--hovered-span {
+  color: #333;
+  border: 1px double #e4e7e7;
+}
+
+.DateRangePicker__picker--valid-date-hovered .CalendarMonth__day--selected-start,  .DateRangePicker__picker--valid-date-hovered .CalendarMonth__day--selected-end{
+  border: 1px double #e4e7e7;
+}
+
+
+
+.DayPicker {
+
+  &--horizontal {
+    border: 1px solid #c8c9c7;
+    border-radius: 4px;
+    box-shadow: none;
+    overflow: hidden;
+  }
 }
 
 .DateRangePickerInput {
@@ -27,6 +45,6 @@
 .DateInput {
   
   &__display-text--focused {
-    color: #484848;
+    color: #333;
   } 
 }
