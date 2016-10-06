@@ -32,10 +32,10 @@ export default class CRUKSearch extends SearchkitComponent {
           <CRUKSearchSummary/>
 
           <CRUKSearchHits
-            sourceFilter={['title', 'field_url:url', 'field_type', 'field_published']}
+            sourceFilter={['title', 'url']}
             CRUKHighlightFields={[
               {
-                'field': 'body:value',
+                'field': 'description',
                 'number_of_fragments': 0,
                 'pre_tags': ['<strong>'],
                 'post_tags': ['</strong>']
@@ -48,7 +48,7 @@ export default class CRUKSearch extends SearchkitComponent {
               "NoHits.DidYouMean":"Search for {suggestion}",
               "NoHits.SearchWithoutFilters":"Search for {query} without filters"
             }}
-            suggestionsField="body:value"
+            suggestionsField="suggest"
             mod="search-failed" />
 
           <CRUKPagination/>

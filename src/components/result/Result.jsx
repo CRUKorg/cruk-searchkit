@@ -24,10 +24,10 @@ export default class CRUKSearchResult extends React.Component {
      * If an empty search happens, then highlight won't be populated, account
      * for this.
      */
-    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['body:value'][0] : result['body:value'];
+    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['description'][0] : result['description'];
 
     this.state = {
-      url: result['field_url:url'],
+      url: result['url'],
       title: truncate(sanitizeHtml(result['title'], sO), 80),
       /**
        * Description will have <strong> tags in it to highlight the search
@@ -38,9 +38,7 @@ export default class CRUKSearchResult extends React.Component {
           allowedTags: ['strong'],
           allowedAttributes: []
         }), 160)
-      },
-      type: sanitizeHtml(result['field_type'], sO),
-      published: moment(result['field_published']).format('Do MMMM YYYY')
+      }
     };
   }
 
