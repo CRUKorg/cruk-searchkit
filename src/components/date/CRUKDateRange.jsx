@@ -11,9 +11,6 @@ import {
 
 import { CRUKDateRangeAccessor } from './CRUKDateRangeAccessor'
 
-const defaults = require('lodash/defaults')
-const throttle = require("lodash/throttle")
-const assign = require("lodash/assign")
 const isUndefined = require("lodash/isUndefined")
 
 class CRUKDateRange extends SearchkitComponent {

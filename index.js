@@ -11,3 +11,4 @@ export { default as CRUKHitsList } from './src/components/hitsList/HitsList';
 export { default as CRUKSearchHits } from './src/components/hits/Hits';
 export { default as CRUKSearchGTM } from './src/components/gtm/GTM';
 export { default as CRUKDateRange } from './src/components/date/CRUKDateRange';
+export { default as CRUKGeoSuggest } from './src/components/geosuggest/CRUKGeoSuggest';

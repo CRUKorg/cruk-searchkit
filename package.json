@@ -4,6 +4,11 @@
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {
+    "build": "npm run clean && npm run build:js && npm run build:css && npm run build:svg",
+    "build:css": "node-sass src/styles/common.scss lib/css/styles.css",
+    "build:js": "babel src/ -d lib/ --ignore src/components",
+    "build:svg": "webpack",
+    "clean": "rimraf lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +26,23 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-searchkit#readme",
   "devDependencies": {
-    "sanitize-html-react": "^1.13.0"
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-syntax-jsx": "^6.13.0",
+    "babel-preset-airbnb": "^2.0.0",
+    "babel-register": "^6.11.6",
+    "bootstrap-sass": "^3.3.7",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.1.2",
+    "node-sass": "^3.10.1",
+    "sanitize-html-react": "^1.13.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -33,6 +54,7 @@
     "react-addons-update": "^15.3.2",
     "react-dates": "^3.1.1",
     "react-dom": "^15.3.2",
+    "react-geosuggest": "^1.25.1",
     "react-google-tag-manager": "^1.1.2",
     "scroll-to-element": "^2.0.0",
     "searchkit": "^0.10.1",
