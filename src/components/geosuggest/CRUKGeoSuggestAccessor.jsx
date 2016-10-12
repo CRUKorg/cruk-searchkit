@@ -20,7 +20,6 @@ export class CRUKGeoSuggestAccessor extends FilterBasedAccessor {
 
   buildSharedQuery(query) {
     const val = this.state.getValue()
-    console.log(this.options)
     if(Object.keys(val).length > 0){
       let filter = {
         geo_distance: {
