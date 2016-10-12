@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Hits
 } from 'searchkit';
@@ -18,6 +19,7 @@ import CRUKSearchResult from './../result/Result.jsx';
  * Define our class.
  */
 class CRUKSearchHits extends Hits {
+
   constructor(props) {
     super();
   }
@@ -49,6 +51,8 @@ class CRUKSearchHits extends Hits {
         new CRUKHighlightAccessor(this.props.CRUKHighlightFields))
     }
 
+    this.hitsAccessor = new CRUKHitsAccessor({ scrollTo:this.props.scrollTo })
+    this.searchkit.addAccessor(this.hitsAccessor)
   }
 }
 
