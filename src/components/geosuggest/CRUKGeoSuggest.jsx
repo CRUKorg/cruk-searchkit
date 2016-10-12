@@ -130,9 +130,9 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
   }
 
   defineAccessor() {
-    const { id, title, field, resultDistance } = this.props
+    const { id, title, field, resultRadius } = this.props
     return new CRUKGeoSuggestAccessor(id, {
-      id, title, field, resultDistance
+      id, title, field, resultRadius
     })
   }
 
