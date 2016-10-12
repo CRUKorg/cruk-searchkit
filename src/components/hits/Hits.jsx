@@ -49,8 +49,6 @@ class CRUKSearchHits extends Hits {
         new CRUKHighlightAccessor(this.props.CRUKHighlightFields))
     }
 
-    this.hitsAccessor = new CRUKHitsAccessor({ scrollTo:this.props.scrollTo })
-    // this.searchkit.addAccessor(this.hitsAccessor)
   }
 }
 

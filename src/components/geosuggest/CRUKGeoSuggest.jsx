@@ -56,6 +56,7 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
     this.refs.geoLoader.className = 'geoSuggestLoader activated'
     if (suggest === '') {
       this.refs.geoLoader.className = 'geoSuggestLoader'
+      this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--active'
       const latLng = {
         lat: null,
         lng: null,
@@ -77,6 +78,7 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
 
   getSuggestLabel(suggest) {
     this.refs.geoLoader.className = 'geoSuggestLoader'
+    this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--dropdown'
     return suggest.description
   }
 
