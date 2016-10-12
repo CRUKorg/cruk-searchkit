@@ -41,7 +41,7 @@ export default class CRUKSearchInput extends SearchBox {
           onBlur={this.setFocusState.bind(this, false)}
           ref="queryField"
           autoFocus={this.props.autofocus}
-          onInput={this.onChange.bind(this)}
+          onChange={this.onChange.bind(this)}
           aria-describedby="search-label"
           autoComplete="off"
           autoCorrect="off"

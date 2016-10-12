@@ -7,8 +7,6 @@ import {
   FilterBucket 
 } from "searchkit"
 
-const get = require("lodash/get")
-const maxBy = require("lodash/maxBy")
 const isUndefined = require("lodash/isUndefined")
 
 export class CRUKDateRangeAccessor extends FilterBasedAccessor {

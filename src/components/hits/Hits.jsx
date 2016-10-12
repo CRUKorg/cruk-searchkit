@@ -50,7 +50,7 @@ class CRUKSearchHits extends Hits {
     }
 
     this.hitsAccessor = new CRUKHitsAccessor({ scrollTo:this.props.scrollTo })
-    this.searchkit.addAccessor(this.hitsAccessor)
+    // this.searchkit.addAccessor(this.hitsAccessor)
   }
 }
 

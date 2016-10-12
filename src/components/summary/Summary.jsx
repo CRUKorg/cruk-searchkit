@@ -1,5 +1,6 @@
 import React from 'react';
 import sanitizeHtml from 'sanitize-html-react';
+import numeral from 'numeral';
 import {
   HitsStats
 } from "searchkit";
@@ -52,7 +53,7 @@ export default class CRUKSearchSummary extends HitsStats {
 
   render() {
     const timeTaken = this.searchkit.getTime()
-    const hitsCount = new Intl.NumberFormat("en").format(this.searchkit.getHitsCount())
+    const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0')
 
     if (hitsCount < 1) {
       return null;
