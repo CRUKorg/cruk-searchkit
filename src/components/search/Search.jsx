@@ -12,7 +12,6 @@ import CRUKLoading from './../loading/Loading.jsx';
 import CRUKSearchSummary from './../summary/Summary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
 import CRUKPagination from './../pagination/Pagination.jsx';
-import CRUKSearchNoResultsDisplay from './../noresults/NoResultsDisplay.jsx'
 import CRUKSearchNoResults from './../noresults/NoResults.jsx'
 
 /**
@@ -44,6 +43,8 @@ export default class CRUKSearch extends SearchkitComponent {
             ]} />
 
           <CRUKSearchNoResults
+            component={this.props.component}
+            errorComponent={this.props.errorComponent}
             translations={{
               "NoHits.DidYouMean":"Search for {suggestion}",
               "NoHits.SearchWithoutFilters":"Search for {query} without filters"

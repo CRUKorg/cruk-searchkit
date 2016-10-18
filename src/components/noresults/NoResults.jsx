@@ -14,7 +14,7 @@ import CRUKNoResultsDisplay from "./NoResultsDisplay"
 
 const defaults = require("lodash/defaults")
 
-export default class CRUKNoHits extends SearchkitComponent {
+export default class CRUKSearchNoResults extends SearchkitComponent {
   noFiltersAccessor: NoFiltersHitCountAccessor
   suggestionsAccessor: SuggestionsAccessor
 
@@ -27,14 +27,14 @@ export default class CRUKNoHits extends SearchkitComponent {
     "NoHits.ResetSearch":"Reset Search"
   }
 
-  translations = CRUKNoHits.translations
+  translations = CRUKSearchNoResults.translations
 
   static propTypes = defaults({
     suggestionsField:React.PropTypes.string,
     errorComponent: React.PropTypes.func,
     component: React.PropTypes.func,
     translations:SearchkitComponent.translationsPropType(
-      CRUKNoHits.translations
+      CRUKSearchNoResults.translations
     )
   }, SearchkitComponent.propTypes)
 
