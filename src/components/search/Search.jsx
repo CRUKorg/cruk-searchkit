@@ -12,14 +12,15 @@ import CRUKLoading from './../loading/Loading.jsx';
 import CRUKSearchSummary from './../summary/Summary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
 import CRUKPagination from './../pagination/Pagination.jsx';
-import CRUKSearchNoResultsDisplay from './../noresults/NoResults.jsx'
+import CRUKSearchNoResultsDisplay from './../noresults/NoResultsDisplay.jsx'
+import CRUKSearchNoResults from './../noresults/NoResults.jsx'
 
 /**
  * Aaand the search interface/ui.
  */
 export default class CRUKSearch extends SearchkitComponent {
   render() {
-    var divClasses = classNames('col-xs-12', 'col-sm-8', 'col-sm-push-2', 'search-interface', {
+    let divClasses = classNames('col-xs-12', 'col-sm-8', 'col-sm-push-2', 'search-interface', {
       'search-interface--loading': this.isLoading()
     });
 
@@ -42,12 +43,13 @@ export default class CRUKSearch extends SearchkitComponent {
               }
             ]} />
 
-          <NoHits
-            component={CRUKSearchNoResultsDisplay}
+          <CRUKSearchNoResults
             translations={{
               "NoHits.DidYouMean":"Search for {suggestion}",
               "NoHits.SearchWithoutFilters":"Search for {query} without filters"
             }}
+            noResultsBody={this.props.noResultsBody}
+            noResultsTitle={this.props.noResultsTitle}
             suggestionsField="suggest"
             mod="search-failed" />
 
