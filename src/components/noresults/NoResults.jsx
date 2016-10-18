@@ -89,8 +89,9 @@ export default class CRUKNoHits extends SearchkitComponent {
     if ((this.hasHits() || this.isInitialLoading() || this.isLoading()) && !this.getError()) return null
 
     if (this.getError()) {
-      const props:NoHitsErrorDisplayProps = {
-        errorLabel:this.translate("NoHits.Error"),
+      const props: NoHitsErrorDisplayProps = {
+        errorLabel: this.translate("NoHits.Error"),
+        errorMessage: this.props.errorMessage,
         resetSearchFn: this.resetSearch.bind(this),
         translate: this.translate,
         bemBlocks: this.bemBlocks,
@@ -106,9 +107,9 @@ export default class CRUKNoHits extends SearchkitComponent {
     let infoKey = suggestion ? "NoHits.NoResultsFoundDidYouMean" : "NoHits.NoResultsFound"
 
     const props = {
-      noResultsLabel:this.props.noResultsLabel,
-      noResultsBody:this.props.noResultsBody,
-      noResultsTitle:this.props.noResultsTitle,
+      noResultsLabel: this.props.noResultsLabel,
+      noResultsBody: this.props.noResultsBody,
+      noResultsTitle: this.props.noResultsTitle,
       translate: this.translate,
       bemBlocks: this.bemBlocks,
       suggestion: suggestion,

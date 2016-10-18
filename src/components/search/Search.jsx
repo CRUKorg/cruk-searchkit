@@ -50,6 +50,7 @@ export default class CRUKSearch extends SearchkitComponent {
             }}
             noResultsBody={this.props.noResultsBody}
             noResultsTitle={this.props.noResultsTitle}
+            errorMessage={this.props.errorMessage}
             suggestionsField="suggest"
             mod="search-failed" />
 
