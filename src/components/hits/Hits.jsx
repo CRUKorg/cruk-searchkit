@@ -18,10 +18,25 @@ import CRUKSearchResult from './../result/Result.jsx';
 /**
  * Define our class.
  */
-class CRUKSearchHits extends Hits {
+export default class CRUKSearchHits extends Hits {
 
   constructor(props) {
     super();
+  }
+
+  static propTypes = {
+    CRUKHighlightFields: React.PropTypes.arrayOf(
+      React.PropTypes.oneOfType(
+        [React.PropTypes.string, React.PropTypes.object]
+      )
+    )
+  }
+
+  static defaultProps = {
+    mod: 'search-results',
+    hitsPerPage: 10,
+    itemComponent: CRUKSearchResult,
+    listComponent: CRUKHitsList,
   }
 
   componentWillMount() {
@@ -55,21 +70,3 @@ class CRUKSearchHits extends Hits {
     this.searchkit.addAccessor(this.hitsAccessor)
   }
 }
-
-/**
- * Alter the default props.
- */
-CRUKSearchHits.defaultProps['mod'] = 'search-results';
-CRUKSearchHits.defaultProps['hitsPerPage'] = 10;
-CRUKSearchHits.defaultProps['itemComponent'] = CRUKSearchResult;
-CRUKSearchHits.defaultProps['listComponent'] = CRUKHitsList;
-
-/**
- * Add our new highlightfields prop to sidestep the issue of overriding an
- * existing prop which for some reason is being tricky.
- */
-CRUKSearchHits.propTypes['CRUKHighlightFields'] = React.PropTypes.arrayOf(
-  React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object])
-)
-
-export default CRUKSearchHits
