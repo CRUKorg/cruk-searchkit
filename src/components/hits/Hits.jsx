@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {
-  Hits
+  Hits,
+  renderComponent
 } from 'searchkit';
 
 /**
@@ -68,5 +69,20 @@ export default class CRUKSearchHits extends Hits {
 
     this.hitsAccessor = new CRUKHitsAccessor({ scrollTo:this.props.scrollTo })
     this.searchkit.addAccessor(this.hitsAccessor)
+  }
+
+  render() {
+    let hits = this.getHits()
+    let hasHits = hits.length > 0
+
+    if (!this.isInitialLoading() && hasHits) {
+      const {listComponent, mod, className, itemComponent, additionalFields} = this.props
+      return renderComponent(listComponent, {
+        hits, mod, className, itemComponent, additionalFields
+      })
+    }
+
+    return null
+
   }
 }

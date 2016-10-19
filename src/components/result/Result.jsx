@@ -19,12 +19,12 @@ export default class CRUKSearchResult extends React.Component {
      * Do the work to sort out the data then pass to state.
      */
     let result = props.result._source
-    let sO = {allowedTags: [], allowedAttributes: []};
+    let sO = {allowedTags: [], allowedAttributes: []}
     /**
      * If an empty search happens, then highlight won't be populated, account
      * for this.
      */
-    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['description'][0] : result['description'];
+    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['description'][0] : result['description']
 
     this.state = {
       url: result['url'],
@@ -38,8 +38,17 @@ export default class CRUKSearchResult extends React.Component {
           allowedTags: ['strong'],
           allowedAttributes: []
         }), 160)
-      }
-    };
+      },
+      additionalFields: []
+    }
+
+    const additionalFields = (props.additionalFields) ? props.additionalFields.map(function(v,i,a){
+        return <div className={v.classNames} key={i}> 
+          {result[v.name]}
+        </div>
+      }) : []
+
+    this.state.additionalFields = additionalFields
   }
 
   render() {
@@ -50,6 +59,7 @@ export default class CRUKSearchResult extends React.Component {
             <a className={bemSearchResult("link")} href={this.state.url}>{this.state.title}</a>
           </h4>
           <p className={bemSearchResult("excerpt")} dangerouslySetInnerHTML={this.state.description}></p>
+          {this.state.additionalFields}
         </div>
       </article>
     )

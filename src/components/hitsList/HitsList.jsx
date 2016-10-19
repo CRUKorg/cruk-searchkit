@@ -11,7 +11,7 @@ import {map} from 'lodash';
  */
 export default class CRUKHitsList extends HitsList {
   render() {
-    const {hits, mod, className, itemComponent} = this.props
+    const {hits, mod, className, itemComponent, additionalFields} = this.props
     const bemBlocks = {
       container: block(mod),
       item: block(`${mod}-hit`)
@@ -20,7 +20,7 @@ export default class CRUKHitsList extends HitsList {
       <section data-qa="hits" className={bemBlocks.container().mix(className)}>
         {map(hits, (result, index)=> {
           return renderComponent(itemComponent, {
-            key:result._id, result, bemBlocks, index
+            key:result._id, result, bemBlocks, index, additionalFields
           })
         })}
       </section>

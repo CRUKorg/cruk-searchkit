@@ -33,6 +33,9 @@ export default class CRUKSearch extends SearchkitComponent {
 
           <CRUKSearchHits
             sourceFilter={['title', 'url']}
+            itemComponent={this.props.itemComponent}
+            listComponent={this.props.listComponent}
+            additionalFields={this.props.additionalFields}
             CRUKHighlightFields={[
               {
                 'field': 'description',
