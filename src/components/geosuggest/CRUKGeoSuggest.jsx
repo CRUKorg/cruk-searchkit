@@ -152,22 +152,25 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
 
     return (
       <div className="cr-geosuggest-wrapper" ref="g_wrapper">
-        <Geosuggest
-          ref="geoSuggest"
-          placeholder={this.props.placeholder}
-          initialValue={searchedAddress || this.props.initialValue}
-          fixtures={this.props.fixtures}
-          onSuggestSelect={this.onSuggestSelect}
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onKeyPress={this.onKeyPress}
-          getSuggestLabel={this.getSuggestLabel}
-          location={this.props.location}
-          radius={this.props.radius}
-          country={this.props.country}
+        <div className="form-group">
+          <Geosuggest
+            ref="geoSuggest"
+            placeholder={this.props.placeholder}
+            initialValue={searchedAddress || this.props.initialValue}
+            fixtures={this.props.fixtures}
+            onSuggestSelect={this.onSuggestSelect}
+            onChange={this.onChange}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onKeyPress={this.onKeyPress}
+            getSuggestLabel={this.getSuggestLabel}
+            location={this.props.location}
+            radius={this.props.radius}
+            country={this.props.country}
+            inputClassName={this.props.inputClassName}
           />
-          <div className="geoSuggestLoader" ref="geoLoader"></div>
+            <div className="geoSuggestLoader" ref="geoLoader"></div>
+          </div>
       </div>
     )
   }
