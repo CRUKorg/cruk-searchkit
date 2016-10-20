@@ -149,6 +149,7 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
       this.getSelectedLocation(argState)
     }
 
+    const inputClassName = this.props.inputClassName + ' form-control'
 
     return (
       <div className="cr-geosuggest-wrapper" ref="g_wrapper">
@@ -167,7 +168,7 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
             location={this.props.location}
             radius={this.props.radius}
             country={this.props.country}
-            inputClassName={this.props.inputClassName}
+            inputClassName={inputClassName}
           />
             <div className="geoSuggestLoader" ref="geoLoader"></div>
           </div>
