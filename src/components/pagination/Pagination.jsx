@@ -27,7 +27,7 @@ const bemPager = bem('cr-simple-pager')
 class CRUKItemComponent extends ItemComponent {
   render() {
     const {onClick, disabled, itemKey, label, className} = this.props
-    
+
     let safeLabel = {__html: label};
     let content = typeof itemKey === 'string' ?
       <a data-qa="label" dangerouslySetInnerHTML={safeLabel} className={bemPager('link')}></a> :
@@ -54,7 +54,7 @@ class CRUKPagination extends Pagination {
     /**
      * Inject the page number item into the middle of the array.
      */
-    let items = this.getPages();
+    let items = [];
     let currentPage = this.getCurrentPage();
     let totalPages = this.getTotalPages();
     let currentPageItem = {
@@ -64,9 +64,25 @@ class CRUKPagination extends Pagination {
       page: currentPage,
       className: 'current'
     }
-    items[0].className = 'previous';
-    items[1].className = 'next';
-    items.splice(1, 0, currentPageItem);
+
+    /**
+     * Remove items so as not to show links that do nothing.
+     */
+    if (totalPages === 1) {
+      items[0] = currentPageItem;
+    }
+    else {
+      items = this.getPages();
+      items[0].className = 'previous';
+      items[1].className = 'next';
+      items.splice(1, 0, currentPageItem);
+
+      // Remove next.
+      if (totalPages === currentPage) {
+        items = items.slice(0, 2);
+      }
+    }
+
 
     const view = map(items, (option) => {
       const label = option.title || option.label || option.key
