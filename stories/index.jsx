@@ -1,6 +1,10 @@
 import React from 'react'
 import GoogleMapsApiLoader from 'google-maps-api-loader'
 import { storiesOf, action, linkTo } from '@kadira/storybook'
+import { specs, describe, it } from 'storybook-addon-specifications'
+import { mount } from "enzyme";
+import { expect } from "chai";
+
 GoogleMapsApiLoader({
     libraries: ['places'],
     apiKey: 'AIzaSyCdcUdy8gWHdOuXgS87yo9lVGWwTXOxS04' // optional 
@@ -27,16 +31,20 @@ const url = 'https://spp.dev.cruk.org/events__local_dipan/';
 const sk = new SearchkitManager(url);
 const gtmId = 'GTM-H4B7';
 
-storiesOf('CRUK-searchkit', module)
-  .add('DateRange', () => (
-    <SearchkitProvider searchkit={sk}>
-      <CRUKDateRange showApp={linkTo('CRUKDateRange')}/>
-    </SearchkitProvider>
-  ));
+const stories = storiesOf('CRUK-searchkit', module);
 
-storiesOf('CRUK-searchkit', module)
-  .add('GeoSuggest', () => (
-    <SearchkitProvider searchkit={sk}>
-      <CRUKGeoSuggest showApp={linkTo('CRUKDateRange')}/>
-    </SearchkitProvider>
-  ));
+stories.add('DateRange', function () {
+  const story = <CRUKDateRange className="baraba" searchkit={sk} showApp={linkTo('CRUKDateRange')}/>
+
+  specs(() => describe('DateRange', function () {
+    it('Should have the DateRangePicker class', function () {
+      let output = mount(story);
+      console.log(output.hasClass('baraba'))
+      expect(output.hasClass('baraba')).to.be.true;
+      //expect(true).to.be.true;
+    });
+  }));
+
+  return story;
+});
+
