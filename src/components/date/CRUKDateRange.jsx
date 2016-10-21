@@ -47,9 +47,14 @@ class CRUKDateRange extends SearchkitComponent {
           max: endDate.format("YYYY-MM-DD")
         })
       }
-
-      this.searchkit.performSearch()
     }
+    else {
+      if (!startDate && !endDate) {
+        this.accessor.state = this.accessor.state.clear()
+      }
+    }
+
+    this.searchkit.performSearch()
   }
 
   onFocusChange(focusedInput) {
