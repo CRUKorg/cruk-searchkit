@@ -25,7 +25,7 @@ class CRUKDateRange extends SearchkitComponent {
       focusedInput: null,
       startDate: startDate,
       endDate: endDate,
-      initialVisibleMonth: null
+      initialVisibleMonth: () => moment()
     }
 
     this.noArgs = true
