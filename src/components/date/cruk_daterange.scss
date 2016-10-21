@@ -46,16 +46,16 @@
   padding: 5px;
   width: 110px;
   text-align: center;
-  
+
   &__display-text {
     font-size: 16px;
     color: #333;
     padding: 1px 6px;
-  } 
+  }
 
   &__display-text--focused {
     color: #333;
-  } 
+  }
 }
 
 .DateRangePickerInput__arrow svg {

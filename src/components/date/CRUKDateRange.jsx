@@ -37,7 +37,7 @@ class CRUKDateRange extends SearchkitComponent {
   onDatesChange({ startDate, endDate }) {
     this.setState({ startDate, endDate })
     this.noArgs = false
-    
+
     if (startDate && endDate) {
       if ((startDate == this.state.startDate) && (endDate == this.state.endDate)){
         this.accessor.state = this.accessor.state.clear()
