@@ -83,7 +83,6 @@ class CRUKPagination extends Pagination {
       }
     }
 
-
     const view = map(items, (option) => {
       const label = option.title || option.label || option.key
 
