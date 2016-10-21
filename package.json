@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-searchkit#readme",
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.5",
@@ -43,9 +44,9 @@
     "node-sass": "^3.10.1",
     "sanitize-html-react": "^1.13.0",
     "sass-loader": "^4.0.2",
+    "storybook-addon-specifications": "^1.0.15",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
-    "@kadira/storybook": "^2.21.0"
+    "webpack": "^1.13.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
