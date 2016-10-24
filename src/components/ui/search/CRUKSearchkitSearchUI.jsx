@@ -12,7 +12,7 @@ import CRUKLoading from './../loading/Loading.jsx';
 import CRUKSearchSummary from './../summary/Summary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
 import CRUKPagination from './../pagination/Pagination.jsx';
-import CRUKSearchNoResults from './../noresults/NoResults.jsx'
+import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
 
 /**
  * Aaand the search interface/ui.
@@ -43,9 +43,10 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
                 'pre_tags': ['<strong>'],
                 'post_tags': ['</strong>']
               }
-            ]} />
+            ]}
+          />
 
-          <CRUKSearchNoResults
+          <CRUKSearchkitNoResults
             component={this.props.component}
             errorComponent={this.props.errorComponent}
             translations={{
@@ -56,7 +57,8 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
             noResultsTitle={this.props.noResultsTitle}
             errorMessage={this.props.errorMessage}
             suggestionsField="suggest"
-            mod="search-failed" />
+            mod="search-failed"
+          />
 
           <CRUKPagination/>
 
