@@ -8,7 +8,7 @@ import classNames from 'classnames';
 /**
  * Import custom components.
  */
-import CRUKLoading from './../loading/Loading.jsx';
+import CRUKSearchkitLoading from './../loading/CRUKSearchkitLoading.jsx';
 import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
 import CRUKSearchkitPagination from './../pagination/CRUKSearchkitPagination.jsx';
@@ -27,7 +27,7 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
         <div id="search-interface" className={divClasses}>
           <div className="search-interface__blocking-layer"></div>
 
-          <CRUKLoading/>
+          <CRUKSearchkitLoading />
 
           <CRUKSearchkitSummary />
 

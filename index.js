@@ -6,7 +6,7 @@ export { default as CRUKSearchkitNoResults } from './src/components/no-results/C
 export { default as CRUKSearchkitPagination } from './src/components/pagination/CRUKSearchkitPagination';
 export { default as CRUKSearchkitResult } from './src/components/result/CRUKSearchkitResult';
 export { default as CRUKSearchkitSummary } from './src/components/summary/CRUKSearchkitSummary';
-export { default as CRUKLoading } from './src/components/loading/Loading';
+export { default as CRUKSearchkitLoading } from './src/components/loading/CRUKSearchkitLoading';
 export { default as CRUKHitsList } from './src/components/hitsList/HitsList';
 export { default as CRUKSearchHits } from './src/components/hits/Hits';
 export { default as CRUKSearchGTM } from './src/components/gtm/GTM';
