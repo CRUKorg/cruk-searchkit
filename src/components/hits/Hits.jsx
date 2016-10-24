@@ -14,7 +14,7 @@ import CRUKHitsAccessor from './CRUKHitsAccessor.jsx'
  * And the rest.
  */
 import CRUKHitsList from './../hitsList/HitsList.jsx';
-import CRUKSearchResult from './../result/Result.jsx';
+import CRUKSearchkitResult from './../result/CRUKSearchkitResult.jsx';
 
 /**
  * Define our class.
@@ -36,7 +36,7 @@ export default class CRUKSearchHits extends Hits {
   static defaultProps = {
     mod: 'search-results',
     hitsPerPage: 10,
-    itemComponent: CRUKSearchResult,
+    itemComponent: CRUKSearchkitResult,
     listComponent: CRUKHitsList,
     scrollTo: true
   }

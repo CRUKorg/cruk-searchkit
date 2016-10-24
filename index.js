@@ -4,7 +4,7 @@ export { default as CRUKSearchkitSearchBox } from './src/components/search-box/C
 export { default as CRUKSearchkitSearchUI } from './src/components/ui/search/CRUKSearchkitSearchUI';
 export { default as CRUKSearchkitNoResults } from './src/components/no-results/CRUKSearchkitNoResults';
 export { default as CRUKSearchkitPagination } from './src/components/pagination/CRUKSearchkitPagination';
-export { default as CRUKSearchResult } from './src/components/result/Result';
+export { default as CRUKSearchkitResult } from './src/components/result/CRUKSearchkitResult';
 export { default as CRUKSearchSummary } from './src/components/summary/Summary';
 export { default as CRUKLoading } from './src/components/loading/Loading';
 export { default as CRUKHitsList } from './src/components/hitsList/HitsList';

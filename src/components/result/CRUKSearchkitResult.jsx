@@ -10,7 +10,7 @@ const bemSearchResult = bem('cr-search-result')
 /**
  * Export our result component.
  */
-export default class CRUKSearchResult extends React.Component {
+export default class CRUKSearchkitResult extends React.Component {
 
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ export default class CRUKSearchResult extends React.Component {
     }
 
     const additionalFields = (props.additionalFields) ? props.additionalFields.map(function(v,i,a){
-        return <div className={v.classNames} key={i}> 
+        return <div className={v.classNames} key={i}>
           {result[v.name]}
         </div>
       }) : []
