@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 import {
   SearchkitComponent,
@@ -7,24 +7,24 @@ import {
   NoFiltersHitCountAccessor,
   SuggestionsAccessor,
   ReactComponentType
-} from "searchkit"
+} from 'searchkit';
 
-import CRUKNoResultsErrorDisplay from "./NoResultsErrorDisplay"
-import CRUKNoResultsDisplay from "./NoResultsDisplay"
+import CRUKNoResultsErrorDisplay from './NoResultsErrorDisplay';
+import CRUKNoResultsDisplay from './NoResultsDisplay';
 
-const defaults = require("lodash/defaults")
+const defaults = require('lodash/defaults');
 
 export default class CRUKSearchNoResults extends SearchkitComponent {
   noFiltersAccessor: NoFiltersHitCountAccessor
   suggestionsAccessor: SuggestionsAccessor
 
   static translations = {
-    "NoHits.NoResultsFound":"No results found for {query}.",
-    "NoHits.NoResultsFoundDidYouMean":"No results found for {query}. Did you mean {suggestion}?",
-    "NoHits.DidYouMean":"Search for {suggestion} instead",
-    "NoHits.SearchWithoutFilters":"Search for {query} without filters",
-    "NoHits.Error":"We're sorry, an issue occured when fetching your results. Please try again.",
-    "NoHits.ResetSearch":"Reset Search"
+    'NoHits.NoResultsFound': 'No results found for {query}.',
+    'NoHits.NoResultsFoundDidYouMean': 'No results found for {query}. Did you mean {suggestion}?',
+    'NoHits.DidYouMean': 'Search for {suggestion} instead',
+    'NoHits.SearchWithoutFilters': 'Search for {query} without filters',
+    'NoHits.Error': "We're sorry, an issue occured when fetching your results. Please try again.",
+    'NoHits.ResetSearch': 'Reset Search'
   }
 
   translations = CRUKSearchNoResults.translations
@@ -56,7 +56,7 @@ export default class CRUKSearchNoResults extends SearchkitComponent {
   }
 
   defineBEMBlocks() {
-    let block = (this.props.mod || "sk-no-hits")
+    let block = (this.props.mod || 'search-failed')
     return {
       container: block
     }
@@ -86,25 +86,25 @@ export default class CRUKSearchNoResults extends SearchkitComponent {
   }
 
   render() {
-    if ((this.hasHits() || this.isInitialLoading() || this.isLoading()) && !this.getError()) return null
+    if ((this.hasHits() || this.isInitialLoading() || this.isLoading()) && !this.getError()) return (<div />);
 
     if (this.getError()) {
       const props: NoHitsErrorDisplayProps = {
-        errorLabel: this.translate("NoHits.Error"),
+        errorLabel: this.translate('NoHits.Error'),
         errorMessage: this.props.errorMessage,
         resetSearchFn: this.resetSearch.bind(this),
         translate: this.translate,
         bemBlocks: this.bemBlocks,
-        tryAgainLabel: this.translate("NoHits.ResetSearch"),
+        tryAgainLabel: this.translate('NoHits.ResetSearch'),
         error: this.getError()
       }
 
-      return React.createElement(this.props.errorComponent, props)
+      return React.createElement(this.props.errorComponent, props);
     }
 
-    const suggestion = this.getSuggestion()
-    const query = this.getQuery().getQueryString()
-    let infoKey = suggestion ? "NoHits.NoResultsFoundDidYouMean" : "NoHits.NoResultsFound"
+    const suggestion = this.getSuggestion();
+    const query = this.getQuery().getQueryString();
+    let infoKey = suggestion ? 'NoHits.NoResultsFoundDidYouMean' : 'NoHits.NoResultsFound';
 
     const props = {
       noResultsLabel: this.props.noResultsLabel,
@@ -119,7 +119,6 @@ export default class CRUKSearchNoResults extends SearchkitComponent {
       setSuggestionFn: this.setQueryString.bind(this, suggestion)
     }
 
-    return React.createElement(this.props.component, props)
-
+    return React.createElement(this.props.component, props);
   }
 }
