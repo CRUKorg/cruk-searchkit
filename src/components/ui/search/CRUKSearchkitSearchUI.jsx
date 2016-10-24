@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import CRUKLoading from './../loading/Loading.jsx';
 import CRUKSearchSummary from './../summary/Summary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
-import CRUKPagination from './../pagination/Pagination.jsx';
+import CRUKSearchkitPagination from './../pagination/CRUKSearchkitPagination.jsx';
 import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
 
 /**
@@ -60,7 +60,7 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
             mod="search-failed"
           />
 
-          <CRUKPagination/>
+          <CRUKSearchkitPagination />
 
         </div>
       </div>
