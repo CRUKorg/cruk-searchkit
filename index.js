@@ -1,6 +1,6 @@
 'use strict';
 
-export { default as CRUKSearchInput } from './src/components/input/Input';
+export { default as CRUKSearchkitSearchBox } from './src/components/search-box/CRUKSearchkitSearchBox';
 export { default as CRUKSearch } from './src/components/search/Search';
 export { default as CRUKSearchNoResultsDisplay } from './src/components/noresults/NoResults';
 export { default as CRUKPagination } from './src/components/pagination/Pagination';

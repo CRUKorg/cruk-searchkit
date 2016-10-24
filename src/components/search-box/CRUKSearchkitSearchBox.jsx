@@ -6,10 +6,10 @@ import {
 /**
  * Override the render method on the SearchBox component to alter the markup.
  */
-export default class CRUKSearchInput extends SearchBox {
+export default class CRUKSearchkitSearchBox extends SearchBox {
   onSubmit(event) {
-    event.preventDefault()
-    this.searchQuery(this.getValue())
+    event.preventDefault();
+    this.searchQuery(this.getValue());
 
     /**
      * De-focus the input.
@@ -20,11 +20,11 @@ export default class CRUKSearchInput extends SearchBox {
   }
 
   render() {
-    let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input'
-    let placeholder = this.props.placeholder || this.translate('searchbox.placeholder')
+    let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
+    let placeholder = this.props.placeholder || this.translate('searchbox.placeholder');
 
     if (this.state.focused) {
-      wrapper_class += ' cr-input-group--focused'
+      wrapper_class += ' cr-input-group--focused';
     }
 
     return <form onSubmit={this.onSubmit.bind(this)}>
@@ -45,7 +45,8 @@ export default class CRUKSearchInput extends SearchBox {
           aria-describedby="search-label"
           autoComplete="off"
           autoCorrect="off"
-          tabIndex="1"/>
+          tabIndex="1"
+        />
         <span className="cr-input-group__button cr-search-input__button">
           <button type="submit" className="btn" aria-label="Submit your search" data-qa="submit">
             <span className="cr-input-group__icon glyphicon glyphicon-search" aria-hidden="true"></span>
