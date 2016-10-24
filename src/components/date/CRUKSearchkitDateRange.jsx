@@ -9,12 +9,14 @@ import {
   renderComponent
 } from 'searchkit';
 
-import { CRUKDateRangeAccessor } from './CRUKDateRangeAccessor'
+import {
+  CRUKSearchkitDateRangeAccessor
+} from './CRUKSearchkitDateRangeAccessor';
 
-const isUndefined = require("lodash/isUndefined")
+const isUndefined = require('lodash/isUndefined');
 
-class CRUKDateRange extends SearchkitComponent {
-  accessor:CRUKDateRangeAccessor
+class CRUKSearchkitDateRange extends SearchkitComponent {
+  accessor:CRUKSearchkitDateRangeAccessor
 
   constructor(props) {
     const startDate = (props.startDate) ? props.startDate : null
@@ -64,7 +66,7 @@ class CRUKDateRange extends SearchkitComponent {
   defineAccessor() {
     const { id, title, field, startDate, endDate,
       interval, showHistogram } = this.props
-    return new CRUKDateRangeAccessor(id,{
+    return new CRUKSearchkitDateRangeAccessor(id,{
       id, startDate, endDate, title, field, interval
     })
   }
@@ -97,8 +99,8 @@ class CRUKDateRange extends SearchkitComponent {
   }
 }
 
-CRUKDateRange.defaultProps = {
+CRUKSearchkitDateRange.defaultProps = {
   isOutsideRange: () => false
 }
 
-export default CRUKDateRange
+export default CRUKSearchkitDateRange
