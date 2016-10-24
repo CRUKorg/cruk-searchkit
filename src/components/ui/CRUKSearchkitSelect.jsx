@@ -8,7 +8,7 @@ import {
 } from "searchkit";
 import classNames from 'classnames';
 
-class CRUKSearchSelect extends Select {
+class CRUKSearchkitSelect extends Select {
   render() {
     const { mod, className, items,
       disabled, showCount, translate, countFormatter } = this.props
@@ -33,6 +33,6 @@ class CRUKSearchSelect extends Select {
   }
 }
 
-CRUKSearchSelect.defaultProps.mod = 'cr-select';
+CRUKSearchkitSelect.defaultProps.mod = 'cr-select';
 
-export default CRUKSearchSelect;
+export default CRUKSearchkitSelect;
