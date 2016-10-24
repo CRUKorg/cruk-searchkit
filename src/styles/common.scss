@@ -67,7 +67,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~cruk-pattern-library/assets/scss/partials/navbar";
 @import "~cruk-pattern-library/assets/scss/partials/pattern-library";
 
-// AirBnB react-dates styles overrides 
+// AirBnB react-dates styles overrides
 @import '~react-dates/css/variables.scss';
 $react-dates-color-primary: $brand-secondary;
 $react-dates-color-primary-shade-4: rgba(236, 0, 140, 0.15);
@@ -84,12 +84,12 @@ $react-dates-color-text-focus: #ffffff;
  */
 
 @import './mixins';
-@import './../components/input/input';
+@import './../components/search-box/CRUKSearchkitSearchBox';
 @import './../components/loading/loading';
 @import './../components/pagination/pagination';
 @import './../components/result/result';
 @import './../components/summary/summary';
-@import './../components/search/search';
+@import './../components/ui/search/CRUKSearchkitSearchUI';
 @import './../components/date/cruk_daterange';
 @import './../components/geosuggest/cruk_geosuggest';
 

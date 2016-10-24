@@ -17,7 +17,7 @@ import CRUKSearchNoResults from './../noresults/NoResults.jsx'
 /**
  * Aaand the search interface/ui.
  */
-export default class CRUKSearch extends SearchkitComponent {
+export default class CRUKSearchkitSearchUI extends SearchkitComponent {
   render() {
     let divClasses = classNames('col-xs-12', 'col-sm-8', 'col-sm-push-2', 'search-interface', {
       'search-interface--loading': this.isLoading()
