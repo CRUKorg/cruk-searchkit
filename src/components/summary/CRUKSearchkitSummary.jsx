@@ -3,9 +3,9 @@ import sanitizeHtml from 'sanitize-html-react';
 import numeral from 'numeral';
 import {
   HitsStats
-} from "searchkit";
+} from 'searchkit';
 
-const CRUKHitsStatsDisplay = (props:HitsStatsDisplayProps) => {
+const CRUKSearchkitSummaryDisplay = (props:CRUKSearchkitSummaryDisplayProps) => {
   const {resultsFoundLabel, bemBlocks} = props
 
   /**
@@ -30,7 +30,7 @@ const CRUKHitsStatsDisplay = (props:HitsStatsDisplayProps) => {
  * Extend the hitstats component so we can set the default string in a smarter
  * way formatting for singular/plural results. We also grab the search query.
  */
-export default class CRUKSearchSummary extends HitsStats {
+export default class CRUKSearchkitSummary extends HitsStats {
   constructor(props) {
     super(props);
 
@@ -56,10 +56,10 @@ export default class CRUKSearchSummary extends HitsStats {
     const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0')
 
     if (hitsCount < 1) {
-      return null;
+      return (<div />);
     }
 
-    const props:HitsStatsDisplayProps = {
+    const props:CRUKSearchkitSummaryDisplayProps = {
       bemBlocks: this.bemBlocks,
       translate: this.translate,
       timeTaken: timeTaken,
@@ -71,6 +71,6 @@ export default class CRUKSearchSummary extends HitsStats {
         resultsWord: hitsCount === 1 ? 'result' : 'results'
       })
     }
-    return React.createElement(CRUKHitsStatsDisplay, props)
+    return React.createElement(CRUKSearchkitSummaryDisplay, props)
   }
 }

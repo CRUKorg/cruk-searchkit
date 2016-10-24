@@ -9,7 +9,7 @@ import classNames from 'classnames';
  * Import custom components.
  */
 import CRUKLoading from './../loading/Loading.jsx';
-import CRUKSearchSummary from './../summary/Summary.jsx';
+import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary.jsx';
 import CRUKSearchHits from './../hits/Hits.jsx'
 import CRUKSearchkitPagination from './../pagination/CRUKSearchkitPagination.jsx';
 import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
@@ -29,7 +29,7 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
 
           <CRUKLoading/>
 
-          <CRUKSearchSummary/>
+          <CRUKSearchkitSummary />
 
           <CRUKSearchHits
             sourceFilter={['title', 'url']}
