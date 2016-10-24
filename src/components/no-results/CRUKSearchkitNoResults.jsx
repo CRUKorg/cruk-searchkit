@@ -9,7 +9,7 @@ import {
   ReactComponentType
 } from 'searchkit';
 
-import CRUKSearchkitNoResultsErrorDisplay from './NoResultsErrorDisplay';
+import CRUKSearchkitNoResultsErrorDisplay from './CRUKSearchkitNoResultsErrorDisplay';
 import CRUKSearchkitNoResultsDisplay from './CRUKSearchkitNoResultsDisplay';
 
 const defaults = require('lodash/defaults');
