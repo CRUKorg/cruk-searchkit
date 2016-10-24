@@ -1,20 +1,20 @@
-import { 
-  FilterBasedAccessor, 
-  ObjectState, 
-  FilteredQuery, 
-  BoolMust, 
-  CardinalityMetric, 
-  FilterBucket 
+import {
+  FilterBasedAccessor,
+  ObjectState,
+  FilteredQuery,
+  BoolMust,
+  CardinalityMetric,
+  FilterBucket
 } from "searchkit"
 
 const isUndefined = require("lodash/isUndefined")
 
-export class CRUKGeoSuggestAccessor extends FilterBasedAccessor {
+export class CRUKSearchkitLocationAccessor extends FilterBasedAccessor {
 
   constructor(key, options){
     super(key, options.id)
     this.options = options
-    
+
     this.state = new ObjectState({})
   }
 
