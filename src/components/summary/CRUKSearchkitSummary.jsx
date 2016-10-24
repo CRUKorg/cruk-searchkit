@@ -52,11 +52,11 @@ export default class CRUKSearchkitSummary extends HitsStats {
   }
 
   render() {
-    const timeTaken = this.searchkit.getTime()
-    const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0')
+    const timeTaken = this.searchkit.getTime();
+    const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0');
 
     if (hitsCount < 1) {
-      return (<div />);
+      return null;
     }
 
     const props:CRUKSearchkitSummaryDisplayProps = {
@@ -64,13 +64,13 @@ export default class CRUKSearchkitSummary extends HitsStats {
       translate: this.translate,
       timeTaken: timeTaken,
       hitsCount: hitsCount,
-      resultsFoundLabel: this.translate("hitstats.results_found", {
+      resultsFoundLabel: this.translate('hitstats.results_found', {
         timeTaken: timeTaken,
         hitCount: hitsCount,
         searchTerms: this.getQuery().index.queryString,
         resultsWord: hitsCount === 1 ? 'result' : 'results'
       })
-    }
+    };
     return React.createElement(CRUKSearchkitSummaryDisplay, props)
   }
 }

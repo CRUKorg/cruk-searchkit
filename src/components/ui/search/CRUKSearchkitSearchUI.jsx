@@ -8,11 +8,11 @@ import classNames from 'classnames';
 /**
  * Import custom components.
  */
-import CRUKSearchkitLoading from './../loading/CRUKSearchkitLoading.jsx';
-import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary.jsx';
-import CRUKSearchHits from './../hits/Hits.jsx'
-import CRUKSearchkitPagination from './../pagination/CRUKSearchkitPagination.jsx';
-import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
+import CRUKSearchkitLoading from './../../loading/CRUKSearchkitLoading.jsx';
+import CRUKSearchkitSummary from './../../summary/CRUKSearchkitSummary.jsx';
+import CRUKSearchkitResultsList from './../../results-list/CRUKSearchkitResultsList.jsx'
+import CRUKSearchkitPagination from './../../pagination/CRUKSearchkitPagination.jsx';
+import CRUKSearchkitNoResults from './../../no-results/CRUKSearchkitNoResults.jsx'
 
 /**
  * Aaand the search interface/ui.
@@ -31,7 +31,7 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
 
           <CRUKSearchkitSummary />
 
-          <CRUKSearchHits
+          <CRUKSearchkitResultsList
             sourceFilter={['title', 'url']}
             itemComponent={this.props.itemComponent}
             listComponent={this.props.listComponent}

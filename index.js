@@ -7,8 +7,8 @@ export { default as CRUKSearchkitPagination } from './src/components/pagination/
 export { default as CRUKSearchkitResult } from './src/components/result/CRUKSearchkitResult';
 export { default as CRUKSearchkitSummary } from './src/components/summary/CRUKSearchkitSummary';
 export { default as CRUKSearchkitLoading } from './src/components/loading/CRUKSearchkitLoading';
-export { default as CRUKHitsList } from './src/components/hitsList/HitsList';
-export { default as CRUKSearchHits } from './src/components/hits/Hits';
+export { default as CRUKSearchkitResultsListDisplay } from './src/components/results-list/CRUKSearchkitResultsListDisplay';
+export { default as CRUKSearchkitResultsList } from './src/components/results-list/CRUKSearchkitResultsList';
 export { default as CRUKSearchkitGTM } from './src/components/gtm/CRUKSearchkitGTM';
 export { default as CRUKSearchkitDateRange } from './src/components/date/CRUKSearchkitDateRange';
 export { default as CRUKSearchkitLocationInput } from './src/components/location/CRUKSearchkitLocationInput';

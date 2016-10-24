@@ -9,7 +9,7 @@ import {map} from 'lodash';
 /**
  * Define our class.
  */
-export default class CRUKHitsList extends HitsList {
+export default class CRUKSearchkitResultsListDisplay extends HitsList {
   render() {
     const {hits, mod, className, itemComponent, additionalFields} = this.props
     const bemBlocks = {
