@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-  concat
+  concat,
+  forEach
 } from 'lodash';
-import {
-  array_flip
-} from 'locutus';
 import {
   MenuFilter
 } from "searchkit";
@@ -21,7 +19,11 @@ class CRUKSearchkitMenuFilter extends MenuFilter {
     /**
      * Reverse the options order array so we flip keys for values.
      */
-    const optionsOrder = array_flip(this.props.optionsOrder);
+    let order = [];
+    forEach(this.props.optionsOrder, function(value, key) {
+      order[value] = key;
+    });
+
     const all = {
       key: allItem.key,
       label: allItem.label,
@@ -29,22 +31,19 @@ class CRUKSearchkitMenuFilter extends MenuFilter {
     }
 
     let items = concat([all], this.accessor.getBuckets());
-console.log(this.props.optionsOrder, optionsOrder);
-console.log(items.length > 1 && optionsOrder.length > 0);
+
     /**
      * Sort things.
      */
-    if (items.length > 1 && optionsOrder.length > 0) {
+    if (items.length > 1 && Object.keys(order).length > 1) {
       /**
        * We've inverted the array of options in order which means we can find
        * items by entering the text value, the original index number is how
        * we can compare items to sort by.
        */
-      console.log(items);
       items.sort(function(x, y) {
-        return optionsOrder[x.key] > optionsOrder[y.key];
+        return parseInt(order[x.key]) > parseInt(order[y.key]);
       });
-      console.log(items);
     }
 
     return items;
