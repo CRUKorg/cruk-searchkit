@@ -84,14 +84,14 @@ $react-dates-color-text-focus: #ffffff;
  */
 
 @import './mixins';
-@import './../components/search-box/CRUKSearchkitSearchBox';
-@import './../components/loading/CRUKSearchkitLoading';
-@import './../components/pagination/CRUKSearchkitPagination';
-@import './../components/result/CRUKSearchkitResult';
-@import './../components/summary/CRUKSearchkitSummary';
-@import './../components/ui/search/CRUKSearchkitSearchUI';
-@import './../components/date/CRUKSearchkitDateRange';
-@import './../components/location/CRUKSearchkitLocationInput';
+@import './../components/search/search-box/CRUKSearchkitSearchBox';
+@import './../components/display/loading/CRUKSearchkitLoading';
+@import './../components/search/pagination/CRUKSearchkitPagination';
+@import './../components/display/result/CRUKSearchkitResult';
+@import './../components/display/summary/CRUKSearchkitSummary';
+@import './../components/display/search/CRUKSearchkitSearchUI';
+@import './../components/search/date/CRUKSearchkitDateRange';
+@import './../components/search/location/CRUKSearchkitLocationInput';
 
 body {
   padding: 20px 0;

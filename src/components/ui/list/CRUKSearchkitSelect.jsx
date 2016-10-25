@@ -10,26 +10,10 @@ import classNames from 'classnames';
 
 class CRUKSearchkitSelect extends Select {
   render() {
-    const { mod, className, items, disabled, showCount, translate, countFormatter, optionsOrder } = this.props;
+    const { mod, className, items, disabled, showCount, translate, countFormatter } = this.props;
 
     const bemBlocks = {
       container: block(mod)
-    }
-
-    //console.log(items);
-console.log(this.props);
-    /**
-     * No point sorting if there's one or less items.
-     */
-    if (items.length > 1 && optionsOrder.length > 0) {
-      items.sort(function(x, y) {
-        console.log(x);
-        console.log(y);
-        return true;
-      });
-      // foreach(items, function(value, key) {
-
-      // });
     }
 
     let divClasses = classNames(bemBlocks.container().mix(className).state({ disabled }), 'form-group');
@@ -50,6 +34,5 @@ console.log(this.props);
 }
 
 CRUKSearchkitSelect.defaultProps.mod = 'cr-select';
-CRUKSearchkitSelect.defaultProps.optionsOrder = [];
 
 export default CRUKSearchkitSelect;

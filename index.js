@@ -14,4 +14,6 @@ export { default as CRUKSearchkitResultsList } from './src/components/display/re
 export { default as CRUKSearchkitNoResults } from './src/components/display/no-results/CRUKSearchkitNoResults';
 export { default as CRUKSearchkitSearchUI } from './src/components/display/search/CRUKSearchkitSearchUI';
 
+export { default as CRUKSearchkitMenuFilter } from './src/components/filters/menu/CRUKSearchkitMenuFilter';
+
 export { default as CRUKSearchkitSelect } from './src/components/ui/list/CRUKSearchkitSelect';
