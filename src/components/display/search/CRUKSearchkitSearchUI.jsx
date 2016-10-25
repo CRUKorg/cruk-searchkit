@@ -2,17 +2,17 @@ import React from 'react';
 import {
   SearchkitComponent,
   NoHits
-} from "searchkit";
+} from 'searchkit';
 import classNames from 'classnames';
 
 /**
  * Import custom components.
  */
-import CRUKSearchkitLoading from './../../loading/CRUKSearchkitLoading.jsx';
-import CRUKSearchkitSummary from './../../summary/CRUKSearchkitSummary.jsx';
-import CRUKSearchkitResultsList from './../../results-list/CRUKSearchkitResultsList.jsx'
-import CRUKSearchkitPagination from './../../pagination/CRUKSearchkitPagination.jsx';
-import CRUKSearchkitNoResults from './../../no-results/CRUKSearchkitNoResults.jsx'
+import CRUKSearchkitLoading from './../loading/CRUKSearchkitLoading.jsx';
+import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary.jsx';
+import CRUKSearchkitResultsList from './../results-list/CRUKSearchkitResultsList.jsx'
+import CRUKSearchkitPagination from './../../search/pagination/CRUKSearchkitPagination.jsx';
+import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
 
 /**
  * Aaand the search interface/ui.
@@ -50,8 +50,8 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
             component={this.props.component}
             errorComponent={this.props.errorComponent}
             translations={{
-              "NoHits.DidYouMean":"Search for {suggestion}",
-              "NoHits.SearchWithoutFilters":"Search for {query} without filters"
+              'NoHits.DidYouMean': 'Search for {suggestion}',
+              'NoHits.SearchWithoutFilters': 'Search for {query} without filters'
             }}
             noResultsBody={this.props.noResultsBody}
             noResultsTitle={this.props.noResultsTitle}

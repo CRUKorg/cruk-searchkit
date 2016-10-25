@@ -1,15 +1,17 @@
 'use strict';
 
-export { default as CRUKSearchkitSearchBox } from './src/components/search-box/CRUKSearchkitSearchBox';
-export { default as CRUKSearchkitSearchUI } from './src/components/ui/search/CRUKSearchkitSearchUI';
-export { default as CRUKSearchkitNoResults } from './src/components/no-results/CRUKSearchkitNoResults';
-export { default as CRUKSearchkitPagination } from './src/components/pagination/CRUKSearchkitPagination';
-export { default as CRUKSearchkitResult } from './src/components/result/CRUKSearchkitResult';
-export { default as CRUKSearchkitSummary } from './src/components/summary/CRUKSearchkitSummary';
-export { default as CRUKSearchkitLoading } from './src/components/loading/CRUKSearchkitLoading';
-export { default as CRUKSearchkitResultsListDisplay } from './src/components/results-list/CRUKSearchkitResultsListDisplay';
-export { default as CRUKSearchkitResultsList } from './src/components/results-list/CRUKSearchkitResultsList';
-export { default as CRUKSearchkitGTM } from './src/components/gtm/CRUKSearchkitGTM';
-export { default as CRUKSearchkitDateRange } from './src/components/date/CRUKSearchkitDateRange';
-export { default as CRUKSearchkitLocationInput } from './src/components/location/CRUKSearchkitLocationInput';
+export { default as CRUKSearchkitSearchBox } from './src/components/search/search-box/CRUKSearchkitSearchBox';
+export { default as CRUKSearchkitDateRange } from './src/components/search/date/CRUKSearchkitDateRange';
+export { default as CRUKSearchkitLocationInput } from './src/components/search/location/CRUKSearchkitLocationInput';
+export { default as CRUKSearchkitGTM } from './src/components/search/gtm/CRUKSearchkitGTM';
+export { default as CRUKSearchkitPagination } from './src/components/search/pagination/CRUKSearchkitPagination';
+
+export { default as CRUKSearchkitLoading } from './src/components/display/loading/CRUKSearchkitLoading';
+export { default as CRUKSearchkitSummary } from './src/components/display/summary/CRUKSearchkitSummary';
+export { default as CRUKSearchkitResult } from './src/components/display/result/CRUKSearchkitResult';
+export { default as CRUKSearchkitResultsListDisplay } from './src/components/display/results-list/CRUKSearchkitResultsListDisplay';
+export { default as CRUKSearchkitResultsList } from './src/components/display/results-list/CRUKSearchkitResultsList';
+export { default as CRUKSearchkitNoResults } from './src/components/display/no-results/CRUKSearchkitNoResults';
+export { default as CRUKSearchkitSearchUI } from './src/components/display/search/CRUKSearchkitSearchUI';
+
 export { default as CRUKSearchkitSelect } from './src/components/ui/list/CRUKSearchkitSelect';
