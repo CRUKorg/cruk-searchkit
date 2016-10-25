@@ -12,14 +12,15 @@ module.exports = {
     // your custom plugins
   ],
   resolve: {
-    extensions:[".js", ".jsx", ".webpack.js", ".web.js","", ".scss"]
+    extensions:[".js", ".jsx", ".webpack.js", ".web.js","", ".scss", ".json"]
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, '../src/components/')
+          path.resolve(__dirname, '../src/components/'),
+          path.resolve(__dirname, '../stories/')
         ],
         loader: 'babel',
         query: {
@@ -70,7 +71,6 @@ module.exports = {
   },
   externals: {
    'jsdom': 'window',
-   'cheerio': 'window',
    'react/lib/ExecutionEnvironment': true,
    'react/lib/ReactContext': 'window',
    'react/addons': true,

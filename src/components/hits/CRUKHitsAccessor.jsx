@@ -1,5 +1,6 @@
-import {HitsAccessor} from 'searchkit';
+import { HitsAccessor } from 'searchkit';
 import scroll from 'scroll';
+
 
 /**
  * Override the hits accessor so it'll smooth scroll instead of sharp jump.
