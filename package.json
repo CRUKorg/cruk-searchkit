@@ -61,6 +61,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "bem-cn": "^2.1.3",
     "classnames": "^2.2.5",
     "cruk-pattern-library": "0.0.4",
     "google-maps-api-loader": "^0.2.0",
@@ -74,6 +75,7 @@
     "react-dom": "^15.3.2",
     "react-geosuggest": "^1.25.1",
     "react-google-tag-manager": "^1.1.2",
+    "sanitize-html-react": "^1.13.0",
     "scroll": "^2.0.0",
     "searchkit": "^0.10.1",
     "truncate": "^2.0.0"

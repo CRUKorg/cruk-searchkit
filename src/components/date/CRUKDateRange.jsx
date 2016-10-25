@@ -25,7 +25,7 @@ class CRUKDateRange extends SearchkitComponent {
       focusedInput: null,
       startDate: startDate,
       endDate: endDate,
-      initialVisibleMonth: null
+      initialVisibleMonth: () => moment()
     }
 
     this.noArgs = true
@@ -37,7 +37,7 @@ class CRUKDateRange extends SearchkitComponent {
   onDatesChange({ startDate, endDate }) {
     this.setState({ startDate, endDate })
     this.noArgs = false
-    
+
     if (startDate && endDate) {
       if ((startDate == this.state.startDate) && (endDate == this.state.endDate)){
         this.accessor.state = this.accessor.state.clear()
@@ -47,9 +47,14 @@ class CRUKDateRange extends SearchkitComponent {
           max: endDate.format("YYYY-MM-DD")
         })
       }
-
-      this.searchkit.performSearch()
     }
+    else {
+      if (!startDate && !endDate) {
+        this.accessor.state = this.accessor.state.clear()
+      }
+    }
+
+    this.searchkit.performSearch()
   }
 
   onFocusChange(focusedInput) {
