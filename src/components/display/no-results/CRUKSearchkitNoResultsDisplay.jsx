@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class CRUKNoResultsDisplay extends React.Component {
+export default class CRUKSearchkitNoResultsDisplay extends React.Component {
 
   render() {
     const {bemBlocks, query, suggestion} = this.props
@@ -8,7 +8,7 @@ export default class CRUKNoResultsDisplay extends React.Component {
     const queryLabel = (query)
       ? <span> - <strong>{query}</strong></span>
       : ''
-    
+
     const noResultsBody = (() => {
       if (this.props.noResultsBody === '') return ''
       if (this.props.noResultsBody) return this.props.noResultsBody

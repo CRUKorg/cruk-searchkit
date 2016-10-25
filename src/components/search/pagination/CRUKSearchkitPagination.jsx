@@ -24,7 +24,7 @@ const bemPager = bem('cr-simple-pager')
 /**
  * Define a custom itemComponent class for us to use.
  */
-class CRUKItemComponent extends ItemComponent {
+class CRUKSearchkitPaginationItemComponent extends ItemComponent {
   render() {
     const {onClick, disabled, itemKey, label, className} = this.props
 
@@ -47,7 +47,7 @@ class CRUKItemComponent extends ItemComponent {
  * Define our basic pagination class which will spit out a simple pager aligned
  * more to Bootstrap than searchkit.
  */
-class CRUKPagination extends Pagination {
+class CRUKSearchkitPagination extends Pagination {
   render() {
     if (!this.hasHits()) return null;
 
@@ -86,7 +86,7 @@ class CRUKPagination extends Pagination {
     const view = map(items, (option) => {
       const label = option.title || option.label || option.key
 
-      return React.createElement(CRUKItemComponent, {
+      return React.createElement(CRUKSearchkitPaginationItemComponent, {
         label: label,
         onClick: () => this.setPage(option.key),
         key: option.key,
@@ -107,7 +107,7 @@ class CRUKPagination extends Pagination {
 /**
  * Alter the default props.
  */
-CRUKPagination.defaultProps['translations'] = {
+CRUKSearchkitPagination.defaultProps['translations'] = {
   'pagination.previous': '<span class="glyphicon glyphicon-chevron-left"></span> Prev',
   'pagination.next': 'Next <span class="glyphicon glyphicon-chevron-right"></span>'
 };
@@ -115,4 +115,4 @@ CRUKPagination.defaultProps['translations'] = {
 /**
  * Export the class.
  */
-export default CRUKPagination
+export default CRUKSearchkitPagination

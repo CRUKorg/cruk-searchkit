@@ -3,9 +3,9 @@ import sanitizeHtml from 'sanitize-html-react';
 import numeral from 'numeral';
 import {
   HitsStats
-} from "searchkit";
+} from 'searchkit';
 
-const CRUKHitsStatsDisplay = (props:HitsStatsDisplayProps) => {
+const CRUKSearchkitSummaryDisplay = (props:CRUKSearchkitSummaryDisplayProps) => {
   const {resultsFoundLabel, bemBlocks} = props
 
   /**
@@ -30,7 +30,7 @@ const CRUKHitsStatsDisplay = (props:HitsStatsDisplayProps) => {
  * Extend the hitstats component so we can set the default string in a smarter
  * way formatting for singular/plural results. We also grab the search query.
  */
-export default class CRUKSearchSummary extends HitsStats {
+export default class CRUKSearchkitSummary extends HitsStats {
   constructor(props) {
     super(props);
 
@@ -52,25 +52,25 @@ export default class CRUKSearchSummary extends HitsStats {
   }
 
   render() {
-    const timeTaken = this.searchkit.getTime()
-    const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0')
+    const timeTaken = this.searchkit.getTime();
+    const hitsCount = numeral(this.searchkit.getHitsCount()).format('0,0');
 
     if (hitsCount < 1) {
       return null;
     }
 
-    const props:HitsStatsDisplayProps = {
+    const props:CRUKSearchkitSummaryDisplayProps = {
       bemBlocks: this.bemBlocks,
       translate: this.translate,
       timeTaken: timeTaken,
       hitsCount: hitsCount,
-      resultsFoundLabel: this.translate("hitstats.results_found", {
+      resultsFoundLabel: this.translate('hitstats.results_found', {
         timeTaken: timeTaken,
         hitCount: hitsCount,
         searchTerms: this.getQuery().index.queryString,
         resultsWord: hitsCount === 1 ? 'result' : 'results'
       })
-    }
-    return React.createElement(CRUKHitsStatsDisplay, props)
+    };
+    return React.createElement(CRUKSearchkitSummaryDisplay, props)
   }
 }

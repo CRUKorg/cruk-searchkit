@@ -10,30 +10,30 @@ import {
   renderComponent
 } from 'searchkit';
 
-import { CRUKGeoSuggestAccessor } from './CRUKGeoSuggestAccessor'
+import { CRUKSearchkitLocationAccessor } from './CRUKSearchkitLocationAccessor';
 
-export default class CRUKGeoSuggest extends SearchkitComponent {
-  accessor:CRUKGeoSuggestAccessor
+export default class CRUKSearchkitLocationInput extends SearchkitComponent {
+  accessor:CRUKSearchkitLocationAccessor
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       lat: null,
       lng: null,
       placeId: null,
       searchedAddress: null
-    }
+    };
 
-    this.preformedSearch = false
+    this.preformedSearch = false;
 
-    this.onSuggestSelect = this.onSuggestSelect.bind(this)
-    this.getSelectedLocation = this.getSelectedLocation.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.onFocus = this.onFocus.bind(this)
-    this.onBlur = this.onBlur.bind(this)
-    this.getSuggestLabel = this.getSuggestLabel.bind(this)
-    this.onKeyPress = this.onKeyPress.bind(this)
+    this.onSuggestSelect = this.onSuggestSelect.bind(this);
+    this.getSelectedLocation = this.getSelectedLocation.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.getSuggestLabel = this.getSuggestLabel.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
   }
 
   /**
@@ -83,7 +83,6 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
   }
 
   onKeyPress() {
-    console.log('key press')
     // this.refs.geoLoader.className = 'geoSuggestLoader activated'
   }
 
@@ -104,9 +103,10 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
   preformSearch(query) {
     const { lat, lng } = this.state
 
-    if ((query.location.lat == lat) && (query.location.lng == lng)){
+    if ((query.location.lat == lat) && (query.location.lng == lng)) {
       this.accessor.state = this.accessor.state.clear()
-    } else {
+    }
+    else {
       this.accessor.state = this.accessor.state.setValue({
         lat: query.location.lat,
         lng: query.location.lng,
@@ -118,38 +118,37 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
   }
 
   buildAddressFormattedString(locations) {
-    
     return locations
             .map((v, i, a) => v.long_name)
             .filter((v, i, a) => a.indexOf(v) === i && a.length > i + 1)
             .filter(function (v, i, a) {
               return a.filter(val => v !== val)
                       .map(val => v.indexOf(val) === -1)
-                      .join("")
-                      .indexOf("false") === -1
+                      .join('')
+                      .indexOf('false') === -1
             })
-            .join(", ")
+            .join(', ');
   }
 
   defineAccessor() {
-    const { id, title, field, resultRadius } = this.props
-    return new CRUKGeoSuggestAccessor(id, {
+    const { id, title, field, resultRadius } = this.props;
+    return new CRUKSearchkitLocationAccessor(id, {
       id, title, field, resultRadius
-    })
+    });
   }
 
   /**
-   * Render the example app
+   * Render the example app.
    */
   render() {
-    const { searchedAddress } = this.state
-    const argState = this.accessor.getQueryObject()
+    const { searchedAddress } = this.state;
+    const argState = this.accessor.getQueryObject();
 
     if (!this.preformedSearch && argState[this.props.id] !== undefined && Object.keys(argState[this.props.id]).length > 0) {
-      this.getSelectedLocation(argState)
+      this.getSelectedLocation(argState);
     }
 
-    const inputClassName = this.props.inputClassName + ' form-control'
+    const inputClassName = this.props.inputClassName + ' form-control';
 
     return (
       <div className="cr-geosuggest-wrapper" ref="g_wrapper">
@@ -170,8 +169,8 @@ export default class CRUKGeoSuggest extends SearchkitComponent {
             country={this.props.country}
             inputClassName={inputClassName}
           />
-            <div className="geoSuggestLoader" ref="geoLoader"></div>
-          </div>
+          <div className="geoSuggestLoader" ref="geoLoader"></div>
+        </div>
       </div>
     )
   }

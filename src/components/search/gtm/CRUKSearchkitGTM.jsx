@@ -12,7 +12,7 @@ import gtmParts from 'react-google-tag-manager';
  * Adding a listener to the new results events is from:
  * http://docs.searchkit.co/stable/docs/core/SearchkitManager.html
  */
-class CRUKSearchGTM extends SearchkitComponent {
+class CRUKSearchkitGTM extends SearchkitComponent {
   constructor(props) {
     super(props);
     this.previousState = {};
@@ -97,11 +97,11 @@ class CRUKSearchGTM extends SearchkitComponent {
   }
 }
 
-CRUKSearchGTM.propTypes = {
+CRUKSearchkitGTM.propTypes = {
   gtmId: React.PropTypes.string.isRequired,
   dataLayerName: React.PropTypes.string,
   additionalEvents: React.PropTypes.object,
   scriptId: React.PropTypes.string
 };
 
-export default CRUKSearchGTM;
+export default CRUKSearchkitGTM;

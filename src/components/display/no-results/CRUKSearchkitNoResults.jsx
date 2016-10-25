@@ -9,12 +9,12 @@ import {
   ReactComponentType
 } from 'searchkit';
 
-import CRUKNoResultsErrorDisplay from './NoResultsErrorDisplay';
-import CRUKNoResultsDisplay from './NoResultsDisplay';
+import CRUKSearchkitNoResultsErrorDisplay from './CRUKSearchkitNoResultsErrorDisplay';
+import CRUKSearchkitNoResultsDisplay from './CRUKSearchkitNoResultsDisplay';
 
 const defaults = require('lodash/defaults');
 
-export default class CRUKSearchNoResults extends SearchkitComponent {
+export default class CRUKSearchkitNoResults extends SearchkitComponent {
   noFiltersAccessor: NoFiltersHitCountAccessor
   suggestionsAccessor: SuggestionsAccessor
 
@@ -27,20 +27,20 @@ export default class CRUKSearchNoResults extends SearchkitComponent {
     'NoHits.ResetSearch': 'Reset Search'
   }
 
-  translations = CRUKSearchNoResults.translations
+  translations = CRUKSearchkitNoResults.translations
 
   static propTypes = defaults({
     suggestionsField:React.PropTypes.string,
     errorComponent: React.PropTypes.func,
     component: React.PropTypes.func,
     translations:SearchkitComponent.translationsPropType(
-      CRUKSearchNoResults.translations
+      CRUKSearchkitNoResults.translations
     )
   }, SearchkitComponent.propTypes)
 
   static defaultProps = {
-    errorComponent: CRUKNoResultsErrorDisplay,
-    component: CRUKNoResultsDisplay
+    errorComponent: CRUKSearchkitNoResultsErrorDisplay,
+    component: CRUKSearchkitNoResultsDisplay
   }
 
   componentWillMount(){

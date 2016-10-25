@@ -1,20 +1,20 @@
-import { 
-  FilterBasedAccessor, 
-  ObjectState, 
-  RangeQuery, 
-  BoolMust, 
-  CardinalityMetric, 
-  FilterBucket 
+import {
+  FilterBasedAccessor,
+  ObjectState,
+  RangeQuery,
+  BoolMust,
+  CardinalityMetric,
+  FilterBucket
 } from "searchkit"
 
 const isUndefined = require("lodash/isUndefined")
 
-export class CRUKDateRangeAccessor extends FilterBasedAccessor {
+export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
 
   constructor(key, options){
     super(key, options.id)
     this.options = options
-    
+
     this.state = new ObjectState({})
   }
 

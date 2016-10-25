@@ -10,7 +10,7 @@ const bemLoader = bem('cr-simple-loader')
 /**
  * And the component.
  */
-export default class CRUKLoading extends SearchkitComponent {
+export default class CRUKSearchkitLoading extends SearchkitComponent {
   render() {
     if (!this.isLoading()) {
       return <div/>

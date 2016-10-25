@@ -6,7 +6,7 @@ import {
 /**
  * Override highlight accessor to not squash objects.
  */
-export default class CRUKHighlightAccessor extends HighlightAccessor {
+export default class CRUKSearchkitResultsHighlightAccessor extends HighlightAccessor {
   computeHighlightedFields(fields) {
     let highlightDefs = {};
 
