@@ -34,6 +34,8 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     this.onBlur = this.onBlur.bind(this);
     this.getSuggestLabel = this.getSuggestLabel.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
+    this.updateParentState = this.updateParentState.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   /**
@@ -47,7 +49,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
       lng: suggest.lng,
       placeId: suggest.placeId,
       searchedAddress: searchedAddress
-    })
+    }, () => this.preformSearch(suggest))
     this.refs.g_wrapper.className = 'cr-geosuggest-wrapper'
     this.preformSearch(suggest)
   }
@@ -57,15 +59,19 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     if (suggest === '') {
       this.refs.geoLoader.className = 'geoSuggestLoader'
       this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--active'
-      const latLng = {
-        lat: null,
-        lng: null,
-        placeId: null,
-        searchedAddress: null
-      }
-      this.setState(latLng)
+      this.resetState()
       this.preformSearch({ location: latLng })
     }
+  }
+
+  resetState() {
+    const latLng = {
+      lat: null,
+      lng: null,
+      placeId: null,
+      searchedAddress: null
+    }
+    this.setState(latLng)
   }
 
   onFocus(suggest) {
@@ -80,6 +86,14 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     this.refs.geoLoader.className = 'geoSuggestLoader'
     this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--dropdown'
     return suggest.description
+  }
+
+  updateParentState(argState) {
+    if (Object.keys(argState[this.props.id]).length === 0) {
+      this.resetState()
+    } else {
+      this.getSelectedLocation(argState)
+    }
   }
 
   onKeyPress() {
@@ -132,8 +146,9 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
 
   defineAccessor() {
     const { id, title, field, resultRadius } = this.props;
+    const updateParentState = this.updateParentState
     return new CRUKSearchkitLocationAccessor(id, {
-      id, title, field, resultRadius
+      id, title, field, resultRadius, updateParentState
     });
   }
 
