@@ -13,11 +13,22 @@ GoogleMapsApiLoader({
 }, function(err) {
     console.error(err);
 });
+import {
+  SearchkitProvider,
+  SearchkitManager
+} from 'searchkit';
 
 import CRUKSearchkitLocationInput from '../../src/components/search/location/CRUKSearchkitLocationInput'
 
-module.exports = (sk) => {
-  const story = <CRUKSearchkitLocationInput searchkit={sk}/>
+module.exports = (url) => {
+  const sk = new SearchkitManager(url);
+  
+  const story = <SearchkitProvider searchkit={sk}>
+    <CRUKSearchkitLocationInput
+      field="location"
+      id="loc"
+    />
+  </SearchkitProvider>
 
   // Story specific tests.
   specs(() => describe('Location input', function () {
