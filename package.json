@@ -10,7 +10,7 @@
     "build:svg": "webpack",
     "clean": "rimraf lib",
     "test": "jest",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook"
   },
   "repository": {

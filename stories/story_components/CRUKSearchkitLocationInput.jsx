@@ -14,14 +14,14 @@ GoogleMapsApiLoader({
     console.error(err);
 });
 
-import CRUKGeoSuggest from '../../src/components/geosuggest/CRUKGeoSuggest'
+import CRUKSearchkitLocationInput from '../../src/components/search/location/CRUKSearchkitLocationInput'
 
 module.exports = (sk) => {
-  const story = <CRUKGeoSuggest searchkit={sk}/>
+  const story = <CRUKSearchkitLocationInput searchkit={sk}/>
 
   // Story specific tests.
-  specs(() => describe('CRUKGeoSuggest', function () {
-    it('CRUKGeoSuggest Should have the geosuggest__input class', function () {
+  specs(() => describe('Location input', function () {
+    it('Location input should have the geosuggest__input class', function () {
       let output = mount(story);
       expect(output.find('input[type="text"]').hasClass('geosuggest__input')).to.be.true;
     });
