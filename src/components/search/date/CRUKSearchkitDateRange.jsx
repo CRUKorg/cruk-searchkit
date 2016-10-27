@@ -34,29 +34,32 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
 
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
+    this.updateParentState = this.updateParentState.bind(this);
   }
 
   onDatesChange({ startDate, endDate }) {
-    this.setState({ startDate, endDate })
+    this.setState({ startDate: startDate, endDate: endDate }, () => {
+      this.updateAccessorState(startDate, endDate)
+    })
+    
     this.noArgs = false
+  }
 
+  updateAccessorState(startDate, endDate) {
     if (startDate && endDate) {
-      if ((startDate == this.state.startDate) && (endDate == this.state.endDate)){
-        this.accessor.state = this.accessor.state.clear()
-      } else {
-        this.accessor.state = this.accessor.state.setValue({
-          min: startDate.format("YYYY-MM-DD"),
-          max: endDate.format("YYYY-MM-DD")
-        })
-      }
+      this.accessor.state = this.accessor.state.setValue({
+        min: this.state.startDate.format("YYYY-MM-DD"),
+        max: this.state.endDate.format("YYYY-MM-DD")
+      })
+      this.searchkit.performSearch()
     }
-    else {
-      if (!startDate && !endDate) {
-        this.accessor.state = this.accessor.state.clear()
-      }
-    }
+  }
 
-    this.searchkit.performSearch()
+  updateParentState(startDate, endDate) {
+    this.setState({
+      startDate: (startDate) ? moment(startDate) : startDate,
+      endDate: (endDate) ? moment(endDate) : endDate,
+    })
   }
 
   onFocusChange(focusedInput) {
@@ -66,8 +69,9 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   defineAccessor() {
     const { id, title, field, startDate, endDate,
       interval, showHistogram } = this.props
+    const updateParentState = this.updateParentState
     return new CRUKSearchkitDateRangeAccessor(id,{
-      id, startDate, endDate, title, field, interval
+      id, startDate, endDate, title, field, interval, updateParentState
     })
   }
 

@@ -21,6 +21,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
   buildSharedQuery(query) {
     if (this.state.hasValue()) {
       let val = this.state.getValue()
+      this.options.updateParentState(val.min, val.max)
       let rangeFilter = RangeQuery(this.options.field,{
         lte:val.max,
         gte:val.min,
@@ -40,6 +41,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
         .addFilter(this.key, rangeFilter)
         .addSelectedFilter(selectedFilter)
     }
+    this.options.updateParentState(null, null)
 
     return query
   }

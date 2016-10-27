@@ -20,6 +20,7 @@ export class CRUKSearchkitLocationAccessor extends FilterBasedAccessor {
 
   buildSharedQuery(query) {
     const val = this.state.getValue()
+    this.options.updateParentState(this.getQueryObject())
     if(Object.keys(val).length > 0){
       let filter = {
         geo_distance: {
