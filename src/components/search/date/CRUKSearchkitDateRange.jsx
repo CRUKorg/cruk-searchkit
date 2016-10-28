@@ -47,13 +47,17 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   }
 
   updateAccessorState(startDate, endDate) {
-    if (startDate && endDate || !startDate && !endDate) {
+    if (startDate && endDate) {
       this.accessor.state = this.accessor.state.setValue({
-        min: (startDate) ? this.state.startDate.format("YYYY-MM-DD") : null,
-        max: (endDate) ? this.state.endDate.format("YYYY-MM-DD"): null
+        min: this.state.startDate.format("YYYY-MM-DD"),
+        max: this.state.endDate.format("YYYY-MM-DD")
       })
       this.searchkit.performSearch()
+    } else if (!startDate && !endDate) {
+      this.accessor.state = this.accessor.state.clear()
+      this.searchkit.performSearch()
     }
+    
   }
 
   updateParentState(startDate, endDate) {
