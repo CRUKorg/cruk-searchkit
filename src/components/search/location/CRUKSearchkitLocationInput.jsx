@@ -59,19 +59,18 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     if (suggest === '') {
       this.refs.geoLoader.className = 'geoSuggestLoader'
       this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--active'
-      this.resetState()
-      this.preformSearch({ location: latLng })
+      this.resetState(this.preformSearch({ location: this.state }))
     }
   }
 
-  resetState() {
+  resetState(callback) {
     const latLng = {
       lat: null,
       lng: null,
       placeId: null,
       searchedAddress: null
     }
-    this.setState(latLng)
+    this.setState(latLng, callback)
   }
 
   onFocus(suggest) {
