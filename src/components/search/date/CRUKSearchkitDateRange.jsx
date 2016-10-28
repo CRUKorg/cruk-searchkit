@@ -38,6 +38,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   }
 
   onDatesChange({ startDate, endDate }) {
+    
     this.setState({ startDate: startDate, endDate: endDate }, () => {
       this.updateAccessorState(startDate, endDate)
     })
@@ -46,10 +47,10 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   }
 
   updateAccessorState(startDate, endDate) {
-    if (startDate && endDate) {
+    if (startDate && endDate || !startDate && !endDate) {
       this.accessor.state = this.accessor.state.setValue({
-        min: this.state.startDate.format("YYYY-MM-DD"),
-        max: this.state.endDate.format("YYYY-MM-DD")
+        min: (startDate) ? this.state.startDate.format("YYYY-MM-DD") : null,
+        max: (endDate) ? this.state.endDate.format("YYYY-MM-DD"): null
       })
       this.searchkit.performSearch()
     }
