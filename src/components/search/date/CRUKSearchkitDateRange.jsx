@@ -93,7 +93,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
     }
 
     return (
-      <div>
+      <div className="cr-daterange-wrapper">
         <DateRangePicker
           {...this.props}
           onDatesChange={this.onDatesChange}
