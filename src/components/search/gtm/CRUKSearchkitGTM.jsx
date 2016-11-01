@@ -3,6 +3,9 @@ import {
   SearchkitComponent
 } from "searchkit";
 import gtmParts from 'react-google-tag-manager';
+import {
+  defaults
+} from 'lodash';
 
 /**
  * Create our Google Tag Manager component. Follows the basic example found
@@ -39,6 +42,24 @@ class CRUKSearchkitGTM extends SearchkitComponent {
     })
   }
 
+  /**
+   * Return the values of whether or not the search has been filtered, sorted,
+   * searched geographically and also provide the chance to send on extra data.
+   *
+   * Also means you can override the "query" if your search isn't a fulltext
+   * one.
+   *
+   * Should return an object with values, or an empty object.
+   */
+  derivePayloadValues(results) {
+    const searchState = this.searchkit.state;
+
+    return {};
+  }
+
+  /**
+   * Track the result change sending data to GA/GTM.
+   */
   trackResultsChange(results) {
     /**
      * Construct the payload.
@@ -69,9 +90,15 @@ class CRUKSearchkitGTM extends SearchkitComponent {
     };
 
     /**
+     * Allow the object to be changed.
+     */
+    const derivedValues = this.derivePayloadValues(results);
+    const payload = defaults(derivedValues, pushObject);
+
+    /**
      * Push the event to dataLayer.
      */
-    dataLayer.push(pushObject);
+    dataLayer.push(payload);
 
     /**
      * Save state for later, this needs redux :C
