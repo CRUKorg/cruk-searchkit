@@ -12,6 +12,7 @@ import {
   map
 } from 'lodash';
 import sanitizeHtml from 'sanitize-html-react';
+import scroll from 'scroll';
 
 // Specify the main BEM class that will be used over this component.
 const bemPager = bem('cr-simple-pager')
@@ -48,6 +49,12 @@ class CRUKSearchkitPaginationItemComponent extends ItemComponent {
  * more to Bootstrap than searchkit.
  */
 class CRUKSearchkitPagination extends Pagination {
+  changeAndScroll(key) {
+    scroll.top(document.querySelector('body'), 0, () => this.setPage(key));
+    // IE and Firefox Hack
+    document.documentElement.scrollTop = 0;
+  }
+
   render() {
     if (!this.hasHits()) return null;
 
@@ -88,7 +95,7 @@ class CRUKSearchkitPagination extends Pagination {
 
       return React.createElement(CRUKSearchkitPaginationItemComponent, {
         label: label,
-        onClick: () => this.setPage(option.key),
+        onClick: () => this.changeAndScroll(option.key),
         key: option.key,
         itemKey: option.key,
         disabled: option.disabled,
