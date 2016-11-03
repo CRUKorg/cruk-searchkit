@@ -49,10 +49,51 @@ class CRUKSearchkitPaginationItemComponent extends ItemComponent {
  * more to Bootstrap than searchkit.
  */
 class CRUKSearchkitPagination extends Pagination {
+  constructor(props) {
+    super();
+
+    this.state = {
+      clicked: 0
+    };
+
+    this.changeAndScroll = this.changeAndScroll.bind(this);
+  }
+
+  componentWillUpdate() {
+    if (this.state.clicked === 2) {
+      const position = this.getAbsPosition(document.getElementById('searchPrototypeApp'));
+      scroll.top(document.querySelector('body'), position);
+      // IE and Firefox Hack
+      document.documentElement.scrollTop = 0;
+      this.setState({clicked: 0});
+    }
+  }
+
+  getAbsPosition = (element) => {
+    let el = element;
+    let el2 = el;
+    let curtop = 0;
+    if (document.getElementById || document.all) {
+      do {
+        curtop += el.offsetTop - el.scrollTop;
+        el = el.offsetParent;
+        el2 = el2.parentNode;
+        while (el2 !== el) {
+          curtop -= el2.scrollTop;
+          el2 = el2.parentNode;
+        }
+      } while (el.offsetParent);
+    } else if (document.layers) {
+      curtop += el.y;
+    }
+    return curtop;
+  }
+
   changeAndScroll(key) {
-    scroll.top(document.querySelector('body'), 0, () => this.setPage(key));
-    // IE and Firefox Hack
-    document.documentElement.scrollTop = 0;
+    this.setState({clicked: 1}, () => {
+      this.setPage(key);
+      this.setState({clicked: 2});
+    });
   }
 
   render() {
