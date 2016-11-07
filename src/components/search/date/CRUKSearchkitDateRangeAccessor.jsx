@@ -5,28 +5,31 @@ import {
   BoolMust,
   CardinalityMetric,
   FilterBucket
-} from "searchkit"
-
-const isUndefined = require("lodash/isUndefined")
+} from 'searchkit';
+import moment from 'moment';
 
 export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
 
   constructor(key, options){
-    super(key, options.id)
-    this.options = options
+    super(key, options.id);
+    this.options = options;
 
-    this.state = new ObjectState({})
+    this.state = new ObjectState({});
+  }
+
+  addOneDay(date) {
+    return moment(date).add(1, 'day').format('YYYY-MM-DD');
   }
 
   buildSharedQuery(query) {
     if (this.state.hasValue()) {
-      let val = this.state.getValue()
-      this.options.updateParentState(val.min, val.max)
-      let rangeFilter = RangeQuery(this.options.field,{
-        lte:val.max,
+      let val = this.state.getValue();
+      this.options.updateParentState(val.min, val.max);
+      let rangeFilter = RangeQuery(this.options.field, {
         gte:val.min,
-        format: "yyyy-MM-dd"
-      })
+        lt: this.addOneDay(val.max),
+        format: 'yyyy-MM-dd'
+      });
 
       let selectedFilter = {
         name:this.translate(this.options.title),
@@ -35,44 +38,44 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
         remove:()=> {
           this.state = this.state.clear()
         }
-      }
+      };
 
       return query
         .addFilter(this.key, rangeFilter)
-        .addSelectedFilter(selectedFilter)
+        .addSelectedFilter(selectedFilter);
     }
-    this.options.updateParentState(null, null)
+    this.options.updateParentState(null, null);
 
-    return query
+    return query;
   }
 
   getBuckets(){
     return this.getAggregations(
-      [this.key, this.key, "buckets"], []
-    )
+      [this.key, this.key, 'buckets'], []
+    );
   }
 
   buildOwnQuery(query) {
-    const val = this.state.getValue()
-    const min = val.min
-    const max = val.max
+    const val = this.state.getValue();
+    const min = val.min;
+    const max = val.max;
 
-    let otherFilters = query.getFiltersWithoutKeys(this.key)
+    let otherFilters = query.getFiltersWithoutKeys(this.key);
     let filters = BoolMust([
       otherFilters,
       RangeQuery(this.options.field,{
         gte:min,
-        lte:max,
-        format: "yyyy-MM-dd"
+        lt: this.addOneDay(val.max),
+        format: 'yyyy-MM-dd'
       })
-    ])
+    ]);
 
-    const metric = CardinalityMetric(this.key, this.options.field)
+    const metric = CardinalityMetric(this.key, this.options.field);
 
     return query.setAggs(FilterBucket(
       this.key,
       filters,
       metric
-    ))
+    ));
   }
 }
