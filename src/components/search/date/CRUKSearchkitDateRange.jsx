@@ -93,7 +93,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
     }
 
     return (
-      <div className="cr-daterange-wrapper">
+      <div className={focusedInput ? 'cr-daterange-wrapper cr-daterange-wrapper--focused' : 'cr-daterange-wrapper'}>
         <DateRangePicker
           {...this.props}
           onDatesChange={this.onDatesChange}
