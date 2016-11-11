@@ -9,6 +9,23 @@ import {
 import classNames from 'classnames';
 
 class CRUKSearchkitSelect extends Select {
+  constructor(props) {
+    super(props);
+    this.state = {
+      focused: false
+    };
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  handleFocus(e) {
+    this.setState({ focused: true });
+  }
+
+  handleBlur(e) {
+    this.setState({ focused: false });
+  }
+
   render() {
     const { mod, className, items, disabled, showCount, translate, countFormatter } = this.props;
 
@@ -24,8 +41,8 @@ class CRUKSearchkitSelect extends Select {
     });
 
     return (
-      <div className={divClasses}>
-        <select onChange={this.onChange} value={this.getSelectedValue()} className="form-control">
+      <div className={this.state.focused ? divClasses + ' form-group--focused' : divClasses}>
+        <select onChange={this.onChange} value={this.getSelectedValue()} className="form-control" onFocus={this.handleFocus} onBlur={this.handleBlur}>
           {options}
         </select>
       </div>
