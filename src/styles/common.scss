@@ -69,13 +69,13 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
 // AirBnB react-dates styles overrides
 @import '~react-dates/css/variables.scss';
-$react-dates-color-primary: $brand-secondary;
-$react-dates-color-primary-shade-4: rgba(236, 0, 140, 0.15);
-$react-dates-color-primary-shade-3: $brand-secondary;
-$react-dates-color-primary-shade-2: rgba(236, 0, 140, 0.15);
-$react-dates-color-primary-shade-1: $brand-secondary;
+$react-dates-color-primary: $brand-tertiary;
+$react-dates-color-primary-shade-4: rgba(0, 182, 237, 0.15);
+$react-dates-color-primary-shade-3: $brand-tertiary;
+$react-dates-color-primary-shade-2: rgba(0, 182, 237, 0.15);
+$react-dates-color-primary-shade-1: $brand-tertiary;
 $react-dates-color-secondary: #ffffff;
-$react-dates-color-focus: rgba(236, 0, 140, 0.15);
+$react-dates-color-focus: rgba(0, 182, 237, 0.15);
 $react-dates-color-text-focus: #ffffff;
 @import '~react-dates/css/styles.scss';
 
