@@ -1,6 +1,6 @@
 {
   "name": "cruk-searchkit",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {

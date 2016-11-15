@@ -36,6 +36,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     this.onKeyPress = this.onKeyPress.bind(this);
     this.updateParentState = this.updateParentState.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.locationSort = this.locationSort.bind(this);
   }
 
   /**
@@ -114,8 +115,9 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
 
 
   preformSearch(query) {
-    const { lat, lng } = this.state
-
+    const { lat, lng } = this.state;
+    const sortKey = query.location.lat ? 'location' : 'date';
+    this.locationSort(sortKey);
     if ((query.location.lat == lat) && (query.location.lng == lng)) {
       this.accessor.state = this.accessor.state.clear()
     }
@@ -128,6 +130,12 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     }
 
     this.searchkit.performSearch()
+  }
+
+  locationSort(sortValue = 'location') {
+    const sortIndex = this.searchkit.accessors.accessors.map((v, i) => { return {i: i, v: v.key} }).filter(v => v.v === 'sort');
+    if (sortIndex.length > 0)
+      this.searchkit.accessors.accessors[sortIndex[0].i].state = this.searchkit.accessors.accessors[sortIndex[0].i].state.setValue(sortValue);
   }
 
   buildAddressFormattedString(locations) {
