@@ -53,11 +53,15 @@
 /**
  * A geosuggest item
  */
-.geosuggest-item {
+.geosuggest__item {
   font-size: 16px;
   padding: 10px 30px 10px 12px;
   cursor: pointer;
   position: relative;
+
+  &--disabled {
+    cursor: auto !important;
+  }
 }
 
 .geosuggest-item--active::after{

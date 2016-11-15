@@ -33,10 +33,12 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.getSuggestLabel = this.getSuggestLabel.bind(this);
+    this.onSuggestNoResults = this.onSuggestNoResults.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.updateParentState = this.updateParentState.bind(this);
     this.resetState = this.resetState.bind(this);
     this.locationSort = this.locationSort.bind(this);
+    this.handleEmptyLabel = this.handleEmptyLabel.bind(this);
   }
 
   /**
@@ -44,15 +46,16 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
    * @param  {Object} suggest The suggest
    */
   onSuggestSelect(suggest) {
-    const { searchedAddress } = this.state
+    const { searchedAddress } = this.state;
     this.setState({
       lat: suggest.lat,
       lng: suggest.lng,
       placeId: suggest.placeId,
       searchedAddress: searchedAddress
-    }, () => this.preformSearch(suggest))
-    this.refs.g_wrapper.className = 'cr-geosuggest-wrapper'
-    this.preformSearch(suggest)
+    }, () => this.preformSearch(suggest));
+    this.refs.g_wrapper.className = 'cr-geosuggest-wrapper';
+    this.preformSearch(suggest);
+    this.removeEmptyLabel();
   }
 
   onChange(suggest) {
@@ -79,13 +82,44 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
   }
 
   onBlur(suggest) {
-    this.refs.g_wrapper.className = 'cr-geosuggest-wrapper'
+    this.refs.g_wrapper.className = 'cr-geosuggest-wrapper';
+    document.querySelector('.geosuggest__suggests').className = 'geosuggest__suggests geosuggest__suggests--hidden';
+    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    if (exitingItem[0]) this.refs.geoSuggest.setState({ userInput: '' });
+    this.removeEmptyLabel();
   }
 
   getSuggestLabel(suggest) {
     this.refs.geoLoader.className = 'geoSuggestLoader'
     this.refs.g_wrapper.className = 'cr-geosuggest-wrapper cr-geosuggest-wrapper--dropdown'
     return suggest.description
+  }
+
+  onSuggestNoResults(userInputs) {
+    const self = this;
+    if (this.refs.geoSuggest.refs.input.refs.input.value !== '') {
+      setTimeout(function(){
+        self.handleEmptyLabel();
+      }, 1000);
+    }
+  }
+
+  handleEmptyLabel() {
+    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    const resultList = document.querySelector('.geosuggest__suggests');
+    this.removeEmptyLabel();
+    const li = document.createElement('li');
+    li.className = 'geosuggest__item geosuggest__item--disabled';
+    li.innerHTML = 'No results';
+    resultList.className = 'geosuggest__suggests';
+    this.refs.geoLoader.className = 'geoSuggestLoader'
+    resultList.appendChild(li);
+  }
+
+  removeEmptyLabel() {
+    const resultList = document.querySelector('.geosuggest__suggests');
+    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    if (exitingItem[0]) resultList.removeChild(exitingItem[0]);
   }
 
   updateParentState(argState) {
@@ -181,6 +215,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
             initialValue={searchedAddress || this.props.initialValue}
             fixtures={this.props.fixtures}
             onSuggestSelect={this.onSuggestSelect}
+            onSuggestNoResults={this.onSuggestNoResults}
             onChange={this.onChange}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
