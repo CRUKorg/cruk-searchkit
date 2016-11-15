@@ -84,7 +84,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
   onBlur(suggest) {
     this.refs.g_wrapper.className = 'cr-geosuggest-wrapper';
     document.querySelector('.geosuggest__suggests').className = 'geosuggest__suggests geosuggest__suggests--hidden';
-    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    const exitingItem = document.getElementsByClassName('geosuggest-item--disabled');
     if (exitingItem[0]) this.refs.geoSuggest.setState({ userInput: '' });
     this.removeEmptyLabel();
   }
@@ -105,11 +105,11 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
   }
 
   handleEmptyLabel() {
-    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    const exitingItem = document.getElementsByClassName('geosuggest-item--disabled');
     const resultList = document.querySelector('.geosuggest__suggests');
     this.removeEmptyLabel();
     const li = document.createElement('li');
-    li.className = 'geosuggest__item geosuggest__item--disabled';
+    li.className = 'geosuggest-item geosuggest-item--disabled';
     li.innerHTML = 'No results';
     resultList.className = 'geosuggest__suggests';
     this.refs.geoLoader.className = 'geoSuggestLoader'
@@ -118,7 +118,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
 
   removeEmptyLabel() {
     const resultList = document.querySelector('.geosuggest__suggests');
-    const exitingItem = document.getElementsByClassName('geosuggest__item--disabled');
+    const exitingItem = document.getElementsByClassName('geosuggest-item--disabled');
     if (exitingItem[0]) resultList.removeChild(exitingItem[0]);
   }
 
