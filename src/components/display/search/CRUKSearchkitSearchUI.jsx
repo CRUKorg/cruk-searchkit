@@ -19,7 +19,7 @@ import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
  */
 export default class CRUKSearchkitSearchUI extends SearchkitComponent {
   render() {
-    let divClasses = classNames('col-xs-12', 'col-sm-8', 'col-sm-push-2', 'search-interface', {
+    let divClasses = classNames('col-xs-12', 'col-sm-10', 'col-md-8', 'col-sm-push-2', 'search-interface', {
       'search-interface--loading': this.isLoading()
     });
 
