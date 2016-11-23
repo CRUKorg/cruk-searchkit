@@ -13,6 +13,7 @@ export { default as CRUKSearchkitResultsListDisplay } from './src/components/dis
 export { default as CRUKSearchkitResultsList } from './src/components/display/results-list/CRUKSearchkitResultsList';
 export { default as CRUKSearchkitNoResults } from './src/components/display/no-results/CRUKSearchkitNoResults';
 export { default as CRUKSearchkitSearchUI } from './src/components/display/search/CRUKSearchkitSearchUI';
+export { default as CRUKSearchkitHelpText } from './src/components/display/help-text/CRUKSearchkitHelpText';
 
 export { default as CRUKSearchkitMenuFilter } from './src/components/filters/menu/CRUKSearchkitMenuFilter';
 

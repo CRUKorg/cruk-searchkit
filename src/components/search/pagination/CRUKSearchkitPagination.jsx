@@ -143,6 +143,9 @@ class CRUKSearchkitPagination extends Pagination {
         className: bemPager(option.className)
       })
     })
+    
+    // If search is blocked, on empty search preformed do not render component.
+    if (this.props.blockSearch) return null;
 
     return <nav aria-label="Select a different page">
       <ul className={bemPager}>

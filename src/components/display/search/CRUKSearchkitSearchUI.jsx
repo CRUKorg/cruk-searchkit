@@ -23,16 +23,19 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
       'search-interface--loading': this.isLoading()
     });
 
+    const blockSearch = this.props.blockSearch && this.searchkit.state && Object.keys(this.searchkit.state).length === 0;
+
     return <div className="row">
         <div id="search-interface" className={divClasses}>
           <div className="search-interface__blocking-layer"></div>
 
           <CRUKSearchkitLoading />
 
-          <CRUKSearchkitSummary />
+          <CRUKSearchkitSummary blockSearch={blockSearch} />
 
           <CRUKSearchkitResultsList
             sourceFilter={['title', 'url']}
+            blockSearch={blockSearch}
             itemComponent={this.props.itemComponent}
             listComponent={this.props.listComponent}
             additionalFields={this.props.additionalFields}
@@ -60,7 +63,7 @@ export default class CRUKSearchkitSearchUI extends SearchkitComponent {
             mod="search-failed"
           />
 
-          <CRUKSearchkitPagination />
+          <CRUKSearchkitPagination blockSearch={blockSearch} />
 
         </div>
       </div>

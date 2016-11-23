@@ -76,6 +76,8 @@ export default class CRUKSearchkitResultsList extends Hits {
     let hits = this.getHits();
     let hasHits = hits.length > 0;
 
+    if (this.props.blockSearch) return null;
+
     if (!this.isInitialLoading() && hasHits) {
       const {listComponent, mod, className, itemComponent, additionalFields} = this.props;
 

@@ -71,6 +71,9 @@ export default class CRUKSearchkitSummary extends HitsStats {
         resultsWord: hitsCount === 1 ? 'result' : 'results'
       })
     };
+    // If search is blocked, on empty search preformed do not render component.
+    if (this.props.blockSearch) return null;
+    
     return React.createElement(CRUKSearchkitSummaryDisplay, props)
   }
 }
