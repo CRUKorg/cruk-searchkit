@@ -48,7 +48,7 @@ module.exports = {
             "transform-es2015-block-scoping",
             ["transform-es2015-classes", { "loose": true }]
           ],
-          presets: ["react", "es2015"]
+          presets: ["react", "es2015", "stage-0"]
         }
       },
       {
