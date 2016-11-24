@@ -1,4 +1,3 @@
-/* eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React from 'react';
 import {
   SearchkitComponent
