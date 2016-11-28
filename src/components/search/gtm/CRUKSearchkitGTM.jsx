@@ -93,7 +93,12 @@ class CRUKSearchkitGTM extends SearchkitComponent {
      * Allow the object to be changed.
      */
     const derivedValues = this.derivePayloadValues(results);
-    const payload = defaults(derivedValues, pushObject);
+    let payload = defaults(derivedValues, pushObject);
+
+    /**
+     * Set the content-name to be constructed from other values.
+     */
+    payload['content-name'] = '/search?query=' + payload.keyword + '&cat=' + payload.target + '&page=' + payload.pageNumber;
 
     /**
      * Push the event to dataLayer.
