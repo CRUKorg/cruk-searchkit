@@ -37,9 +37,9 @@ class CRUKSearchkitGTM extends SearchkitComponent {
     /**
      * Setup our listener for new events.
      */
-    let resultsListener = this.searchkit.addResultsListener((results)=>{
+    let resultsListener = this.searchkit.addResultsListener((results) => {
       this.trackResultsChange(results)
-    })
+    });
   }
 
   /**
@@ -64,7 +64,7 @@ class CRUKSearchkitGTM extends SearchkitComponent {
     /**
      * Construct the payload.
      */
-    let gtmSearchTitle = 'React news proto search';
+    const gtmSearchTitle = this.props.searchName || 'Unnamed React search';
     let query = this.searchkit.state.q;
     let page = typeof this.searchkit.state.p == 'undefined' ? 1 : this.searchkit.state.p;
     let totalResults = this.getHitsCount();
@@ -128,7 +128,8 @@ CRUKSearchkitGTM.propTypes = {
   gtmId: React.PropTypes.string.isRequired,
   dataLayerName: React.PropTypes.string,
   additionalEvents: React.PropTypes.object,
-  scriptId: React.PropTypes.string
+  scriptId: React.PropTypes.string,
+  searchName: React.PropTypes.string
 };
 
 export default CRUKSearchkitGTM;
