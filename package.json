@@ -9,7 +9,6 @@
     "build:js": "babel src/ -d lib/ --ignore src/components",
     "build:svg": "webpack",
     "clean": "rimraf lib",
-    "test": "jest",
     "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook"
   },
@@ -50,7 +49,6 @@
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
-    "jest": "^16.0.2",
     "jsdom": "^9.8.0",
     "node-sass": "^3.10.1",
     "react-addons-test-utils": "^15.3.2",
@@ -81,11 +79,5 @@
     "scroll": "^2.0.0",
     "searchkit": "^0.10.1",
     "truncate": "^2.0.0"
-  },
-  "jest": {
-    "setupFiles": [
-      ".storybook/__conf__/jestMockConfig.js"
-    ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(jsx|js)$"
   }
 }
