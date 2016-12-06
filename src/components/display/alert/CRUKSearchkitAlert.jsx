@@ -1,27 +1,32 @@
 import React from 'react';
-import {
-  SearchkitComponent
-} from 'searchkit';
 
 /**
- * Export our result component.
+ * Export our CRUKSearchkitAlert component.
  */
 export default class CRUKSearchkitAlert extends React.Component {
   static propTypes = {
     type: React.PropTypes.string,
-    text: React.PropTypes.string,
-    dismissable: React.PropTypes.boolean,
-    show: React.PropTypes.object,
+    text: React.PropTypes.string.isRequired,
+    dismissable: React.PropTypes.bool,
     animation: React.PropTypes.string
   }
 
+  static defaultProps = {
+    type: 'warning',
+    dismissable: false
+  }
+
   render() {
-    // If there are no arguments in the URL stop initial search.
-    const searchOnLoad = window.location.href.split(/[&?]/).filter((v, i) => i > 0).length > 0;
-    if (searchOnLoad) return null;
+    const dismissableClass = this.props.dismissable ? ' cr-hu-alert--dismissible' : ''
+    const animationClass = this.props.animation ? ` cr-animated-${this.props.animation}` : ''
+    const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}`; 
     return (
-      <div className="col-xs-12 col-sm-8 col-sm-push-2 help-text">
-        { this.props.helptext || <h2>Please enter a keyword in the text box to start searching.</h2>}
+      <div className={cssClasses} role="alert">
+        <i className="cr-hu-alert__icon" aria-hidden="true"></i>
+        <div className="cr-hu-alert__text">
+          {this.props.text}
+        </div>
+        { this.props.dismissable && <button type="button" className="cr-hu-alert__dismiss" aria-label="Dismiss"></button> }
       </div>
     );
   }
