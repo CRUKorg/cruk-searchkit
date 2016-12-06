@@ -28,6 +28,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
 @import "~cruk-pattern-library/assets/scss/partials/input-groups";
+
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/navs";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/navbar";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
@@ -43,7 +44,6 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/list-group";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/panels";
 @import "~cruk-pattern-library/assets/scss/partials/panels";
-@import "~cruk-pattern-library/assets/scss/partials/accordions";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/wells";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/close";
@@ -63,8 +63,19 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
  */
 @import "~cruk-pattern-library/assets/scss/base/type";
 
+@import "~cruk-pattern-library/assets/scss/partials/animations";
+@import "~cruk-pattern-library/assets/scss/partials/alerts";
+@import "~cruk-pattern-library/assets/scss/partials/accordions";
 @import "~cruk-pattern-library/assets/scss/partials/buttons";
 @import "~cruk-pattern-library/assets/scss/partials/navbar";
+@import "~cruk-pattern-library/assets/scss/partials/icons";
+@import "~cruk-pattern-library/assets/scss/partials/pattern-library";
+@import "~cruk-pattern-library/assets/scss/partials/pagination";
+@import "~cruk-pattern-library/assets/scss/partials/progress-bar";
+@import "~cruk-pattern-library/assets/scss/partials/loader";
+@import "~cruk-pattern-library/assets/scss/partials/search/input";
+@import "~cruk-pattern-library/assets/scss/partials/search/result";
+@import "~cruk-pattern-library/assets/scss/partials/search/summary";
 @import "~cruk-pattern-library/assets/scss/partials/pattern-library";
 
 // AirBnB react-dates styles overrides
