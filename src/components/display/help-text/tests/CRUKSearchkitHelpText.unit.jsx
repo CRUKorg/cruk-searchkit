@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { SearchkitManager } from 'searchkit';
 import CRUKSearchkitHelpText from '../CRUKSearchkitHelpText.jsx';
 
-describe('Cruk searchkit help-text tests', () => {
+describe('Cruk searchkit CRUKSearchkitHelpText component tests', () => {
 
   beforeEach(function() {
     this.searchkit = SearchkitManager.mock();
