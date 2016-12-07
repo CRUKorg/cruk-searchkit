@@ -21,7 +21,8 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
   });
 
   it('Render with default type', function() {
-    this.createWrapper('id-1', 'Warning message');
+    const text = <span>Warning message</span>
+    this.createWrapper('id-1', text);
 
     expect(this.wrapper.render().find('.cr-hu-alert--warning > .cr-hu-alert__text').text()).toBe('Warning message');
     // Do not expect a dismiss button
@@ -29,7 +30,8 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
   });
 
   it('Render with info type, dismissable and bounce animation', function() {
-    this.createWrapper('id-1', 'Info message', 'bounce', 'info', true);
+    const text = <span>Info message</span>
+    this.createWrapper('id-1', text, 'bounce', 'info', true);
 
     // Rendered component must have the defined id as an attribute
     expect(this.wrapper.find('#id-1').length).toBe(1);
@@ -44,7 +46,8 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
 
   it('Click the dismiss button', function() {
     const id = 'id-1';
-    this.createWrapper(id, 'Error message', 'shake', 'error', true);
+    const text = <span>Error message</span>
+    this.createWrapper(id, text, 'shake', 'error', true);
 
     expect(this.wrapper.render().find('.cr-hu-alert--error > .cr-hu-alert__text').text()).toBe('Error message');
     // Rendered component must have the shake animation class.
