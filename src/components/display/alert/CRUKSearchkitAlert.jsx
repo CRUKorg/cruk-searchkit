@@ -8,7 +8,7 @@ export default class CRUKSearchkitAlert extends React.Component {
   static propTypes = {
     id: React.PropTypes.string.isRequired,
     type: React.PropTypes.string,
-    text: React.PropTypes.string.isRequired,
+    text: React.PropTypes.object.isRequired,
     dismissable: React.PropTypes.bool,
     animation: React.PropTypes.string
   }
@@ -32,10 +32,10 @@ export default class CRUKSearchkitAlert extends React.Component {
   }
 
   render() {
+    if (this.state.invisible) return null;
     const dismissableClass = this.props.dismissable ? ' cr-hu-alert--dismissible' : '';
     const animationClass = this.props.animation ? ` cr-animated-${this.props.animation}` : '';
-    const hiddenClass = this.state.invisible ? ' hidden' : '';
-    const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}${hiddenClass}`; 
+    const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}`; 
     return (
       <div id={this.props.id} className={cssClasses} role="alert">
         <i className="cr-hu-alert__icon" aria-hidden="true"></i>
