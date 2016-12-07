@@ -62,7 +62,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
  * CRUK Styles.
  */
 @import "~cruk-pattern-library/assets/scss/base/type";
-
+$cr-icon-path: '~cruk-pattern-library/assets/fonts';
 @import "~cruk-pattern-library/assets/scss/partials/animations";
 @import "~cruk-pattern-library/assets/scss/partials/alerts";
 @import "~cruk-pattern-library/assets/scss/partials/accordions";
