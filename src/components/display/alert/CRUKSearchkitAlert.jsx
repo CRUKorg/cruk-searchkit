@@ -37,7 +37,7 @@ export default class CRUKSearchkitAlert extends React.Component {
     const hiddenClass = this.state.invisible ? ' hidden' : '';
     const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}${hiddenClass}`; 
     return (
-      <div className={cssClasses} role="alert">
+      <div id={this.props.id} className={cssClasses} role="alert">
         <i className="cr-hu-alert__icon" aria-hidden="true"></i>
         <div className="cr-hu-alert__text">
           {this.props.text}
