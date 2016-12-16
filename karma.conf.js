@@ -3,7 +3,7 @@ webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function (config) {
   config.set({
-    browsers: [ 'PhantomJS', 'Chrome_without_security' ],
+    browsers: [ 'PhantomJS' ],
     // you can define custom flags
     customLaunchers: {
       Chrome_without_security: {
@@ -29,7 +29,7 @@ module.exports = function (config) {
       'webpack.tests.js': [ 'webpack', 'sourcemap' ]
     },
     reporters: [ 'mocha' ],
-    singleRun: false,
+    singleRun: true,
     // webpack config object
     webpack: webpackConfig,
     webpackMiddleware: {
