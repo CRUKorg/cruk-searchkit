@@ -8,7 +8,7 @@ export default class CRUKSearchkitAutocompleteGetter {
     this.url = url;
   }
 
-  makeAxoisRequest(value) {
+  makeAxoisRequest(value, config = {}) {
     const payload = {
       title_suggest : {
         text : value,
@@ -19,6 +19,6 @@ export default class CRUKSearchkitAutocompleteGetter {
       }
     };
 
-    return axios.post(this.url, payload);
+    return axios.post(this.url, payload, config);
   }
 }
