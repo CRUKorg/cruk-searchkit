@@ -7,6 +7,8 @@ import {
 import CRUKSearchkitAutocompleteGetter from '../autocomplete/CRUKSearchkitAutocompleteGetter'
 import CRUKSearchkitAutocompleteList from '../autocomplete/CRUKSearchkitAutocompleteList'
 
+import { isUndefined } from 'lodash'
+
 /**
  * Override the render method on the SearchBox component to alter the markup.
  */
@@ -33,6 +35,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     }, props.searchThrottleTime);
 
     this.autocompleteToggle = this.autocompleteToggle.bind(this);
+    this.inputState = this.inputState.bind(this);
   }
 
   handleKeyUp() {
@@ -52,6 +55,29 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   autocompleteToggle(flag) {
     this.setState({ autocompleteActive: flag });
+  }
+
+  inputState(state) {
+    this.setState({ input: state });
+  }
+
+  setFocusState(focused:boolean) {
+    if (!focused){
+      const { input } = this.state
+      if (this.props.blurAction == "search"
+        && !isUndefined(input) 
+        && input != this.getAccessorValue()){
+        this.searchQuery(input)
+      }
+      if (!this.props.autocomplete) {
+        this.setState({ 
+          focused,
+          input: undefined // Flush (should use accessor's state now)
+        })
+      }
+    } else {
+      this.setState({ focused })
+    }
   }
 
   onSubmit(event) {
@@ -102,6 +128,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
         </span>
         { this.props.autocomplete &&
           <CRUKSearchkitAutocompleteList
+            inputState={this.inputState}
             autocompleteActive={autocompleteActive}
             autocompleteItems={autocompleteItems}
             toggle={this.autocompleteToggle}

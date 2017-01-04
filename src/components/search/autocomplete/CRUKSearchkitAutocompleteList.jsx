@@ -10,6 +10,7 @@ import {
  */
 export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
   static propTypes = {
+    inputState: React.PropTypes.func,
     autocompleteItems: React.PropTypes.arrayOf(React.PropTypes.string),
     listClasses: React.PropTypes.arrayOf(React.PropTypes.string),
     autocompleteActive: React.PropTypes.bool,
@@ -38,6 +39,7 @@ export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
 
     if (sbAccessorIndex) {
       this.searchkit.accessors.accessors[sbAccessorIndex].state.value = e.target.innerHTML;
+      this.props.inputState(e.target.innerHTML);
       this.searchkit.performSearch();
     }
 
