@@ -103,6 +103,8 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
           endDate={endDate}
           initialVisibleMonth={initialVisibleMonth}
           displayFormat="DD/MM/YYYY"
+          orientation={this.props.orientation}
+          withPortal={this.props.withPortal}
         />
       </div>
     )
