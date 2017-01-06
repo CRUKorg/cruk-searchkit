@@ -1,14 +1,14 @@
 import * as axios from "axios"
 
 /**
- * CRUKSearchkitAutocompleteGetter JavascriptClass.
+ * CRUKCustomElasticGetter JavascriptClass.
  */
-export default class CRUKSearchkitAutocompleteGetter {
+export default class CRUKCustomElasticGetter {
   constructor(url, value) {
     this.url = url;
   }
 
-  makeAxoisRequest(value, config = {}) {
+  autocompleteRequest(value, config = {}) {
     const payload = {
       title_suggest : {
         text : value,

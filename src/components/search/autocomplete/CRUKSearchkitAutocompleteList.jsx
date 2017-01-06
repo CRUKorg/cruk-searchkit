@@ -67,10 +67,11 @@ export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
 
     const bemList = bem(this.props.listClasses[0]);
     const listClasses = this.props.listClasses.join(' ');
-
     const list = this.props.autocompleteItems.map((v, i) => {
+      const selected = (this.props.selectedItem === i + 1) ? ` ${bemList('list-item--selected')}` : '';
+      const clasNames = `${bemList('list-item')}${selected}`;
       return (
-        <li onClick={this.clickHandle.bind(this)} className={bemList('list-item')} key={i}>
+        <li onClick={this.clickHandle.bind(this)} className={clasNames} key={i}>
           {v}
         </li>
       );

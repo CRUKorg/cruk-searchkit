@@ -4,7 +4,7 @@ import {
   SearchBox
 } from "searchkit";
 
-import CRUKSearchkitAutocompleteGetter from '../autocomplete/CRUKSearchkitAutocompleteGetter'
+import CRUKCustomElasticGetter from '../getter/CRUKCustomElasticGetter'
 import CRUKSearchkitAutocompleteList from '../autocomplete/CRUKSearchkitAutocompleteList'
 
 import { isUndefined } from 'lodash'
@@ -26,7 +26,8 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       focused: false,
       autocompleteActive: false,
       input: undefined,
-      autocompleteItems: []
+      autocompleteItems: [],
+      selectedItem: 0
     };
 
     this.lastSearchMs = 0;
@@ -38,10 +39,19 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     this.inputState = this.inputState.bind(this);
   }
 
-  handleKeyUp() {
+  handleKeyUp(e) {
+    const { autocompleteItems, selectedItem } = this.state;
+
+    if (this.refs.queryField.value === '') return;
     const self = this;
-    const getter = new CRUKSearchkitAutocompleteGetter(`${this.searchkit.host}_suggest`);
-    getter.makeAxoisRequest(this.refs.queryField.value)
+
+    if (this.props.autocomplete && (e.keyCode === 40 || e.keyCode === 38)) {
+      this.handleAutocompleteItems(e.keyCode);
+      return;
+    }
+
+    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}_suggest`);
+    getter.autocompleteRequest(this.refs.queryField.value)
       .then(function (response) {
         self.setState({
           autocompleteItems: CRUKSearchkitSearchBox.buildResults(response.data),
@@ -59,6 +69,27 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   inputState(state) {
     this.setState({ input: state });
+  }
+
+  handleAutocompleteItems(arrow) {
+    const { autocompleteItems, selectedItem } = this.state;
+    if (autocompleteItems.length < 1) return;
+    
+    const selectedItemIndex = (() => {
+      if (arrow === 40) {
+        if (selectedItem < autocompleteItems.length) return selectedItem + 1;
+        return autocompleteItems.length;
+      }
+      if (arrow === 38) {
+        if (selectedItem > 1) return selectedItem - 1;
+        return 1;
+      }
+      return 0;
+    })();
+
+    this.setState({
+      selectedItem: selectedItemIndex
+    });
   }
 
   setFocusState(focused:boolean) {
@@ -81,8 +112,18 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   }
 
   onSubmit(event) {
+    const { autocompleteItems, selectedItem } = this.state;
     event.preventDefault();
-    this.searchQuery(this.getValue());
+    let query = this.getValue();
+    if (this.props.autocomplete && selectedItem > 0) {
+      query = autocompleteItems[selectedItem - 1];
+      this.setState({
+        input: query,
+        selectedItem: 0
+      });
+    }
+
+    this.searchQuery(query);
 
     /**
      * De-focus the input.
@@ -93,10 +134,9 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   }
 
   render() {
-    const { focused, autocompleteItems, autocompleteActive } = this.state;
+    const { focused, autocompleteItems, autocompleteActive, selectedItem } = this.state;
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
     let placeholder = this.props.placeholder || this.translate('searchbox.placeholder');
-
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
     }
@@ -128,6 +168,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
         </span>
         { this.props.autocomplete &&
           <CRUKSearchkitAutocompleteList
+            selectedItem={selectedItem}
             inputState={this.inputState}
             autocompleteActive={autocompleteActive}
             autocompleteItems={autocompleteItems}

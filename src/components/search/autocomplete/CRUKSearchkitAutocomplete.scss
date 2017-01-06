@@ -21,4 +21,20 @@
   &__list-item:hover,  &__list-item:focus{
     background: #f5f5f5;
   }
+
+  &__list-item--selected {
+    background-color: #f5f5f5;
+
+    &:after{
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      margin-top: -6.5px;
+      background-color: $brand-secondary;
+      border-radius:50%;
+      content: " "
+    }
+  }
 }
