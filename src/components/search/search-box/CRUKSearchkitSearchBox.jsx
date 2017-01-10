@@ -50,7 +50,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       return;
     }
 
-    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}_suggest`);
+    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}/_suggest`);
     getter.autocompleteRequest(this.refs.queryField.value)
       .then(function (response) {
         self.setState({
