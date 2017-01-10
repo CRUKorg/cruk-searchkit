@@ -24,10 +24,19 @@ export default class CRUKCustomElasticGetter {
 
   didyoumeanRequest(value, fieldname, config = {}) {
     const payload = {
-      suggestion : {
+      suggest : {
         text : value,
-        term : {
-          field : fieldname
+        phrase : {
+          field : fieldname,
+          size : 1,
+          real_word_error_likelihood : 0.95,
+          max_errors : 2,
+          gram_size : 1,
+          direct_generator : [ {
+            field : fieldname,
+            suggest_mode : "always",
+            min_word_length : 1
+          } ]
         }
       }
     };

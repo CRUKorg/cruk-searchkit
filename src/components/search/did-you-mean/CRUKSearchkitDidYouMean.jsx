@@ -13,7 +13,7 @@ const mainClass = bem('cr-did-you-mean');
  */
 export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
   static buildResults = (results, value) => {
-    return results.data.suggestion
+    return results.data.suggest
       .filter((v, i, a) => {
         return a.filter(val => val.options.length === 0).length < a.length; 
       })
@@ -57,9 +57,9 @@ export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
 
   getSuggestions() {
     const value = this.searchkit.state['xss-q'];
-    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}_suggest`);
+    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}/_suggest`);
 
-    const result = getter.didyoumeanRequest(value, 'title').then((data) => {
+    const result = getter.didyoumeanRequest(value, 'body').then((data) => {
       this.setState({
         suggestion: CRUKSearchkitDidYouMean.buildResults(data, value)
       });
