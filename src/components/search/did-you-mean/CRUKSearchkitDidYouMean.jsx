@@ -6,32 +6,29 @@ import {
 } from 'searchkit';
 
 import CRUKCustomElasticGetter from '../getter/CRUKCustomElasticGetter'
+import {
+  CRUKSearchkitDidYouMeanAccessor
+} from './CRUKSearchkitDidYouMeanAccessor';
 const mainClass = bem('cr-did-you-mean');
 
 /**
  * CRUKSearchkitAutocomplete component.
  */
 export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
-  static buildResults = (results, value) => {
-    return results.data.suggest
-      .filter((v, i, a) => {
-        return a.filter(val => val.options.length === 0).length < a.length; 
-      })
-      .map((v) => {
-        return (v.options[0]) ? v.options[0].text : v.text;
-      })
-      .join(' ');
+  accessor:CRUKSearchkitDidYouMeanAccessor
+
+  static propTypes = {
+    field: React.PropTypes.string
+  }
+
+  static defaultProps = {
+    field: 'body'
   }
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      suggestion: null
-    }
-    
     this.clickHandle = this.clickHandle.bind(this);
-    this.getSuggestions = this.getSuggestions.bind(this);
     this.getQueryAccessorIndex = this.getQueryAccessorIndex.bind(this);
   }
 
@@ -55,26 +52,12 @@ export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
       .join();
   }
 
-  getSuggestions() {
-    const value = this.searchkit.state['xss-q'];
-    const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}/_suggest`);
-
-    const result = getter.didyoumeanRequest(value, 'body').then((data) => {
-      this.setState({
-        suggestion: CRUKSearchkitDidYouMean.buildResults(data, value)
-      });
-    });
-  }
-
-  componentDidMount() {
-    const self = this;
-    this.searchkit.addResultsListener((result) => {
-      self.getSuggestions();
-    });
+  defineAccessor() {
+    return new CRUKSearchkitDidYouMeanAccessor(this.props.field);
   }
 
   render() {
-    const { suggestion } = this.state;
+    const suggestion = this.accessor.getSuggestion();
     if (!suggestion) return null;
 
     return (
