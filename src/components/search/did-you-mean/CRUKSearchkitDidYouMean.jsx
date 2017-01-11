@@ -18,11 +18,13 @@ export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
   accessor:CRUKSearchkitDidYouMeanAccessor
 
   static propTypes = {
-    field: React.PropTypes.string
+    field: React.PropTypes.string,
+    minResults: React.PropTypes.number
   }
 
   static defaultProps = {
-    field: 'body'
+    field: 'body',
+    minResults: 10
   }
 
   constructor(props) {
@@ -58,7 +60,7 @@ export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
 
   render() {
     const suggestion = this.accessor.getSuggestion();
-    if (!suggestion) return null;
+    if (!suggestion || this.searchkit.results.hits.total > this.props.minResults) return null;
 
     return (
       <p className={mainClass()} >
