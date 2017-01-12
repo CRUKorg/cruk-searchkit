@@ -1,0 +1,40 @@
+// Autocomplete styles.
+.cr-autocomplete {
+  z-index: 9999;
+  background-color: #fff;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  border: 2px solid $brand-tertiary;
+  border-top: 0 none;
+  border-radius: 0 0 4px 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &__list-item {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 30px 10px 12px;
+    position: relative;
+  }
+
+  &__list-item:hover,  &__list-item:focus{
+    background: #f5f5f5;
+  }
+
+  &__list-item--selected {
+    background-color: #f5f5f5;
+
+    &:after{
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      margin-top: -6.5px;
+      background-color: $brand-secondary;
+      border-radius:50%;
+      content: " "
+    }
+  }
+}
