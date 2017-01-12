@@ -8,7 +8,7 @@ import {
   ReactComponentType,
   renderComponent
 } from 'searchkit';
-
+import MobileDetect from 'mobile-detect';
 import {
   CRUKSearchkitDateRangeAccessor
 } from './CRUKSearchkitDateRangeAccessor';
@@ -81,8 +81,14 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   }
 
   render() {
-    const argState = this.accessor.getQueryObject()
-    let { focusedInput, startDate, endDate, initialVisibleMonth } = this.state
+    const argState = this.accessor.getQueryObject();
+    let { focusedInput, startDate, endDate, initialVisibleMonth } = this.state;
+    /**
+     * These functions can return null so check for bool true.
+     */
+    const md = new MobileDetect(window.navigator.userAgent);
+    const isMobile = md.mobile() || md.phone();
+    const numberOfMonths = isMobile ? 1 : 2;
 
     if (this.noArgs && argState[this.props.id] !== undefined && Object.keys(argState[this.props.id]).length > 0) {
       if (typeof argState[this.props.id].min !== undefined) {
@@ -103,6 +109,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
           endDate={endDate}
           initialVisibleMonth={initialVisibleMonth}
           displayFormat="DD/MM/YYYY"
+          numberOfMonths={numberOfMonths}
         />
       </div>
     )

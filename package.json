@@ -1,6 +1,6 @@
 {
   "name": "cruk-searchkit",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {
@@ -76,6 +76,7 @@
     "cruk-pattern-library": "^1.0.0",
     "google-maps-api-loader": "^0.2.0",
     "lodash": "^4.16.3",
+    "mobile-detect": "^1.3.5",
     "moment": "^2.15.1",
     "numeral": "^1.5.3",
     "react": "=15.3.2",
