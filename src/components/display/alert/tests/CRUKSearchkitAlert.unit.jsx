@@ -6,6 +6,8 @@ import CRUKSearchkitAlert from '../CRUKSearchkitAlert.jsx';
 describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
 
   beforeEach(function() {
+    // Reset cookie after each rendering.
+    document.cookie = 'cru-hu-alert-id-1=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     this.searchkit = SearchkitManager.mock();
     this.createWrapper = (id, text, animation, type, dismissable) => {
       this.wrapper = mount(
