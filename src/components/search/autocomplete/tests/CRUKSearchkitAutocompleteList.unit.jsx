@@ -22,6 +22,7 @@ describe('Cruk searchkit autocomplete tests', () => {
           autocompleteActive={autocompleteActive}
           listClasses={classNames}
           toggle={toggleMock}
+          inputState={() => null}
         />
       );
     }

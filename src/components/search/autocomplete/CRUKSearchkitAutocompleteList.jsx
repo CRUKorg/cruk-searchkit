@@ -29,7 +29,6 @@ export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
   }
 
   clickHandle(e) {
-    const input = this.props.inputRef;
     const sbAccessorIndex = this.searchkit.accessors.accessors
       .map((v, i) => {
         return v.key === 'xss-q' ? i : null;
