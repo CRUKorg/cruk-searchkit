@@ -5,6 +5,7 @@ export { default as CRUKSearchkitDateRange } from './src/components/search/date/
 export { default as CRUKSearchkitLocationInput } from './src/components/search/location/CRUKSearchkitLocationInput';
 export { default as CRUKSearchkitGTM } from './src/components/search/gtm/CRUKSearchkitGTM';
 export { default as CRUKSearchkitPagination } from './src/components/search/pagination/CRUKSearchkitPagination';
+export { default as CRUKSearchkitDidYouMean } from './src/components/search/did-you-mean/CRUKSearchkitDidYouMean';
 
 export { default as CRUKSearchkitLoading } from './src/components/display/loading/CRUKSearchkitLoading';
 export { default as CRUKSearchkitSummary } from './src/components/display/summary/CRUKSearchkitSummary';

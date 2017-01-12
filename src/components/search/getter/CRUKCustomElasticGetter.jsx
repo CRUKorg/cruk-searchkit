@@ -4,7 +4,7 @@ import * as axios from "axios"
  * CRUKCustomElasticGetter JavascriptClass.
  */
 export default class CRUKCustomElasticGetter {
-  constructor(url, value) {
+  constructor(url) {
     this.url = url;
   }
 
