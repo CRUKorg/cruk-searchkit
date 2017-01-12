@@ -2,8 +2,8 @@ var webpackConfig = require('./webpack.test.config');
 webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function (config) {
-  config.set({
-    browsers: [ 'PhantomJS' ],
+  var karmaConfiguration = {
+    browsers: ['Chrome_without_security', 'PhantomJS'],
     // you can define custom flags
     customLaunchers: {
       Chrome_without_security: {
@@ -35,5 +35,7 @@ module.exports = function (config) {
     webpackMiddleware: {
       noInfo: true,
     }
-  });
+  };
+
+  config.set(karmaConfiguration);
 };
