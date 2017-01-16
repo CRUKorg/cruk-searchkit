@@ -4,7 +4,6 @@ export default class CRUKSearchkitNoResultsDisplay extends React.Component {
 
   render() {
     const {bemBlocks, query, suggestion} = this.props
-
     const queryLabel = (query)
       ? <span> - <strong>{query}</strong></span>
       : ''
