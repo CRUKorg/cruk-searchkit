@@ -1,6 +1,9 @@
 var path = require('path');
 
 module.exports = {
+  entry: [
+    'babel-polyfill'
+  ],
   resolve: {
     extensions:[".js", ".jsx", ".webpack.js", ".web.js","", ".scss", ".json"]
   },
