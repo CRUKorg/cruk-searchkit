@@ -4,6 +4,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+
 language: node_js
 node_js:
 - stable
