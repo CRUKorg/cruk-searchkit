@@ -8,6 +8,9 @@ notifications:
     secure: kxvqAL1o+n6GTWawt0sMfubr3kXXP6BRSV1HiARye+HSmjjQsbJ5JrLAVX7G9FwwsSvB1IPv37PnkUQAEne7K9h3s1iuABAGAtvdn8XbG2s4e8PVUR9VwkaOtiSqz79bf1IXiDs7LnJmGRA3t+mWgvh/36hUePT/w+NDC1EGN9/YFjXe0Nkd5KcEmm8cZbLiABOndccXN/cljpyrlEjSIIOEbOm2YQplcJTRUfZCAjyG0bAcl6qr/AvQHB6mUgcXM2nQp9zPXJSv2nk/qfOSKJdvZ04MD5oeVuuKPAtpCjk81oib9nQMAux6arWaiZaNJWX6Bbhh+wiMUsiCjuzFQWMbDcesEHPgBqcoUWmKELuUN9zXW7tYXSc1ENwLXbo764X3du15aMtPjTFGl8nrwCvcnNWKzHPTcMEDTsmMBYutg0b1XtQ3/vq4Je5aFSY6CZT04jKDZ4XZhCtlyaVNc5xJcP/iUMUmtTkd+L0CUnzD2qdYzW2sG0do1Om2SihcF8mDjWRSUiMHrlpjMPRBV7Su8uT1DDzLVpIJ//ao7uBdPyPus02LeGC/M80WutZW05vt4IlrMZhfjfbJIPlPnT4+/7QpMecKdQ+VC1iISFoSgD87Y2vPqTKYBY1aNCyfjou1OiABQWaRW64vBHte9YtG9QpVmkIh9kx3FajEbf8=
 
 before_install:
-- export CHROME_BIN=chromium-browser
+- export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
