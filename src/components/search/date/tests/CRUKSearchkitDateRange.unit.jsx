@@ -86,40 +86,40 @@ describe('CRUKSearchkitDateRange tests', () => {
     expect(this.wrapper.render().find('input#endDate').val()).toBe('');
   });
 
-  it('Selecting both dates preforms search and updates accessor', function() {
+  it('Selecting both dates performs search and updates accessor', function() {
     this.createWrapper();
     // Change start date input.
     this.wrapper.find('input#startDate').get(0).value = '12/12/2016';
     this.wrapper.find('input#startDate').simulate('change');
-    // preformSearch has not been preformened yet and accessor state has empty value.
+    // performSearch has not been performened yet and accessor state has empty value.
     expect(this.searchkit.performSearch).not.toHaveBeenCalled();
     expect(this.accessor.state.value).toEqual({});
     // Change End date input.
     this.wrapper.find('input#endDate').get(0).value = '16/12/2016';
     this.wrapper.find('input#endDate').simulate('change');
-    // Accessor state has value and preformSearch has been called.
+    // Accessor state has value and performSearch has been called.
     expect(this.accessor.state.value.min).toBe('2016-12-12');
     expect(this.accessor.state.value.max).toBe('2016-12-16');
     expect(this.searchkit.performSearch).toHaveBeenCalled();
   });
 
-  it('Clearing both dates preforms search and updates accessor', function() {
+  it('Clearing both dates performs search and updates accessor', function() {
     this.createWrapper();
     // Change start date input and enddate input.
     this.wrapper.find('input#startDate').get(0).value = '12/12/2016';
     this.wrapper.find('input#startDate').simulate('change');
     this.wrapper.find('input#endDate').get(0).value = '16/12/2016';
     this.wrapper.find('input#endDate').simulate('change');
-    // Accessor state has value and preformSearch has been called.
+    // Accessor state has value and performSearch has been called.
     expect(this.accessor.state.value.min).toBe('2016-12-12');
     expect(this.accessor.state.value.max).toBe('2016-12-16');
     expect(this.searchkit.performSearch).toHaveBeenCalled();
     expect(this.searchkit.performSearch.calls.count()).toBe(1);
     // Clear inputs clicking closer X
     this.wrapper.find('.DateRangePickerInput__clear-dates').simulate('click');
-    // Accessor state has no value and preformed search has been called twice.
+    // Accessor state has no value and performed search has been called twice.
     expect(this.accessor.state.value).toEqual(null);
     expect(this.searchkit.performSearch.calls.count()).toBe(2);
   });
-  
+
 });
