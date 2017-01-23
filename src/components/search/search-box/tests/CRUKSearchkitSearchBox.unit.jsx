@@ -63,9 +63,9 @@ describe('Cruk searchkit searchbox tests', () => {
     expect(this.wrapper.render().find('.cr-search-input__input').attr('placeholder')).toEqual('Custom search...');
   });
 
-  it('Has the search glyphicon', function() {
+  it('Has the search looking glass icon', function() {
     this.createWrapper();
     const button = this.wrapper.render().find('.cr-search-input__button');
-    expect(button.find('span.cr-input-group__icon').hasClass('glyphicon-search')).toEqual(true);
+    expect(button.find('.cr-input-group__icon').length).toBe(1);
   });
 });
