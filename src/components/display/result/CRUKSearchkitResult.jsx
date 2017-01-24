@@ -18,13 +18,13 @@ export default class CRUKSearchkitResult extends React.Component {
     /**
      * Do the work to sort out the data then pass to state.
      */
-    let result = props.result._source
-    let sO = {allowedTags: [], allowedAttributes: []}
+    const result = props.result._source;
+    const sO = {allowedTags: [], allowedAttributes: []};
     /**
      * If an empty search happens, then highlight won't be populated, account
      * for this.
      */
-    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['description'][0] : result['description']
+    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['description'][0] : result['description'];
 
     this.state = {
       url: result['url'],
@@ -48,7 +48,7 @@ export default class CRUKSearchkitResult extends React.Component {
         </div>
       }) : []
 
-    this.state.additionalFields = additionalFields
+    this.state.additionalFields = additionalFields;
   }
 
   render() {
