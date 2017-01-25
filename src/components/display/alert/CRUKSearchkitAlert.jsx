@@ -1,10 +1,13 @@
 import React from 'react';
 import cookie from 'react-cookie';
+import {
+  SearchkitComponent
+} from "searchkit";
 
 /**
  * Export our CRUKSearchkitAlert component.
  */
-export default class CRUKSearchkitAlert extends React.Component {
+export default class CRUKSearchkitAlert extends SearchkitComponent {
   static propTypes = {
     id: React.PropTypes.string.isRequired,
     type: React.PropTypes.string,
@@ -32,7 +35,7 @@ export default class CRUKSearchkitAlert extends React.Component {
   }
 
   render() {
-    if (this.state.invisible) return null;
+    if (this.state.invisible || this.isLoading()) return null;
     const dismissableClass = this.props.dismissable ? ' cr-hu-alert--dismissible' : '';
     const animationClass = this.props.animation ? ` cr-animated-${this.props.animation}` : '';
     const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}`; 
