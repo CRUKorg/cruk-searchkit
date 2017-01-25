@@ -36,7 +36,6 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
   it('Does not render if searchkit is loading', function() {
     const text = <span>Warning message</span>;
     this.createWrapper('id-1', text, undefined, undefined, undefined, true);
-    this.searchkit.loading = true;
     expect(this.wrapper.find('.cr-hu-alert').length).toBe(0);
   });
 
