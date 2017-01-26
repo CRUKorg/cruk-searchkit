@@ -166,7 +166,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
             <span className="cr-input-group__icon glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
         </span>
-        { this.props.autocomplete &&
+        { this.props.autocompleteEnable &&
           <CRUKSearchkitAutocompleteList
             selectedItem={selectedItem}
             inputState={this.inputState}
