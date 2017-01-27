@@ -22,6 +22,22 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
         />
       );
     }
+
+    this.mockResults = () => {
+      this.searchkit.setResults({
+      hits:{
+        total: 10,
+        hits: [
+          {
+            _id: 1,
+            _source: {
+              name: 'name'
+            }
+          }
+        ]
+      }
+    });
+    }
   });
 
   it('Render with default type', function() {
@@ -37,6 +53,15 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
     const text = <span>Warning message</span>;
     this.createWrapper('id-1', text, undefined, undefined, undefined, true);
     expect(this.wrapper.find('.cr-hu-alert').length).toBe(0);
+  });
+
+  it('Removes animation after interaction with search', function() {
+    const text = <span>Warning message</span>;
+    this.createWrapper('id-1', text, 'bounce', 'info');
+    expect(this.wrapper.render().find('.cr-hu-alert--info').hasClass('cr-animated-bounce')).toBe(true);
+    this.mockResults();
+    this.wrapper.update();
+    expect(this.wrapper.render().find('.cr-hu-alert--info').hasClass('cr-animated-bounce')).toBe(false);
   });
 
   it('Render with info type, dismissable and bounce animation', function() {
