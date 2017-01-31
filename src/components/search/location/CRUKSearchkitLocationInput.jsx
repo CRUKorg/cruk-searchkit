@@ -210,6 +210,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
       <div className="cr-geosuggest-wrapper" ref="g_wrapper">
         <div className="form-group">
           <Geosuggest
+            queryDelay={this.props.queryDelay}
             ref="geoSuggest"
             placeholder={this.props.placeholder}
             initialValue={searchedAddress || this.props.initialValue}
