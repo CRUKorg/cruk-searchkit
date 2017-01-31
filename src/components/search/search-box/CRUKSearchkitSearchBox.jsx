@@ -40,12 +40,17 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   }
 
   handleKeyUp(e) {
+    if (!this.props.autocompleteEnable) return;
     const { autocompleteItems, selectedItem } = this.state;
 
-    if (this.refs.queryField.value === '') return;
+    if (this.refs.queryField.value === '') {
+      this.setState({ autocompleteActive: false });
+      return;
+    }
+
     const self = this;
 
-    if (this.props.autocomplete && (e.keyCode === 40 || e.keyCode === 38)) {
+    if (e.keyCode === 40 || e.keyCode === 38) {
       this.handleAutocompleteItems(e.keyCode);
       return;
     }
@@ -92,7 +97,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     });
   }
 
-  setFocusState(focused:boolean) {
+  setFocusState(focused) {
     if (!focused){
       const { input } = this.state
       if (this.props.blurAction == "search"
@@ -100,7 +105,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
         && input != this.getAccessorValue()){
         this.searchQuery(input)
       }
-      if (!this.props.autocomplete) {
+      if (!this.props.autocompleteEnable) {
         this.setState({ 
           focused,
           input: undefined // Flush (should use accessor's state now)
@@ -115,15 +120,16 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     const { autocompleteItems, selectedItem } = this.state;
     event.preventDefault();
     let query = this.getValue();
-    if (this.props.autocomplete && selectedItem > 0) {
+    if (this.props.autocompleteEnable && selectedItem > 0) {
       query = autocompleteItems[selectedItem - 1];
       this.setState({
         input: query,
-        selectedItem: 0
+        selectedItem: 0,
+        autocompleteActive: false
+      }, () => {
+        this.searchQuery(query);
       });
     }
-
-    this.searchQuery(query);
 
     /**
      * De-focus the input.
