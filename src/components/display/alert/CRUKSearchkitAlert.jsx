@@ -1,10 +1,13 @@
 import React from 'react';
 import cookie from 'react-cookie';
+import {
+  SearchkitComponent
+} from "searchkit";
 
 /**
  * Export our CRUKSearchkitAlert component.
  */
-export default class CRUKSearchkitAlert extends React.Component {
+export default class CRUKSearchkitAlert extends SearchkitComponent {
   static propTypes = {
     id: React.PropTypes.string.isRequired,
     type: React.PropTypes.string,
@@ -23,6 +26,8 @@ export default class CRUKSearchkitAlert extends React.Component {
     this.state = {
       invisible: cookie.load(`cru-hu-alert-${this.props.id}`)
     }
+    this.stopAnimation = false;
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -31,10 +36,16 @@ export default class CRUKSearchkitAlert extends React.Component {
     cookie.save(`cru-hu-alert-${this.props.id}`, true);
   }
 
+  componentDidMount() {
+    this.searchkit.addResultsListener((result) => {
+      this.stopAnimation = true;
+    });
+  }
+
   render() {
-    if (this.state.invisible) return null;
+    if (this.state.invisible || this.isLoading()) return null;
     const dismissableClass = this.props.dismissable ? ' cr-hu-alert--dismissible' : '';
-    const animationClass = this.props.animation ? ` cr-animated-${this.props.animation}` : '';
+    const animationClass = (this.props.animation && !this.stopAnimation) ? ` cr-animated-${this.props.animation}` : '';
     const cssClasses = `cr-hu-alert cr-hu-alert--${this.props.type}${dismissableClass}${animationClass}`; 
     return (
       <div id={this.props.id} className={cssClasses} role="alert">

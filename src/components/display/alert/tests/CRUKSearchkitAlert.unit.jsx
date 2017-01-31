@@ -9,9 +9,11 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
     // Reset cookie after each rendering.
     document.cookie = 'cru-hu-alert-id-1=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     this.searchkit = SearchkitManager.mock();
-    this.createWrapper = (id, text, animation, type, dismissable) => {
+    this.createWrapper = (id, text, animation, type, dismissable, loading = false) => {
+      this.searchkit.loading = loading;
       this.wrapper = mount(
         <CRUKSearchkitAlert
+          searchkit={this.searchkit}
           id={id}
           type={type}
           text={text}
@@ -20,10 +22,26 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
         />
       );
     }
+
+    this.mockResults = () => {
+      this.searchkit.setResults({
+      hits:{
+        total: 10,
+        hits: [
+          {
+            _id: 1,
+            _source: {
+              name: 'name'
+            }
+          }
+        ]
+      }
+    });
+    }
   });
 
   it('Render with default type', function() {
-    const text = <span>Warning message</span>
+    const text = <span>Warning message</span>;
     this.createWrapper('id-1', text);
 
     expect(this.wrapper.render().find('.cr-hu-alert--warning > .cr-hu-alert__text').text()).toBe('Warning message');
@@ -31,8 +49,23 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
     expect(this.wrapper.find('.cr-hu-alert__dismiss').length).toBe(0);
   });
 
+  it('Does not render if searchkit is loading', function() {
+    const text = <span>Warning message</span>;
+    this.createWrapper('id-1', text, undefined, undefined, undefined, true);
+    expect(this.wrapper.find('.cr-hu-alert').length).toBe(0);
+  });
+
+  it('Removes animation after interaction with search', function() {
+    const text = <span>Warning message</span>;
+    this.createWrapper('id-1', text, 'bounce', 'info');
+    expect(this.wrapper.render().find('.cr-hu-alert--info').hasClass('cr-animated-bounce')).toBe(true);
+    this.mockResults();
+    this.wrapper.update();
+    expect(this.wrapper.render().find('.cr-hu-alert--info').hasClass('cr-animated-bounce')).toBe(false);
+  });
+
   it('Render with info type, dismissable and bounce animation', function() {
-    const text = <span>Info message</span>
+    const text = <span>Info message</span>;
     this.createWrapper('id-1', text, 'bounce', 'info', true);
 
     // Rendered component must have the defined id as an attribute
@@ -65,5 +98,4 @@ describe('Cruk searchkit CRUKSearchkitAlert component tests', () => {
     expect(document.cookie).toContain(`cru-hu-alert-${id}`);
     expect(this.wrapper.state().invisible).toBe(true);
   });
-
 });
