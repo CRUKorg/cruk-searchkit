@@ -139,6 +139,15 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     }
   }
 
+  componentDidMount() {
+    const self = this;
+    this.searchkit.addResultsListener((results) => {
+      self.setState({
+        input: self.getAccessorValue()
+      });
+    });
+  }
+
   render() {
     const { focused, autocompleteItems, autocompleteActive, selectedItem } = this.state;
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
