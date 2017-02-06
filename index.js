@@ -1,15 +1,22 @@
 'use strict';
 
-export { default as CRUKSearchInput } from './src/components/input/Input';
-export { default as CRUKSearch } from './src/components/search/Search';
-export { default as CRUKSearchNoResultsDisplay } from './src/components/noresults/NoResults';
-export { default as CRUKPagination } from './src/components/pagination/Pagination';
-export { default as CRUKSearchResult } from './src/components/result/Result';
-export { default as CRUKSearchSummary } from './src/components/summary/Summary';
-export { default as CRUKLoading } from './src/components/loading/Loading';
-export { default as CRUKHitsList } from './src/components/hitsList/HitsList';
-export { default as CRUKSearchHits } from './src/components/hits/Hits';
-export { default as CRUKSearchGTM } from './src/components/gtm/GTM';
-export { default as CRUKDateRange } from './src/components/date/CRUKDateRange';
-export { default as CRUKGeoSuggest } from './src/components/geosuggest/CRUKGeoSuggest';
-export { default as CRUKSearchSelect } from './src/components/select/CRUKSearchSelect';
+export { default as CRUKSearchkitSearchBox } from './src/components/search/search-box/CRUKSearchkitSearchBox';
+export { default as CRUKSearchkitDateRange } from './src/components/search/date/CRUKSearchkitDateRange';
+export { default as CRUKSearchkitLocationInput } from './src/components/search/location/CRUKSearchkitLocationInput';
+export { default as CRUKSearchkitGTM } from './src/components/search/gtm/CRUKSearchkitGTM';
+export { default as CRUKSearchkitPagination } from './src/components/search/pagination/CRUKSearchkitPagination';
+export { default as CRUKSearchkitDidYouMean } from './src/components/search/did-you-mean/CRUKSearchkitDidYouMean';
+
+export { default as CRUKSearchkitLoading } from './src/components/display/loading/CRUKSearchkitLoading';
+export { default as CRUKSearchkitSummary } from './src/components/display/summary/CRUKSearchkitSummary';
+export { default as CRUKSearchkitResult } from './src/components/display/result/CRUKSearchkitResult';
+export { default as CRUKSearchkitResultsListDisplay } from './src/components/display/results-list/CRUKSearchkitResultsListDisplay';
+export { default as CRUKSearchkitResultsList } from './src/components/display/results-list/CRUKSearchkitResultsList';
+export { default as CRUKSearchkitNoResults } from './src/components/display/no-results/CRUKSearchkitNoResults';
+export { default as CRUKSearchkitSearchUI } from './src/components/display/search/CRUKSearchkitSearchUI';
+export { default as CRUKSearchkitHelpText } from './src/components/display/help-text/CRUKSearchkitHelpText';
+export { default as CRUKSearchkitAlert } from './src/components/display/alert/CRUKSearchkitAlert';
+
+export { default as CRUKSearchkitMenuFilter } from './src/components/filters/menu/CRUKSearchkitMenuFilter';
+
+export { default as CRUKSearchkitSelect } from './src/components/ui/list/CRUKSearchkitSelect';

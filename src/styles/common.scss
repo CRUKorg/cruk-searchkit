@@ -28,6 +28,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
 @import "~cruk-pattern-library/assets/scss/partials/input-groups";
+
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/navs";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/navbar";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
@@ -43,7 +44,6 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/list-group";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/panels";
 @import "~cruk-pattern-library/assets/scss/partials/panels";
-@import "~cruk-pattern-library/assets/scss/partials/accordions";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/wells";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/close";
@@ -62,20 +62,31 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
  * CRUK Styles.
  */
 @import "~cruk-pattern-library/assets/scss/base/type";
-
+$cr-icon-path: '~cruk-pattern-library/assets/fonts';
+@import "~cruk-pattern-library/assets/scss/partials/animations";
+@import "~cruk-pattern-library/assets/scss/partials/alerts";
+@import "~cruk-pattern-library/assets/scss/partials/accordions";
 @import "~cruk-pattern-library/assets/scss/partials/buttons";
 @import "~cruk-pattern-library/assets/scss/partials/navbar";
+@import "~cruk-pattern-library/assets/scss/partials/icons";
+@import "~cruk-pattern-library/assets/scss/partials/pattern-library";
+@import "~cruk-pattern-library/assets/scss/partials/pagination";
+@import "~cruk-pattern-library/assets/scss/partials/progress-bar";
+@import "~cruk-pattern-library/assets/scss/partials/loader";
+@import "~cruk-pattern-library/assets/scss/partials/search/input";
+@import "~cruk-pattern-library/assets/scss/partials/search/result";
+@import "~cruk-pattern-library/assets/scss/partials/search/summary";
 @import "~cruk-pattern-library/assets/scss/partials/pattern-library";
 
-// AirBnB react-dates styles overrides 
+// AirBnB react-dates styles overrides
 @import '~react-dates/css/variables.scss';
-$react-dates-color-primary: $brand-secondary;
-$react-dates-color-primary-shade-4: rgba(236, 0, 140, 0.15);
-$react-dates-color-primary-shade-3: $brand-secondary;
-$react-dates-color-primary-shade-2: rgba(236, 0, 140, 0.15);
-$react-dates-color-primary-shade-1: $brand-secondary;
+$react-dates-color-primary: $brand-tertiary;
+$react-dates-color-primary-shade-4: rgba(0, 182, 237, 0.15);
+$react-dates-color-primary-shade-3: $brand-tertiary;
+$react-dates-color-primary-shade-2: rgba(0, 182, 237, 0.15);
+$react-dates-color-primary-shade-1: $brand-tertiary;
 $react-dates-color-secondary: #ffffff;
-$react-dates-color-focus: rgba(236, 0, 140, 0.15);
+$react-dates-color-focus: rgba(0, 182, 237, 0.15);
 $react-dates-color-text-focus: #ffffff;
 @import '~react-dates/css/styles.scss';
 
@@ -84,14 +95,16 @@ $react-dates-color-text-focus: #ffffff;
  */
 
 @import './mixins';
-@import './../components/input/input';
-@import './../components/loading/loading';
-@import './../components/pagination/pagination';
-@import './../components/result/result';
-@import './../components/summary/summary';
-@import './../components/search/search';
-@import './../components/date/cruk_daterange';
-@import './../components/geosuggest/cruk_geosuggest';
+@import './../components/search/search-box/CRUKSearchkitSearchBox';
+@import './../components/display/loading/CRUKSearchkitLoading';
+@import './../components/search/pagination/CRUKSearchkitPagination';
+@import './../components/display/result/CRUKSearchkitResult';
+@import './../components/display/summary/CRUKSearchkitSummary';
+@import './../components/display/search/CRUKSearchkitSearchUI';
+@import './../components/search/date/CRUKSearchkitDateRange';
+@import './../components/search/location/CRUKSearchkitLocationInput';
+@import './../components/search/autocomplete/CRUKSearchkitAutocomplete';
+@import './../components/search/did-you-mean/CRUKSearchkitDidYouMean';
 
 body {
   padding: 20px 0;
