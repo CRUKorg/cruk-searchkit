@@ -128,6 +128,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     const { autocompleteItems, selectedItem } = this.state;
     event.preventDefault();
     let query = this.getValue();
+
     if (this.props.autocompleteEnable && selectedItem > 0) {
       query = autocompleteItems[selectedItem - 1];
       this.setState({
@@ -163,7 +164,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
     }
-    return <form onSubmit={this.onSubmit.bind(this)}>
+    return <form action="." onSubmit={this.onSubmit.bind(this)}>
       <div className={wrapper_class}>
         <label htmlFor="search-input" id="search-label">{placeholder}</label>
         <input
