@@ -21,7 +21,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
       focused: false,
       autocompleteActive: false,
@@ -79,7 +79,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   handleAutocompleteItems(arrow) {
     const { autocompleteItems, selectedItem } = this.state;
     if (autocompleteItems.length < 1) return;
-    
+
     const selectedItemIndex = (() => {
       if (arrow === 40) {
         if (selectedItem < autocompleteItems.length) return selectedItem + 1;
@@ -99,20 +99,28 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   setFocusState(focused) {
     if (!focused){
-      const { input } = this.state
-      if (this.props.blurAction == "search"
-        && !isUndefined(input) 
+      const { input } = this.state;
+      if (this.props.blurAction === 'search'
+        && !isUndefined(input)
         && input != this.getAccessorValue()){
-        this.searchQuery(input)
+        this.searchQuery(input);
       }
-      if (!this.props.autocompleteEnable) {
-        this.setState({ 
+      /**
+       * Behave differently if this component has autocomplete enabled, needs
+       * to be smarter innit.
+       */
+      if (this.props.autocompleteEnable) {
+        if (!this.state.autocompleteActive) {
+          this.setState({ focused });
+        }
+      } else {
+        this.setState({
           focused,
           input: undefined // Flush (should use accessor's state now)
         })
       }
     } else {
-      this.setState({ focused })
+      this.setState({ focused });
     }
   }
 
@@ -120,6 +128,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     const { autocompleteItems, selectedItem } = this.state;
     event.preventDefault();
     let query = this.getValue();
+
     if (this.props.autocompleteEnable && selectedItem > 0) {
       query = autocompleteItems[selectedItem - 1];
       this.setState({
@@ -155,7 +164,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
     }
-    return <form onSubmit={this.onSubmit.bind(this)}>
+    return <form action="." onSubmit={this.onSubmit.bind(this)}>
       <div className={wrapper_class}>
         <label htmlFor="search-input" id="search-label">{placeholder}</label>
         <input
