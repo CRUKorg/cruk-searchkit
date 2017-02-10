@@ -2,88 +2,78 @@ import React from 'react';
 import { mount } from 'enzyme';
 import CRUKSearchkitMenuFilter from '../CRUKSearchkitMenuFilter.jsx';
 import CRUKSearchkitSelect from '../../../ui/list/CRUKSearchkitSelect.jsx';
-import { SearchkitManager, ImmutableQuery } from 'searchkit';
+import { SearchkitManager, ImmutableQuery, Utils } from 'searchkit';
 
 describe('Cruk searchkit location input tests', () => {
 
   beforeEach(function() {
-
+    Utils.guidCounter = 0;
     this.searchkit = SearchkitManager.mock();
     spyOn(this.searchkit, 'performSearch');
 
-    this.createWrapper = () => {
-      this.wrapper = mount(
-        <CRUKSearchkitMenuFilter
-          searchkit={this.searchkit}
-          field="event_type"
-          title=""
-          id="event_type"
-          listComponent={CRUKSearchkitSelect}
-          translations={{ All: 'All types' }}
-        />
-      );
-      this.accessor = this.searchkit.accessors.getAccessors()[0];
-      this.searchkit.query = new ImmutableQuery();
+    this.wrapper = mount(
+      <CRUKSearchkitMenuFilter
+        searchkit={this.searchkit}
+        listComponent={CRUKSearchkitSelect}
+        translations={{"Red":"Red Translated"}}
+        field="color" title="Color" orderKey="_term" orderDirection="asc"
+        include="title" exclude={["n/a"]}
+        id="color" size={10}/>
+    );
+
+    this.getOptionAt = (at)=> {
+      return this.wrapper.find("select.form-control")
+        .children().at(at)
     }
 
-    this.mockResults = (numberOfResults = '123456789') => {
-      this.searchkit.query.query = {
-        aggs: {
-          event_type10: {
-            aggs: {
-              event_type: {
-                terms: {
-                  field: 'event_type'
-                }
-              }
-            }
-          }
+    this.accessor = this.searchkit.accessors.accessors[0];
+    this.searchkit.setResults({
+      aggregations:{
+        color1:{
+          color:{
+            buckets:[
+              {key:"Red", doc_count:10},
+              {key:"Blue", doc_count:11},
+              {key:"Green", doc_count:12}
+            ]
+          },
+          doc_count:33
         }
       }
-
-      const types = numberOfResults.split('').map((x,i) => {
-        return { doc_count: 210, key: `Type ${i+1}`}
-      });
-
-      const hits = numberOfResults.split('').map((x,i) => {
-        const counter = i + 1;
-        return {
-          _id: counter,
-          _source: {
-            url: `http://madeup.com/${counter}`,
-            title: `Mocking a title #${counter}`,
-            description: `Some descriptive text that does not exist #${counter}`,
-            event_type: types[parseInt((Math.random() * 10))]
-          }
-        }
-      });
-      const results = {
-        aggregations: {
-          event_type10: {
-            doc_count: types.length * 10,
-            event_type: {
-              buckets: types,
-              doc_count_error_upper_bound: 0,
-              sum_other_doc_count: 0
-            },
-            event_type_count: {
-              value: types.length
-            } 
-          }
-        },
-        hits: {
-          total: types.length,
-          hits: hits
-        }
-      }
-      this.searchkit.setResults(results);
-    }
+    });
   });
 
-  it('render', function() {
-    this.mockResults();
-    this.createWrapper();
-    console.log(this.accessor.getRawBuckets());
-    console.log(this.wrapper.render().html());
+  it('Renders with correct markup and classes', function() {
+    // Expect the correct classes to be rendered.
+    expect(this.wrapper.render().find('.sk-panel > div').hasClass('sk-panel__header')).toBe(true);
+    expect(this.wrapper.render().find('select').hasClass('form-control')).toBe(true);
+  });
+
+  it('Renders with correct items', function() {
+    // Expect the correct itmes to be rendered with correct text and values.
+    expect(this.wrapper.render().find('select').children().length).toBe(4);
+    expect(this.getOptionAt(2).text()).toBe('Blue (11)');
+    expect(this.wrapper.render().find('option').eq(2).val()).toBe('Blue');
+    expect(this.getOptionAt(0).text()).toBe('All (33)');
+    expect(this.wrapper.render().find('option').eq(0).val()).toBe('$all');
+  });
+
+  it('OptionsOrder prop for ordering working correctly', function() {
+    // Expect items to be rendered in the correct order.
+    expect(this.getOptionAt(2).text()).toBe('Blue (11)');
+    expect(this.getOptionAt(3).text()).toBe('Green (12)');
+    expect(this.getOptionAt(1).text()).toBe('Red Translated (10)');
+    // Set the optionsOrder Property.
+    this.wrapper.setProps({ optionsOrder: [
+      'Green',
+      'Blue',
+      'Red'
+    ]});
+    // Recheck the order of items if not PhantomJS.
+    if (!/PhantomJS/.test(window.navigator.userAgent)) {
+      expect(this.getOptionAt(2).text()).toBe('Blue (11)');
+      expect(this.getOptionAt(3).text()).toBe('Red Translated (10)');
+      expect(this.getOptionAt(1).text()).toBe('Green (12)');
+    }
   });
 });
