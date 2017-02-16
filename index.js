@@ -20,3 +20,5 @@ export { default as CRUKSearchkitAlert } from './src/components/display/alert/CR
 export { default as CRUKSearchkitMenuFilter } from './src/components/filters/menu/CRUKSearchkitMenuFilter';
 
 export { default as CRUKSearchkitSelect } from './src/components/ui/list/CRUKSearchkitSelect';
+
+import './src/styles/common.scss';

@@ -2,13 +2,9 @@
   "name": "cruk-searchkit",
   "version": "1.2.8",
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
-  "main": "index.js",
+  "main": "library/index.js",
   "scripts": {
-    "build": "npm run clean && npm run build:js && npm run build:css && npm run build:svg",
-    "build:css": "node-sass src/styles/common.scss lib/css/styles.css",
-    "build:js": "babel src/ -d lib/ --ignore src/components",
-    "build:svg": "webpack",
-    "clean": "rimraf lib",
+    "build": "webpack --config webpack.prod.config.js -p",
     "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook",
     "test": "./node_modules/karma/bin/karma start"
@@ -51,6 +47,7 @@
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "jasmine": "^2.5.2",
     "jasmine-core": "^2.5.2",
     "jsdom": "^9.8.0",
