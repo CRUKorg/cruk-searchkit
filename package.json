@@ -4,7 +4,7 @@
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.config.js -p",
+    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins=transform-class-properties,transform-es2015-object-super,transform-proto-to-assign,transform-es2015-block-scoping,transform-es2015-classes --presets=es2015,react --ignore \"**/*.unit.jsx\"",
     "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook",
     "lint": "./node_modules/eslint/bin/eslint.js src/** --ext .js --ext .jsx",
@@ -28,6 +28,7 @@
     "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
+    "babel-eslint": "^7.1.1",
     "babel-jest": "^16.0.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-syntax-jsx": "^6.13.0",
@@ -73,9 +74,11 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bem-cn": "^2.1.3",
+    "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
-    "cruk-pattern-library": "^1.0.0",
+    "cruk-pattern-library": "^1.0.1",
     "google-maps-api-loader": "^0.2.0",
     "lodash": "^4.16.3",
     "mobile-detect": "^1.3.5",
