@@ -25,7 +25,8 @@ describe('Cruk searchkit searchbox tests', () => {
           placeholder="Search..."
         />
       );
-    }
+    };
+
     this.searchkit.accessors.accessors = [
       {
         key: 'xss-q',

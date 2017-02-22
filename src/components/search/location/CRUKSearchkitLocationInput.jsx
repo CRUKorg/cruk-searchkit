@@ -140,7 +140,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
 
     this.preformedSearch = true
     geocoder.geocode( { 'placeId' : argState[this.props.id].placeId }, function( results, status ) {
-      if( status == google.maps.GeocoderStatus.OK ) {
+      if( status == google.maps.GeocoderStatus.OK && results[0].address_components) {
         self.setState({searchedAddress: self.buildAddressFormattedString(results[0].address_components)})
         self.forceUpdate()
       }

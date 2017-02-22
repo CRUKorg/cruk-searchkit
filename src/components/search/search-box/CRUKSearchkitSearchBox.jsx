@@ -54,6 +54,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       this.handleAutocompleteItems(e.keyCode);
       return;
     }
+    if (this.props.test) return;
 
     const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}/_suggest`);
     getter.autocompleteRequest(this.refs.queryField.value)
@@ -77,7 +78,12 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   }
 
   handleAutocompleteItems(arrow) {
-    const { autocompleteItems, selectedItem } = this.state;
+    let { autocompleteItems, selectedItem } = this.state;
+
+    if (this.props.test) {
+      autocompleteItems = this.props.autocompleteItems;
+    }
+
     if (autocompleteItems.length < 1) return;
 
     const selectedItemIndex = (() => {
@@ -150,19 +156,26 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   componentDidMount() {
     const self = this;
-    this.searchkit.addResultsListener((results) => {
-      self.setState({
-        input: self.getAccessorValue()
+    if (!this.props.test) {
+      this.searchkit.addResultsListener((results) => {
+        self.setState({
+          input: self.getAccessorValue()
+        });
       });
-    });
+    }
   }
 
   render() {
-    const { focused, autocompleteItems, autocompleteActive, selectedItem } = this.state;
+    const { focused, selectedItem } = this.state;
+    let { autocompleteItems, autocompleteActive } = this.state;
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
     let placeholder = this.props.placeholder || this.translate('searchbox.placeholder');
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
+    }
+    if (this.props.test && this.props.autocompleteItems) {
+      autocompleteItems = this.props.autocompleteItems;
+      autocompleteActive = true;
     }
     return <form action="." onSubmit={this.onSubmit.bind(this)}>
       <div className={wrapper_class}>

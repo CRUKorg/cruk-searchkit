@@ -40,7 +40,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   onDatesChange({ startDate, endDate }) {
 
     this.setState({ startDate: startDate, endDate: endDate }, () => {
-      this.updateAccessorState(startDate, endDate)
+      this.updateAccessorState(startDate, endDate);
     })
 
     this.noArgs = false

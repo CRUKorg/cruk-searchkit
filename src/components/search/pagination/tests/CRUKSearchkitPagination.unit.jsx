@@ -22,7 +22,7 @@ describe('CRUKSearchkitSummary tests', () => {
       this.accessor = this.searchkit.accessors.statefulAccessors["p"];
     }
 
-    this.searchkit.query = new ImmutableQuery().setSize(10)
+    this.searchkit.query = new ImmutableQuery().setSize(10);
 
 
     this.searchkit.setResults({
