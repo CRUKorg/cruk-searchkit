@@ -8,3 +8,7 @@ form {
   top: 100%;
   left: -2px;
 }
+
+.cr-search-input--closer .cr-input-group__icon:before {
+  content: "\e913";
+}

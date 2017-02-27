@@ -15,6 +15,17 @@ import { CRUKSearchkitLocationAccessor } from './CRUKSearchkitLocationAccessor';
 export default class CRUKSearchkitLocationInput extends SearchkitComponent {
   accessor:CRUKSearchkitLocationAccessor
 
+  static propTypes = {
+    queryDelay: React.PropTypes.number,
+    placeholder: React.PropTypes.string,
+    initialValue: React.PropTypes.string,
+    country: React.PropTypes.string,
+    radius: React.PropTypes.string,
+    location: React.PropTypes.object,
+    fixtures: React.PropTypes.array,
+    ...SearchkitComponent.propTypes,
+  }
+
   constructor(props) {
     super(props);
 
@@ -140,7 +151,7 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
 
     this.preformedSearch = true
     geocoder.geocode( { 'placeId' : argState[this.props.id].placeId }, function( results, status ) {
-      if( status == google.maps.GeocoderStatus.OK ) {
+      if( status == google.maps.GeocoderStatus.OK && results[0].address_components) {
         self.setState({searchedAddress: self.buildAddressFormattedString(results[0].address_components)})
         self.forceUpdate()
       }

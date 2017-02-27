@@ -8,11 +8,11 @@ import classNames from 'classnames';
 /**
  * Import custom components.
  */
-import CRUKSearchkitLoading from './../loading/CRUKSearchkitLoading.jsx';
-import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary.jsx';
-import CRUKSearchkitResultsList from './../results-list/CRUKSearchkitResultsList.jsx'
-import CRUKSearchkitPagination from './../../search/pagination/CRUKSearchkitPagination.jsx';
-import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults.jsx'
+import CRUKSearchkitLoading from './../loading/CRUKSearchkitLoading';
+import CRUKSearchkitSummary from './../summary/CRUKSearchkitSummary';
+import CRUKSearchkitResultsList from './../results-list/CRUKSearchkitResultsList'
+import CRUKSearchkitPagination from './../../search/pagination/CRUKSearchkitPagination';
+import CRUKSearchkitNoResults from './../no-results/CRUKSearchkitNoResults'
 
 /**
  * Aaand the search interface/ui.

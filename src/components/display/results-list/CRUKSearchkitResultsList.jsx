@@ -8,13 +8,13 @@ import {
 /**
  * Import our custom highlight accessor which won't mulch the array of objects.
  */
-import CRUKSearchkitResultsHighlightAccessor from './CRUKSearchkitResultsHighlightAccessor.jsx'
-import CRUKSearchkitResultsAccessor from './CRUKSearchkitResultsAccessor.jsx'
+import CRUKSearchkitResultsHighlightAccessor from './CRUKSearchkitResultsHighlightAccessor'
+import CRUKSearchkitResultsAccessor from './CRUKSearchkitResultsAccessor'
 /**
  * And the rest.
  */
-import CRUKSearchkitResultsListDisplay from './CRUKSearchkitResultsListDisplay.jsx';
-import CRUKSearchkitResult from './../result/CRUKSearchkitResult.jsx';
+import CRUKSearchkitResultsListDisplay from './CRUKSearchkitResultsListDisplay';
+import CRUKSearchkitResult from './../result/CRUKSearchkitResult';
 
 /**
  * Define our class.

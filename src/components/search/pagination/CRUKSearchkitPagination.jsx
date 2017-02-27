@@ -49,6 +49,11 @@ class CRUKSearchkitPaginationItemComponent extends ItemComponent {
  * more to Bootstrap than searchkit.
  */
 class CRUKSearchkitPagination extends Pagination {
+  static propTypes = {
+    blockSearch: React.PropTypes.bool,
+    ...Pagination.propTypes
+  }
+
   constructor(props) {
     super();
 

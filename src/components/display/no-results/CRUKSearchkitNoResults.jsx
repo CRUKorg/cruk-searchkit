@@ -33,6 +33,10 @@ export default class CRUKSearchkitNoResults extends SearchkitComponent {
     suggestionsField:React.PropTypes.string,
     errorComponent: React.PropTypes.func,
     component: React.PropTypes.func,
+    noResultsLabel: React.PropTypes.object,
+    noResultsTitle: React.PropTypes.string,
+    noResultsBody: React.PropTypes.object,
+    errorMessage: React.PropTypes.string,
     translations:SearchkitComponent.translationsPropType(
       CRUKSearchkitNoResults.translations
     )
