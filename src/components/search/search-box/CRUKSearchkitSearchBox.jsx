@@ -19,6 +19,13 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     });
   }
 
+  static propTypes = {
+    autocompleteEnable: React.PropTypes.bool,
+    test: React.PropTypes.bool,
+    autocompleteItems: React.PropTypes.array,
+    ...SearchBox.propTypes
+  }
+
   constructor(props) {
     super(props);
 
@@ -55,6 +62,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       this.handleAutocompleteItems(e.keyCode);
       return;
     }
+    if (this.props.test) return;
 
     const getter = new CRUKCustomElasticGetter(`${this.searchkit.host}/_suggest`);
     getter.autocompleteRequest(this.refs.queryField.value)
@@ -78,7 +86,12 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
   }
 
   handleAutocompleteItems(arrow) {
-    const { autocompleteItems, selectedItem } = this.state;
+    let { autocompleteItems, selectedItem } = this.state;
+
+    if (this.props.test) {
+      autocompleteItems = this.props.autocompleteItems;
+    }
+
     if (autocompleteItems.length < 1) return;
 
     const selectedItemIndex = (() => {
@@ -132,9 +145,11 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       e.preventDefault();
       this.setState({ 
         focused: true,
-        clearText: false,
-        input: ''
+        clearText: false
+      }, () => {
+        this.refs.queryField.value = '';
       });
+      
       this.refs.queryField.focus();
     }
   }
@@ -165,23 +180,34 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   componentDidMount() {
     const self = this;
-    this.searchkit.addResultsListener((results) => {
-      const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      const clearText = w <= 768 ? true : false;
-      self.setState({
-        input: self.getAccessorValue(),
-        clearText
+
+    if (!this.props.test) {
+      this.searchkit.addResultsListener((results) => {
+        const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const clearText = w <= 768 ? true : false;
+        self.setState({
+          input: self.getAccessorValue(),
+          clearText
+        });
       });
-    });
+    }
   }
 
   render() {
-    const { focused, autocompleteItems, autocompleteActive, selectedItem, clearText } = this.state;
+    const { focused, selectedItem, clearText } = this.state;
+    let { autocompleteItems, autocompleteActive } = this.state;
+
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
     let placeholder = this.props.placeholder || this.translate('searchbox.placeholder');
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
     }
+
+    if (this.props.test && this.props.autocompleteItems) {
+      autocompleteItems = this.props.autocompleteItems;
+      autocompleteActive = true;
+    }
+
     if (clearText) {
       wrapper_class += ' cr-search-input--closer';
     }

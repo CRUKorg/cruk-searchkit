@@ -29,6 +29,9 @@ export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
   }
 
   clickHandle(e) {
+    if (!this.searchkit) {
+      return;
+    }
     const sbAccessorIndex = this.searchkit.accessors.accessors
       .map((v, i) => {
         return v.key === 'xss-q' ? i : null;
@@ -46,11 +49,11 @@ export default class CRUKSearchkitAutocompleteList extends SearchkitComponent {
   }
 
   componentDidMount () {
-    document.getElementById('searchPrototypeApp').addEventListener('click', this.handleDocumentClick)
+    document.getElementById('searchPrototypeApp').addEventListener('click', this.handleDocumentClick);
   }
 
   componentWillUnmount () {
-    document.getElementById('searchPrototypeApp').removeEventListener('click', this.handleDocumentClick)
+    document.getElementById('searchPrototypeApp').removeEventListener('click', this.handleDocumentClick);
   }
 
   handleDocumentClick(evt) {

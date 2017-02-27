@@ -26,7 +26,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
       let val = this.state.getValue();
       this.options.updateParentState(val.min, val.max);
       let rangeFilter = RangeQuery(this.options.field, {
-        gte:val.min,
+        gte: val.min,
         lt: this.addOneDay(val.max),
         format: 'yyyy-MM-dd'
       });

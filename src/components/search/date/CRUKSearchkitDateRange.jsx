@@ -18,6 +18,21 @@ const isUndefined = require('lodash/isUndefined');
 class CRUKSearchkitDateRange extends SearchkitComponent {
   accessor:CRUKSearchkitDateRangeAccessor
 
+  static propTypes = {
+    startDate: React.PropTypes.object,
+    endDate: React.PropTypes.object,
+    numberOfMonths: React.PropTypes.number,
+    initialVisibleMonth: React.PropTypes.func,
+    onDatesChange: React.PropTypes.func,
+    onFocusChange: React.PropTypes.func,
+    focusedInput: React.PropTypes.bool,
+    displayFormat: React.PropTypes.string,
+    showClearDates: React.PropTypes.bool,
+    field: React.PropTypes.string,
+    id: React.PropTypes.string,
+    ...SearchkitComponent.propTypes
+  }
+
   constructor(props) {
     const startDate = (props.startDate) ? props.startDate : null
     const endDate = (props.endDate) ? props.endDate : null
@@ -40,7 +55,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
   onDatesChange({ startDate, endDate }) {
 
     this.setState({ startDate: startDate, endDate: endDate }, () => {
-      this.updateAccessorState(startDate, endDate)
+      this.updateAccessorState(startDate, endDate);
     })
 
     this.noArgs = false
@@ -120,4 +135,4 @@ CRUKSearchkitDateRange.defaultProps = {
   isOutsideRange: () => false
 }
 
-export default CRUKSearchkitDateRange
+export default CRUKSearchkitDateRange;
