@@ -4,10 +4,10 @@ import {
   SearchBox
 } from "searchkit";
 
-import CRUKCustomElasticGetter from '../getter/CRUKCustomElasticGetter'
-import CRUKSearchkitAutocompleteList from '../autocomplete/CRUKSearchkitAutocompleteList'
+import CRUKCustomElasticGetter from '../getter/CRUKCustomElasticGetter';
+import CRUKSearchkitAutocompleteList from '../autocomplete/CRUKSearchkitAutocompleteList';
 
-import { isUndefined } from 'lodash'
+import { isUndefined } from 'lodash';
 
 /**
  * Override the render method on the SearchBox component to alter the markup.
@@ -30,13 +30,13 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     super(props);
 
     this.state = {
+      clearText: false,
       focused: false,
       autocompleteActive: false,
       input: undefined,
       autocompleteItems: [],
       selectedItem: 0
     };
-
     this.lastSearchMs = 0;
     this.throttledSearch = throttle(()=> {
       this.searchQuery(this.accessor.getQueryString())
@@ -44,6 +44,7 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
     this.autocompleteToggle = this.autocompleteToggle.bind(this);
     this.inputState = this.inputState.bind(this);
+    this.handleSearchButton = this.handleSearchButton.bind(this);
   }
 
   handleKeyUp(e) {
@@ -137,6 +138,20 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     }
   }
 
+  handleSearchButton(e) {
+    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const { clearText } = this.state;
+    if (w <= 768 && clearText) {
+      e.preventDefault();
+      this.setState({ 
+        focused: true,
+        clearText: false,
+        input: ''
+      });
+      this.refs.queryField.focus();
+    }
+  }
+
   onSubmit(event) {
     const { autocompleteItems, selectedItem } = this.state;
     event.preventDefault();
@@ -163,26 +178,36 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
 
   componentDidMount() {
     const self = this;
+
     if (!this.props.test) {
       this.searchkit.addResultsListener((results) => {
+        const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const clearText = w <= 768 ? true : false;
         self.setState({
-          input: self.getAccessorValue()
+          input: self.getAccessorValue(),
+          clearText
         });
       });
     }
   }
 
   render() {
-    const { focused, selectedItem } = this.state;
+    const { focused, selectedItem, clearText } = this.state;
     let { autocompleteItems, autocompleteActive } = this.state;
+
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input';
     let placeholder = this.props.placeholder || this.translate('searchbox.placeholder');
     if (focused) {
       wrapper_class += ' cr-input-group--focused';
     }
+
     if (this.props.test && this.props.autocompleteItems) {
       autocompleteItems = this.props.autocompleteItems;
       autocompleteActive = true;
+    }
+
+    if (clearText) {
+      wrapper_class += ' cr-search-input--closer';
     }
     return <form action="." onSubmit={this.onSubmit.bind(this)}>
       <div className={wrapper_class}>
@@ -206,7 +231,13 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
           tabIndex="1"
         />
         <span className="cr-input-group__button cr-search-input__button">
-          <button type="submit" className="btn" aria-label="Submit your search" data-qa="submit">
+          <button
+            type="submit"
+            className="btn"
+            aria-label="Submit your search"
+            data-qa="submit"
+            onClick={this.handleSearchButton}
+          >
             <span className="cr-input-group__icon glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
         </span>
