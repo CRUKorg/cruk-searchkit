@@ -11,6 +11,7 @@
     "clean": "rimraf lib",
     "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook",
+    "storybook-ghpages": "./node_modules/@kadira/storybook-deployer/bin/storybook_to_ghpages",
     "test": "./node_modules/karma/bin/karma start"
   },
   "repository": {
