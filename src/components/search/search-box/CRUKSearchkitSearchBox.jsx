@@ -146,9 +146,10 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
       this.setState({ 
         focused: true,
         clearText: false
+      }, () => {
+        this.refs.queryField.value = '';
       });
-      console.log(this.refs.queryField.value);
-      this.refs.queryField.value = '';
+      
       this.refs.queryField.focus();
     }
   }
