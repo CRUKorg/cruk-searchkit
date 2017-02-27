@@ -13,6 +13,7 @@ module.exports = function (config) {
     },
     files: [
       'https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyA46fPfmcYux_82Keez7rrpksTTDLvjEAs',
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
       'webpack.tests.js'
     ],
     frameworks: [ 'jasmine' ],

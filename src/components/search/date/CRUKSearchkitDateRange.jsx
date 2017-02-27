@@ -135,4 +135,4 @@ CRUKSearchkitDateRange.defaultProps = {
   isOutsideRange: () => false
 }
 
-export default CRUKSearchkitDateRange
+export default CRUKSearchkitDateRange;

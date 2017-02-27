@@ -4,7 +4,7 @@
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins=transform-class-properties,transform-es2015-object-super,transform-proto-to-assign,transform-es2015-block-scoping,transform-es2015-classes --presets=es2015,react --ignore \"**/*.unit.jsx\"",
+    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins=transform-class-properties,transform-es2015-object-super,transform-proto-to-assign,transform-es2015-block-scoping,transform-es2015-classes --presets=es2015,react,stage-0 --ignore \"**/*.unit.jsx\"",
     "storybook": "start-storybook -p 5678",
     "build-storybook": "build-storybook",
     "storybook-ghpages": "./node_modules/@kadira/storybook-deployer/bin/storybook_to_ghpages",
@@ -67,6 +67,7 @@
     "karma-webpack": "^1.8.0",
     "node-sass": "^3.10.1",
     "phantomjs": "^2.1.7",
+    "phantomjs-polyfill-object-assign": "0.0.2",
     "react-addons-test-utils": "^15.3.2",
     "react-test-renderer": "^15.3.2",
     "sanitize-html-react": "^1.13.0",

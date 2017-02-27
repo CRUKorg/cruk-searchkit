@@ -36,8 +36,7 @@ export default class CRUKSearchkitDidYouMean extends SearchkitComponent {
 
   clickHandle(e) {
     e.preventDefault();
-    const query = e.innerHTML;
-    const sbAccessorIndex = this.getQueryAccessorIndex()
+    const sbAccessorIndex = this.getQueryAccessorIndex();
 
     if (sbAccessorIndex) {
       this.searchkit.accessors.accessors[sbAccessorIndex].state.value = e.target.innerHTML;
