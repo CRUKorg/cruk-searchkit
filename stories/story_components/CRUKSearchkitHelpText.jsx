@@ -19,15 +19,11 @@ module.exports = (searchkit) => {
   );
 
   const story = (
-    <div className="container">
-      <div className="row">
-        <CRUKSearchkitHelpText
-          searchkit={searchkit}
-          helptext={helpJsx}
-          test
-        />
-      </div>
-    </div>
+    <CRUKSearchkitHelpText
+      searchkit={searchkit}
+      helptext={helpJsx}
+      test
+    />
   );
   return story;
 }

@@ -12,13 +12,11 @@ import CRUKSearchkitLocationInput from '../../src/components/search/location/CRU
 module.exports = (searchkit) => {
 
   const story = (
-    <div className="container">
-      <CRUKSearchkitLocationInput
-        searchkit={searchkit}
-        field="location"
-        id="loc"
-      />
-    </div>
+    <CRUKSearchkitLocationInput
+      searchkit={searchkit}
+      field="location"
+      id="loc"
+    />
   )
 
   // Story specific tests.

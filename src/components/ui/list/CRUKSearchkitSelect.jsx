@@ -9,6 +9,7 @@ import {
 import classNames from 'classnames';
 
 class CRUKSearchkitSelect extends Select {
+  
   constructor(props) {
     super(props);
     this.state = {

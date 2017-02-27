@@ -14,7 +14,7 @@ module.exports = (searchkit) => {
 
   document.cookie = `${cookie1}${cookie2}${cookie3}`;
   const story = (
-    <div className="container">
+    <div>
       <CRUKSearchkitAlert
         searchkit={searchkit}
         id="test-id-1"

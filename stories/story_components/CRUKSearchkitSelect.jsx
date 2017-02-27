@@ -19,13 +19,11 @@ module.exports = (searchkit) => {
   ];
 
   const story = (
-    <div className="container">
-      <CRUKSearchkitSelect
-        selectedItems={selectedItems}
-        items={defaultItems}
-        setItems={() => null}
-      />
-    </div>
+   <CRUKSearchkitSelect
+      selectedItems={selectedItems}
+      items={defaultItems}
+      setItems={() => null}
+    />
   );
 
   return story;

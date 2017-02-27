@@ -1,6 +1,7 @@
-import React from 'react'
-import GoogleMapsApiLoader from 'google-maps-api-loader'
-import { storiesOf } from '@kadira/storybook'
+import React from 'react';
+import GoogleMapsApiLoader from 'google-maps-api-loader';
+import { storiesOf } from '@kadira/storybook';
+
 import {
   SearchkitManager
 } from 'searchkit';
@@ -25,6 +26,11 @@ import CRUKSearchkitNoResults from './story_components/CRUKSearchkitNoResults';
 import CRUKSearchkitNoResultsError from './story_components/CRUKSearchkitNoResultsError';
 
 const sk = SearchkitManager.mock();
+const CenterDecorator = (story) => (
+  <div className="container">
+    {story()}
+  </div>
+);
 
 const stories = storiesOf('CRUK-searchkit', module);
 
@@ -32,17 +38,19 @@ const div = document.createElement('div');
 div.id = 'searchPrototypeApp';
 document.body.append(div);
 
-stories.add('CRUKSearchkitSearchBox', () => CRUKSearchkitSearchBox(sk));
-stories.add('CRUKSearchkitSearchBoxAutocomplete', () => CRUKSearchkitSearchBoxAutocomplete(sk));
-stories.add('CRUKSearchkitDateRangeStory', () => CRUKSearchkitDateRangeStory(sk));
-stories.add('CRUKSearchkitLocationInputStory', () => CRUKSearchkitLocationInputStory(sk));
-stories.add('CRUKSearchkitSelectStory', () => CRUKSearchkitSelectStory(sk));
-stories.add('CRUKSearchkitPagination', () => CRUKSearchkitPagination(sk));
-stories.add('CRUKSearchkitAlert', () => CRUKSearchkitAlert(sk));
-stories.add('CRUKSearchkitLoading', () => CRUKSearchkitLoading(sk));
-stories.add('CRUKSearchkitHelpText', () => CRUKSearchkitHelpText(sk));
-stories.add('CRUKSearchkitSummary', () => CRUKSearchkitSummary(sk));
-stories.add('CRUKSearchkitResultsList', () => CRUKSearchkitResultsList(sk));
-stories.add('CRUKSearchkitResult', () => CRUKSearchkitResult(sk));
-stories.add('CRUKSearchkitNoResults', () => CRUKSearchkitNoResults(sk));
-stories.add('CRUKSearchkitNoResults if error', () => CRUKSearchkitNoResultsError(sk));
+stories.addDecorator(CenterDecorator);
+stories.addWithInfo('CRUKSearchkitSearchBox', () => CRUKSearchkitSearchBox(sk));
+stories.addWithInfo('CRUKSearchkitSearchBox with autocomplete', () => CRUKSearchkitSearchBoxAutocomplete(sk));
+stories.addWithInfo('CRUKSearchkitDateRange', () => CRUKSearchkitDateRangeStory(sk));
+stories.addWithInfo('CRUKSearchkitLocationInput', () => CRUKSearchkitLocationInputStory(sk));
+stories.addWithInfo('CRUKSearchkitSelect', () => CRUKSearchkitSelectStory(sk));
+stories.addWithInfo('CRUKSearchkitDidYouMean', () => CRUKSearchkitDidYouMean(sk));
+stories.addWithInfo('CRUKSearchkitPagination', () => CRUKSearchkitPagination(sk));
+stories.addWithInfo('CRUKSearchkitAlert', () => CRUKSearchkitAlert(sk));
+stories.addWithInfo('CRUKSearchkitLoading', () => CRUKSearchkitLoading(sk));
+stories.addWithInfo('CRUKSearchkitHelpText', () => CRUKSearchkitHelpText(sk));
+stories.addWithInfo('CRUKSearchkitSummary', () => CRUKSearchkitSummary(sk));
+stories.addWithInfo('CRUKSearchkitResultsList', () => CRUKSearchkitResultsList(sk));
+stories.addWithInfo('CRUKSearchkitResult', () => CRUKSearchkitResult(sk));
+stories.addWithInfo('CRUKSearchkitNoResults', () => CRUKSearchkitNoResults(sk));
+stories.addWithInfo('CRUKSearchkitNoResults if error', () => CRUKSearchkitNoResultsError(sk));

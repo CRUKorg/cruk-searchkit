@@ -7,6 +7,10 @@ import {
  * Export our result component.
  */
 export default class CRUKSearchkitHelpText extends SearchkitComponent {
+  static propTypes = {
+    helptext: React.PropTypes.object,
+    test: React.PropTypes.bool,
+  }
 
   render() {
     // If there are no arguments in the URL stop initial search.

@@ -14,11 +14,7 @@ module.exports = (searchkit) => {
   searchkit.loading = true;
 
   const story = (
-    <div className="container">
-      <div className="row">
-        <CRUKSearchkitLoading searchkit={searchkit} />
-      </div>
-    </div>
+    <CRUKSearchkitLoading searchkit={searchkit} />
   );
 
   return story;

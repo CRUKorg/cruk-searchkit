@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-searchkit#readme",
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
@@ -73,6 +74,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "@kadira/storybook-deployer": "^1.2.0",
     "bem-cn": "^2.1.3",
     "classnames": "^2.2.5",
     "cruk-pattern-library": "^1.0.0",

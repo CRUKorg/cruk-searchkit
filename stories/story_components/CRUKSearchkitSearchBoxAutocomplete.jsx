@@ -11,9 +11,14 @@ import {
 import CRUKSearchkitSearchBox from '../../src/components/search/search-box/CRUKSearchkitSearchBox';
 
 module.exports = (searchkit) => {
+  const div = document.createElement('div');
+  div.id = 'searchPrototypeApp';
+  document.body.append(div);
+
+  const autocompleteItems = ['item1', 'Item2'];
 
   const story = (
-    <CRUKSearchkitSearchBox
+     <CRUKSearchkitSearchBox
       searchkit={searchkit}
       id="q"
       queryBuilder={MultiMatchQuery}
@@ -22,7 +27,10 @@ module.exports = (searchkit) => {
       }}
       queryFields={['title', 'description']}
       placeholder="Search..."
+      autocompleteEnable
       test
+      autocompleteItems={autocompleteItems}
+      autofocus
     />
   );
 

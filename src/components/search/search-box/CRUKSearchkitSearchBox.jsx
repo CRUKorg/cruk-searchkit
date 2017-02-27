@@ -19,6 +19,13 @@ export default class CRUKSearchkitSearchBox extends SearchBox {
     });
   }
 
+  static propTypes = {
+    autocompleteEnable: React.PropTypes.bool,
+    test: React.PropTypes.bool,
+    autocompleteItems: React.PropTypes.array,
+    ...SearchBox.propTypes
+  }
+
   constructor(props) {
     super(props);
 

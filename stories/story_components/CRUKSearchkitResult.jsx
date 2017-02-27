@@ -4,16 +4,21 @@ import { specs, describe, it } from 'storybook-addon-specifications'
 import { mount } from "enzyme";
 import { expect } from "chai";
 
-import CRUKSearchkitDateRange from '../../src/components/search/date/CRUKSearchkitDateRange'
+import CRUKSearchkitResult from '../../src/components/display/result/CRUKSearchkitResult';
 
 module.exports = (searchkit) => {
+  const result = {
+    _source: {
+      url: 'http://madeup.com',
+      title: 'Mocking a title',
+      description: 'Some descriptive text that does not exist'
+    }
+  };
 
   const story = (
-    <CRUKSearchkitDateRange
+    <CRUKSearchkitResult
       searchkit={searchkit}
-      field="date_start"
-      id="date"
-      showClearDates
+      result={result}
     />
   );
 
