@@ -15,7 +15,7 @@ export default class CRUKNoResultsErrorDisplay extends React.Component {
   }
 
   render() {
-    const {errorLabel, bemBlocks, resetSearchFn, tryAgainLabel, errorMessage} = this.props
+    const {errorLabel, bemBlocks, resetSearchFn, tryAgainLabel, errorMessage} = this.props;
 
     return (
       <div data-qa="no-hits" className={bemBlocks.container()}>
@@ -31,6 +31,5 @@ export default class CRUKNoResultsErrorDisplay extends React.Component {
         </div>
       </div>
     )
-
   }
 }
