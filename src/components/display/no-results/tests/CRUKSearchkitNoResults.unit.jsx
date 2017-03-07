@@ -65,15 +65,6 @@ describe('CRUKSearchkitNoResults tests', () => {
     expect(wrapper.find('.search-failed__info > .no-results__heading').text()).toContain('Cancer');
   });
 
-  it('Renders error display with reset button', function() {
-    this.createWrapper(true);
-    const wrapper = this.wrapper.render().find('.search-failed');
-    // The component should have rendered with the correct wrapper class.
-    expect(wrapper.length).toBe(1);
-    // Search for reset button.
-    expect(wrapper.find('.search-failed__step-action').text()).toContain('Reset Search');
-  });
-
   it('Renders error display with correct errorMessage', function() {
     this.createWrapper(true, undefined, 'ERROR ERROR');
     const wrapper = this.wrapper.render().find('.search-failed');
