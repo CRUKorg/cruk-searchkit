@@ -22,13 +22,6 @@ export default class CRUKNoResultsErrorDisplay extends React.Component {
         <div className={bemBlocks.container("info")}>
           {errorMessage || errorLabel}
         </div>
-        <div className={bemBlocks.container("steps")}>
-          <FastClick handler={resetSearchFn}>
-            <div className={bemBlocks.container("step-action")}>
-              {tryAgainLabel}
-            </div>
-          </FastClick>
-        </div>
       </div>
     )
   }
