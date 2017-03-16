@@ -19,7 +19,6 @@ export default class CRUKSearchkitLocationInput extends SearchkitComponent {
     queryDelay: React.PropTypes.number,
     placeholder: React.PropTypes.string,
     initialValue: React.PropTypes.string,
-    country: React.PropTypes.string,
     radius: React.PropTypes.string,
     location: React.PropTypes.object,
     fixtures: React.PropTypes.array,
