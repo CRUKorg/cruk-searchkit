@@ -15,7 +15,7 @@ var CRUKSearchkitHelpText = require('./lib/components/display/help-text/CRUKSear
 var CRUKSearchkitAlert = require('./lib/components/display/alert/CRUKSearchkitAlert').default;
 var CRUKSearchkitMenuFilter = require('./lib/components/filters/menu/CRUKSearchkitMenuFilter').default;
 var CRUKSearchkitSelect = require('./lib/components/ui/list/CRUKSearchkitSelect').default;
-var CRUKSearchkitSelect = require('./lib/core/query/CRUKSearchkitMultiMatchPhraseQuery').default;
+var CRUKSearchkitMultiMatchPhraseQuery = require('./lib/core/query/CRUKSearchkitMultiMatchPhraseQuery').default;
 
 module.exports = {
   CRUKSearchkitSearchBox: CRUKSearchkitSearchBox,
