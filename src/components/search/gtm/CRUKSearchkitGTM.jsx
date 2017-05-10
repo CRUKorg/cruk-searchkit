@@ -65,7 +65,9 @@ class CRUKSearchkitGTM extends SearchkitComponent {
      * Construct the payload.
      */
     const gtmSearchTitle = this.props.searchName || 'Unnamed React search';
-    let query = this.searchkit.state.q;
+    let query = Object.keys(this.searchkit.state).map((k, i) => {
+      return this.searchkit.state[k];
+    }).join(', ');
     let page = typeof this.searchkit.state.p == 'undefined' ? 1 : this.searchkit.state.p;
     let totalResults = this.getHitsCount();
 
