@@ -65,7 +65,8 @@ class CRUKSearchkitGTM extends SearchkitComponent {
      * Construct the payload.
      */
     const gtmSearchTitle = this.props.searchName || 'Unnamed React search';
-    let query = this.searchkit.state.q;
+    const keywordField =  this.props.keywordField || 'q';
+    const query = this.searchkit.state[keywordField];
     let page = typeof this.searchkit.state.p == 'undefined' ? 1 : this.searchkit.state.p;
     let totalResults = this.getHitsCount();
 
@@ -134,7 +135,8 @@ CRUKSearchkitGTM.propTypes = {
   dataLayerName: React.PropTypes.string,
   additionalEvents: React.PropTypes.object,
   scriptId: React.PropTypes.string,
-  searchName: React.PropTypes.string
+  searchName: React.PropTypes.string,
+  keywordField: React.PropTypes.string
 };
 
 export default CRUKSearchkitGTM;
