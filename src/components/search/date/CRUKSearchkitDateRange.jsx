@@ -29,6 +29,8 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
     displayFormat: React.PropTypes.string,
     showClearDates: React.PropTypes.bool,
     field: React.PropTypes.string,
+    startDateField: React.PropTypes.string,
+    endDateField: React.PropTypes.string,
     id: React.PropTypes.string,
     ...SearchkitComponent.propTypes
   }
@@ -88,10 +90,10 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
 
   defineAccessor() {
     const { id, title, field, startDate, endDate,
-      interval, showHistogram } = this.props
-    const updateParentState = this.updateParentState
+      interval, showHistogram, startDateField, endDateField } = this.props;
+    const updateParentState = this.updateParentState;
     return new CRUKSearchkitDateRangeAccessor(id,{
-      id, startDate, endDate, title, field, interval, updateParentState
+      id, startDate, endDate, title, field, interval, updateParentState, startDateField, endDateField
     })
   }
 
