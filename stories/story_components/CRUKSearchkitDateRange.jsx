@@ -11,6 +11,8 @@ module.exports = (searchkit) => {
   const story = (
     <CRUKSearchkitDateRange
       searchkit={searchkit}
+      startDateField="date_start"
+      endDateField="date_end"
       field="date_start"
       id="date"
       showClearDates
