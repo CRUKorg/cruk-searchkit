@@ -85,7 +85,7 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
           range: {
             date_start: {
               gte: '2016-08-12',
-              lte: '2016-08-16',
+              lte: '2016-08-15',
               format: 'yyyy-MM-dd'
             }
           }
@@ -93,7 +93,7 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
           range: {
             date_end: {
               gte: '2016-08-12',
-              lte: '2016-08-16',
+              lte: '2016-08-15',
               format: 'yyyy-MM-dd'
             }
           }
@@ -109,7 +109,7 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
             }, {
               range: {
                 date_end: {
-                  gt: '2016-08-16',
+                  gt: '2016-08-15',
                   format: 'yyyy-MM-dd'
                 }
               }
