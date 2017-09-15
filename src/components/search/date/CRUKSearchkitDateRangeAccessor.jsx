@@ -79,7 +79,20 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
                 field: this.options.endDateField
               }
             }
-          ])
+          ]),
+          // OR
+          // 5) The event has a start date but no end date.
+          BoolMust([
+            RangeQuery(this.options.startDateField, {
+              lt: val.min,
+              format: 'yyyy-MM-dd'
+            }),
+            BoolMustNot({
+              exists: {
+                field: this.options.endDateField
+              }
+            })
+          ]),
         ])
       }
 

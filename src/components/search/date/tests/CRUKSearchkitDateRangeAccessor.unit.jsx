@@ -127,6 +127,25 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
               }
             }]
           }
+        }, {
+          bool: {
+            must: [{
+              range: {
+                date_start: {
+                  lt: '2016-08-12',
+                  format: 'yyyy-MM-dd'
+                }
+              }
+            }, {
+              bool: {
+                must_not: {
+                  exists: {
+                    field: 'date_end'
+                  }
+                }
+              }
+            }]
+          }
         }]
       }
     });
