@@ -19,10 +19,6 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
     this.state = new ObjectState({});
   }
 
-  addOneDay(date) {
-    return moment(date).add(1, 'day').format('YYYY-MM-DD');
-  }
-
   buildSharedQuery(query) {
     if (this.state.hasValue()) {
       let val = this.state.getValue();
@@ -31,7 +27,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
       // Default to using `field` prop.
       let rangeFilter = RangeQuery(this.options.field, {
         gte: val.min,
-        lt: this.addOneDay(val.max),
+        lte: val.max,
         format: 'yyyy-MM-dd'
       });
 
@@ -44,14 +40,14 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
 
           RangeQuery(this.options.startDateField, {
             gte: val.min,
-            lte: this.addOneDay(val.max),
+            lte: val.max,
             format: 'yyyy-MM-dd'
           }),
           // OR
           // 2) The event end date is before the input end date but after the input start date.
           RangeQuery(this.options.endDateField, {
             gte: val.min,
-            lte: this.addOneDay(val.max),
+            lte: val.max,
             format: 'yyyy-MM-dd'
           }),
           // OR
@@ -62,7 +58,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
               format: 'yyyy-MM-dd'
             }),
             RangeQuery(this.options.endDateField, {
-              gt: this.addOneDay(val.max),
+              gt: val.max,
               format: 'yyyy-MM-dd'
             })
           ]),
@@ -79,7 +75,20 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
                 field: this.options.endDateField
               }
             }
-          ])
+          ]),
+          // OR
+          // 5) The event has a start date but no end date.
+          BoolMust([
+            RangeQuery(this.options.startDateField, {
+              lt: val.min,
+              format: 'yyyy-MM-dd'
+            }),
+            BoolMustNot({
+              exists: {
+                field: this.options.endDateField
+              }
+            })
+          ]),
         ])
       }
 
@@ -123,7 +132,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
       otherFilters,
       RangeQuery(field, {
         gte: min,
-        lt: this.addOneDay(val.max),
+        lte: val.max,
         format: 'yyyy-MM-dd'
       })
     ]);
