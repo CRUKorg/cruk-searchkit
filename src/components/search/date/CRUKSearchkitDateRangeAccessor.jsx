@@ -19,10 +19,6 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
     this.state = new ObjectState({});
   }
 
-  addOneDay(date) {
-    return moment(date).add(1, 'day').format('YYYY-MM-DD');
-  }
-
   buildSharedQuery(query) {
     if (this.state.hasValue()) {
       let val = this.state.getValue();
@@ -31,7 +27,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
       // Default to using `field` prop.
       let rangeFilter = RangeQuery(this.options.field, {
         gte: val.min,
-        lt: this.addOneDay(val.max),
+        lte: val.max,
         format: 'yyyy-MM-dd'
       });
 
@@ -136,7 +132,7 @@ export class CRUKSearchkitDateRangeAccessor extends FilterBasedAccessor {
       otherFilters,
       RangeQuery(field, {
         gte: min,
-        lt: this.addOneDay(val.max),
+        lte: val.max,
         format: 'yyyy-MM-dd'
       })
     ]);

@@ -56,7 +56,7 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
         date: {
           format: 'yyyy-MM-dd',
           gte: '2016-08-12',
-          lt: '2016-08-16'
+          lte: '2016-08-15'
         }
       }
     });
@@ -159,11 +159,11 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
     });
     query = this.accessor.buildOwnQuery(query);
     
-    // Comparisoon data.
+    // Comparison data.
     const filters = BoolMust([
       RangeQuery(this.accessor.options.field,{
         gte: '2016-08-12',
-        lt: this.accessor.addOneDay('2016-08-15'),
+        lte: '2016-08-15',
         format: 'yyyy-MM-dd'
       })
     ]);
@@ -188,7 +188,7 @@ describe('CRUKSearchkitDateRangeAccessor tests', () => {
     const filters = BoolMust([
       RangeQuery(this.accessor.options.startDateField, {
         gte: '2016-08-12',
-        lt: this.accessor.addOneDay('2016-08-15'),
+        lte: '2016-08-15',
         format: 'yyyy-MM-dd'
       })
     ]);
