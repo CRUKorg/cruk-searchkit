@@ -28,13 +28,14 @@ export class CRUKSearchkitLocationAccessor extends FilterBasedAccessor {
           location: {}
         }
       }
-      filter.geo_distance[this.options.field].lat = val.lat
-      filter.geo_distance[this.options.field].lon = val.lng
-      let geoFilter = FilteredQuery({
-        filter: filter
-      })
-
-      query = query.addFilter(this.key, geoFilter)
+      filter.geo_distance[this.options.field].lat = parseFloat(val.lat);
+      filter.geo_distance[this.options.field].lon = parseFloat(val.lng);
+      let geoFilter = {
+        bool: {
+          filter: filter
+        }
+      };
+      query = query.addQuery(geoFilter);
     }
 
     return query

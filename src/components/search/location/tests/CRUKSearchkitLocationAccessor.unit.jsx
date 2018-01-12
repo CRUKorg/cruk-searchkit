@@ -38,20 +38,22 @@ describe('CRUKSearchkitLocationAccessor tests', () => {
 
     query = new ImmutableQuery();
     query = this.accessor.buildSharedQuery(query);
-    filters = query.getFilters();
-
+    filters = query.query;
     expect(toPlainObject(filters)).toEqual({
-      filtered: {
-        filter: {
-          geo_distance: {
-            distance: '20km',
-            location: {
-              lat: '-12.122222222',
-              lon: '15.555555'
+      query: {
+        bool: {
+          filter: {
+            geo_distance: {
+              distance: '20km',
+              location: {
+                lat: -12.122222222,
+                lon: 15.555555
+              }
             }
           }
         }
-      }
+      },
+      size : 0
     });
   });
 
