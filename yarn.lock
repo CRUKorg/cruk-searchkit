@@ -2448,7 +2448,7 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
-create-react-class@^15.5.2:
+create-react-class@^15.5.2, create-react-class@^15.6.0:
   version "15.7.0"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.7.0.tgz#7499d7ca2e69bb51d13faf59bd04f0c65a1d6c1e"
   integrity sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng==
@@ -6673,16 +6673,15 @@ react-cookie@^1.0.4:
     is-node "^1.0.2"
     object-assign "^4.1.0"
 
-react-dates@^3.1.1:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/react-dates/-/react-dates-3.6.0.tgz#1b35477fca26d588f2b7b1215a1f0fc9fc3b943c"
-  integrity sha1-GzVHf8om1Yjyt7EhWh8Pyfw7lDw=
+react-dates@^4:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/react-dates/-/react-dates-4.3.3.tgz#c818be9ee86a67066d7d6ab7f747b1c194d41b1d"
+  integrity sha1-yBi+nuhqZwZtfWq390exwZTUGx0=
   dependencies:
     array-includes "^3.0.2"
     classnames "^2.2.5"
-    react-moment-proptypes "^1.2.0"
-    react-portal "^2.2.1"
-    react-tether "^0.5.2"
+    react-moment-proptypes "^1.2.1"
+    react-portal "^3.0.0"
 
 react-docgen@^3.0.0-beta11:
   version "3.0.0"
@@ -6786,17 +6785,19 @@ react-modal@^1.2.0, react-modal@^1.2.1:
     prop-types "^15.5.7"
     react-dom-factories "^1.0.0"
 
-react-moment-proptypes@^1.2.0:
+react-moment-proptypes@^1.2.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.7.0.tgz#89881479840a76c13574a86e3bb214c4ba564e7a"
   integrity sha512-ZbOn/P4u469WEGAw5hgkS/E+g1YZqdves2BjYsLluJobzUZCtManhjHiZKjniBVT7MSHM6D/iKtRVzlXVv3ikA==
   dependencies:
     moment ">=1.6.0"
 
-react-portal@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-2.2.1.tgz#0cde8c35eeb0cce9a67b1e1255d5e4a2d147d1cf"
-  integrity sha1-DN6MNe6wzOmmex4SVdXkotFH0c8=
+react-portal@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.2.0.tgz#4224e19b2b05d5cbe730a7ba0e34ec7585de0043"
+  integrity sha512-avb1FreAZAVCvNNyS2dCpxZiPYPJnAasHYPxdVBTROgNFeI+KSb+OoMHNsC1GbDawESCriPwCX+qKua6WSPIFw==
+  dependencies:
+    prop-types "^15.5.8"
 
 react-simple-di@^1.2.0:
   version "1.2.0"
@@ -6821,22 +6822,16 @@ react-test-renderer@^15.3.2:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-tether@^0.5.2:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/react-tether/-/react-tether-0.5.7.tgz#418ea61041b65b958271478489b71a3572f01422"
-  integrity sha1-QY6mEEG2W5WCcUeEibcaNXLwFCI=
+react@^15.3.2:
+  version "15.7.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.7.0.tgz#10308fd42ac6912a250bf00380751abc41ac7106"
+  integrity sha512-5/MMRYmpmM0sMTHGLossnJCrmXQIiJilD6y3YN3TzAwGFj6zdnMtFv6xmi65PHKRV+pehIHpT7oy67Sr6s9AHA==
   dependencies:
-    prop-types "^15.5.8"
-    tether "^1.3.7"
-
-react@=15.3.2:
-  version "15.3.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.3.2.tgz#a7bccd2fee8af126b0317e222c28d1d54528d09e"
-  integrity sha1-p7zNL+6K8SawMX4iLCjR1UUo0J4=
-  dependencies:
-    fbjs "^0.8.4"
+    create-react-class "^15.6.0"
+    fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "^15.5.10"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -7873,11 +7868,6 @@ test-exclude@^2.1.1:
     object-assign "^4.1.0"
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
-
-tether@^1.3.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.7.tgz#d56a818590d8fe72e387f77a67f93ab96d8e1fb2"
-  integrity sha512-Z0J1aExjoFU8pybVkQAo/vD2wfSO63r+XOPfWQMC5qtf1bI7IWqNk4MiyBcgvvnY8kqnY06dVdvwTK2S3PU/Fw==
 
 text-table@~0.2.0:
   version "0.2.0"
