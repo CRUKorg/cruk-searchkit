@@ -1,6 +1,6 @@
 {
   "name": "cruk-searchkit",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Set of overriden and new searchkit components designed specifically for Cancer Research UK",
   "main": "index.js",
   "scripts": {
@@ -92,7 +92,7 @@
     "react-addons-shallow-compare": "^15.3.2",
     "react-addons-update": "^15.3.2",
     "react-cookie": "^1.0.4",
-    "react-dates": "^3.1.1",
+    "react-dates": "^4",
     "react-dom": "^15.3.2",
     "react-geosuggest": "^2",
     "react-google-tag-manager": "^1.1.2",
