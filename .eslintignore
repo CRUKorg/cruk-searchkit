@@ -1,0 +1,4 @@
+dist
+start.js
+server/server.js
+**/tests/**
