@@ -114,7 +114,7 @@ class CRUKSearchkitDateRange extends SearchkitComponent {
         Object.keys(argState[this.props.id]).length > 0) {
       if (typeof argState[this.props.id].min !== undefined) {
         startDate = moment(argState[this.props.id].min);
-        initialVisibleMonth = () => startDate;
+        initialVisibleMonth = startDate;
       }
       endDate = (typeof argState[this.props.id].max !== undefined) ? moment(argState[this.props.id].max) : null;
     }
